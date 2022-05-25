@@ -108,7 +108,7 @@
                          data-wow-delay="0">
                          <div class="logo mb-30">
                              <a href="index.html" class="mb-15"><img
-                                     src="{{ asset('assets/global/images/logo.png') }}" alt="logo" /></a>
+                                     src="{{ asset('storage/images/themes/logo.png') }}" alt="logo" /></a>
                              <p class="font-lg text-heading">Awesome grocery store website template</p>
                          </div>
                          <ul class="contact-infor">
@@ -127,7 +127,7 @@
                      </div>
                  </div>
                  <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".1s>
-                        <h4 class="                    widget-title">Company</h4>
+                        <h4 class="                     widget-title">Company</h4>
                      <ul class="footer-list mb-sm-5 mb-md-0">
                          <li><a href="#">About Us</a></li>
                          <li><a href="#">Delivery Information</a></li>

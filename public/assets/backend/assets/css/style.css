@@ -1,0 +1,65 @@
+/*================================================================================
+	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+
+v-content-rendering {
+    display: block;
+}
+
+.fade-animation {
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.datepicker-container {
+    z-index: 99999999999999999 !important;
+}
+
+.dropify-wrapper.has-preview div.invalid-feedback {
+    z-index: 999 !important;
+    position: relative !important;
+    font-size: 18px !important;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.select2-search__field {
+    padding: 4px !important;
+}
+
+.select2-search__field:focus {
+    outline: none;
+}
+
+.select2 {
+    width: 98%;
+}
+
+.brand-text {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold !important;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif !important;
+}

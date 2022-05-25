@@ -12,7 +12,7 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/global/images/favicon.png') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/images/themes/icon.png') }}" />
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/plugins/animate.min.css') }}" />

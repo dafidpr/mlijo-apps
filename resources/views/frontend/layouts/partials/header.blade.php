@@ -40,7 +40,7 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{ asset('assets/global/images/logo.png') }}" alt="logo" /></a>
+                    <a href="index.html"><img src="{{ asset('storage/images/themes/logo.png') }}" alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -63,33 +63,13 @@
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
-                            <div class="search-location">
-                                <form action="#">
-                                    <select class="select-active">
-                                        <option>Your Location</option>
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>Arizona</option>
-                                        <option>Delaware</option>
-                                        <option>Florida</option>
-                                        <option>Georgia</option>
-                                        <option>Hawaii</option>
-                                        <option>Indiana</option>
-                                        <option>Maryland</option>
-                                        <option>Nevada</option>
-                                        <option>New Jersey</option>
-                                        <option>New Mexico</option>
-                                        <option>New York</option>
-                                    </select>
-                                </form>
-                            </div>
                             <div class="header-action-icon-2">
                                 <a href="shop-compare.html">
                                     <img class="svgInject" alt="Nest"
-                                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-compare.svg') }}" />
+                                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-notification.svg') }}" />
                                     <span class="pro-count blue">3</span>
                                 </a>
-                                <a href="shop-compare.html"><span class="lable ml-0">Compare</span></a>
+                                <a href="shop-compare.html"><span class="lable ml-0">Notification</span></a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a href="shop-wishlist.html">
@@ -191,7 +171,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('assets/global/images/logo.png') }}" alt="logo" /></a>
+                    <a href="index.html"><img src="{{ asset('storage/images/themes/logo.png') }}" alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -551,7 +531,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="index.html"><img src="{{ asset('assets/global/images/logo.png') }}" alt="logo" /></a>
+                <a href="index.html"><img src="{{ asset('storage/images/themes/logo.png') }}" alt="logo" /></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
