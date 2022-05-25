@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Front End Route
+Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
+// Back End Route
