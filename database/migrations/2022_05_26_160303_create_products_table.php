@@ -33,7 +33,7 @@ return new class extends Migration
             $table->double('width_size')->nullable();
             $table->double('height_size')->nullable();
             $table->string('slug')->unique();
-            $table->string('tags');
+            $table->string('keywords')->nullable();
             $table->boolean('have_variant')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();

@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('seller_product_categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('seller_id');
+            $table->unsignedBigInteger('seller_category_id');
             $table->unsignedBigInteger('product_id');
             $table->timestamps();
-            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('seller_category_id')->references('id')->on('seller_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }

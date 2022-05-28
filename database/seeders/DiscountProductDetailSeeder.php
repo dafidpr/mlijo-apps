@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Imports\Seeder\DiscountProductDetailSeederImport;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Excel;
 
 class DiscountProductDetailSeeder extends Seeder
 {
@@ -14,6 +16,6 @@ class DiscountProductDetailSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Excel::import(new DiscountProductDetailSeederImport, base_path('resources/imports/DiscountProductDetailSeeder.xlsx'));
     }
 }

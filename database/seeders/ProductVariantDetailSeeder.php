@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Imports\Seeder\ProductVariantDetailSeederImport;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Excel;
 
 class ProductVariantDetailSeeder extends Seeder
 {
@@ -14,6 +16,6 @@ class ProductVariantDetailSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Excel::import(new ProductVariantDetailSeederImport, base_path('resources/imports/ProductVariantDetailSeeder.xlsx'));
     }
 }

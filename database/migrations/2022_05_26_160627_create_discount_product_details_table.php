@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('discount_product_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('discount_product_id');
-            $table->unsignedBigInteger('product_variant_detail_id');
+            $table->unsignedBigInteger('product_variant_detail_id')->nullable();
+            $table->double('starting_price');
             $table->double('price_discount');
             $table->double('discount_percent');
             $table->integer('quantity');

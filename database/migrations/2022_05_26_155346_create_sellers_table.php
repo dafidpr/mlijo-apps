@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->string('store_name');
             $table->string('store_slug')->unique();
-            $table->string('store_slogan')->unique();
+            $table->string('store_slogan');
             $table->string('store_description')->nullable();
             $table->string('store_profile_path')->nullable()->default('default_store.png');
             $table->string('store_cover_path')->nullable()->default('default_store.png');
