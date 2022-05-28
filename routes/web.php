@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\Auth\CheckPointController;
 use App\Http\Controllers\Web\Backend\Auth\AuthController;
 use App\Http\Controllers\Web\Backend\Root\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
@@ -32,6 +33,8 @@ Route::get('/reset-password', function () {
 })->middleware(['guest:' . config('fortify.guard')])->name('password.reset');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    // Check point
+    Route::get('/check-point', [CheckPointController::class, 'checkPoint'])->name('check-point');
     // Route for administrator
     Route::prefix('administrator')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboards');

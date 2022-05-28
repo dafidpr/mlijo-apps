@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->enum('group', ['general', 'config', 'image', 'seo', 'social', 'email', 'sms', 'payment', 'other']);
+            $table->enum('group', ['general', 'config', 'image', 'seo', 'social', 'contact', 'payment', 'other']);
             $table->string('option');
             $table->string('label');
             $table->string('value');

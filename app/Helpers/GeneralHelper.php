@@ -43,13 +43,13 @@ if (!function_exists('getAuthPermissions')) {
     }
 }
 
-// if (!function_exists('getSetting')) {
-//     function getSetting($optionName, $instantGet = true)
-//     {
-//         $setting = Setting::where('option', $optionName)->first();
-//         return $instantGet ? $setting->value : $setting;
-//     }
-// }
+if (!function_exists('getSetting')) {
+    function getSetting($optionName, $instantGet = true)
+    {
+        $setting = Setting::where('option', $optionName)->first();
+        return $instantGet ? $setting->value : $setting;
+    }
+}
 
 if (!function_exists('stripCharacter')) {
     function stripCharacter($input)

@@ -91,7 +91,7 @@
                                     class="user-name text-bold-600">{{ getInfoLogin()->name }}</span><span
                                     class="user-status">{{ getInfoLogin()->roles[0]->name }}</span></div>
                             <span><img class="round"
-                                    src="{{ getInfoLogin()->profile_photo_path ?? 'https://ui-avatars.com/api/?name=' . getInfoLogin()->name . '&&background=random' }}"
+                                    src="{{ getInfoLogin()->profile_photo_path ? asset('storage/images/users/' . getInfoLogin()->profile_photo_path) : 'https://ui-avatars.com/api/?name=' . getInfoLogin()->name . '&&background=random' }}"
                                     alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

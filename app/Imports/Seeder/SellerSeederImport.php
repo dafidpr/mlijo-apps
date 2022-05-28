@@ -26,7 +26,7 @@ class SellerSeederImport implements ToCollection, WithHeadingRow
                 'store_description' => $value['deskripsi'],
                 'store_profile_path' => $value['foto_profil'],
                 'store_cover_path' => $value['sampul_foto'],
-                'store_phone_number' => $value['no_hp'],
+                'store_phone_number' => '0' . $value['no_hp'],
                 'store_email' => $value['email'],
                 'twitter' => $value['twitter'],
                 'instagram' => $value['instagram'],

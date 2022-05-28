@@ -31,8 +31,14 @@
             </li>
             <li class=" nav-item">
                 <a data-toggle="ajax" href="#">
+                    <i class="feather icon-shopping-bag"></i>
+                    <span class="menu-item" data-i18n="Pesanan">Pesanan</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a data-toggle="ajax" href="#">
                     <i class="feather icon-repeat"></i>
-                    <span class="menu-item" data-i18n="Pembayaran">Pembayaran</span>
+                    <span class="menu-item" data-i18n="Validasi Pembayaran">Validasi Pembayaran</span>
                 </a>
             </li>
 
@@ -40,17 +46,73 @@
                 <span>General</span>
             </li>
             <li class="nav-item"><a href="#"><i class="feather icon-server"></i><span class="menu-title"
-                        data-i18n="Master Data">Master Data</span></a>
+                        data-i18n="Data Center">Data Center</span></a>
                 <ul class="menu-content">
                     <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Data Jurusan">Data Jurusan</span></a>
+                                data-i18n="Customer">Customer</span></a>
                     </li>
                     <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Data Kelas">Data
-                                Kelas</span></a>
+                                data-i18n="Seller">Seller</span></a>
+                    </li>
+                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="Kategori Produk">Kategori Produk</span></a>
+                    </li>
+                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="Sub Kategori Produk">Sub Kategori Produk</span></a>
                     </li>
                 </ul>
             </li>
+            <li class="nav-item"><a href="#"><i class="feather icon-users"></i><span class="menu-title"
+                        data-i18n="Manajemen User">Manajemen User</span></a>
+                <ul class="menu-content">
+                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="Users">Users</span></a>
+                    </li>
+                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="Roles">Roles</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a data-toggle="ajax" href="#">
+                    <i class="feather icon-database"></i>
+                    <span class="menu-item" data-i18n="Produk">Produk</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a data-toggle="ajax" href="#">
+                    <i class="feather icon-credit-card"></i>
+                    <span class="menu-item" data-i18n="Metode Pembayaran">Metode Pembayaran</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a data-toggle="ajax" href="#">
+                    <i class="feather icon-image"></i>
+                    <span class="menu-item" data-i18n="Iklan">Iklan</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a data-toggle="ajax" href="#">
+                    <i class="feather icon-truck"></i>
+                    <span class="menu-item" data-i18n="Pengiriman">Pengiriman</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a data-toggle="ajax" href="#">
+                    <i class="feather icon-bar-chart"></i>
+                    <span class="menu-item" data-i18n="Statistik">Statistik</span>
+                </a>
+            </li>
+            <li class="navigation-header">
+                <span>Setting</span>
+            </li>
+            <li class=" nav-item">
+                <a data-toggle="ajax" href="#">
+                    <i class="feather icon-settings"></i>
+                    <span class="menu-item" data-i18n="Pengaturan">Pengaturan</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </div>
