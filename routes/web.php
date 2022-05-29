@@ -24,7 +24,12 @@ Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
 Route::get('categories/{slug}', function () { })->name('frontend.categories');
 Route::get('wishlists', [WishlistController::class, 'index'])->name('frontend.wishlists')->middleware('customer.protected');
 Route::get('carts', [CartController::class, 'index'])->name('frontend.carts')->middleware('customer.protected');
-
+Route::get('/login', function () {
+    return view('frontend.auth.login', ['title' => 'Masuk']);
+})->middleware(['guest:' . config('fortify.guard')])->name('frontend.login');
+Route::get('/register', function () {
+    return view('frontend.auth.register', ['title' => 'Registrasi']);
+})->middleware(['guest:' . config('fortify.guard')])->name('frontend.register');
 
 // Back End Route
 Route::get('cpanel/auth', function () {

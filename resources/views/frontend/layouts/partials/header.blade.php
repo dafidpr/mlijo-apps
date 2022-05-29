@@ -162,13 +162,14 @@
                             <div class="header-action-2" style="margin-left:35px">
                                 <div class="header-action-icon-2">
                                     <div class="shopping-cart-button">
-                                        <a href="#" class="outline btn hover-up"
+                                        <a href="{{ route('frontend.login') }}" class="outline btn hover-up"
                                             style="background-color: transparent;border: 2px solid #3BB77E;color: #3BB77E;">Masuk</a>
                                     </div>
                                 </div>
                                 <div class="header-action-icon-2">
                                     <div class="shopping-cart-button">
-                                        <a href="#" class="outline btn" style="">Daftar</a>
+                                        <a href="{{ route('frontend.register') }}" class="outline btn"
+                                            style="">Daftar</a>
                                     </div>
                                 </div>
                             </div>
@@ -407,13 +408,14 @@
                                 <div class="header-action-2" style="margin-left:35px">
                                     <div class="header-action-icon-2">
                                         <div class="shopping-cart-button">
-                                            <a href="#" class="outline btn hover-up"
+                                            <a href="{{ route('frontend.login') }}" class="outline btn hover-up"
                                                 style="background-color: transparent;border: 2px solid #3BB77E;color: #3BB77E;">Masuk</a>
                                         </div>
                                     </div>
                                     <div class="header-action-icon-2">
                                         <div class="shopping-cart-button">
-                                            <a href="#" class="outline btn" style="color:white">Daftar</a>
+                                            <a href="{{ route('frontend.register') }}" class="outline btn"
+                                                style="color:white">Daftar</a>
                                         </div>
                                     </div>
                                 </div>
