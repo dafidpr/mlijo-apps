@@ -19,4 +19,9 @@ class Seller extends Model
     {
         return $this->hasMany(SellerCategory::class);
     }
+
+    public function user()
+    {
+        return $this->morphOne(User::class, 'userable_type');
+    }
 }

@@ -6,15 +6,11 @@
                      <div class="position-relative newsletter-inner">
                          <div class="newsletter-content">
                              <h2 class="mb-20">
-                                 Stay home & get your daily <br />
-                                 needs from our shop
+                                 Tetap dirumah dan nikmati harimu <br />
+                                 dengan belanja kebutuhan dari rumah
                              </h2>
-                             <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">Nest
-                                     Mart</span></p>
-                             <form class="form-subcriber d-flex">
-                                 <input type="email" placeholder="Your emaill address" />
-                                 <button class="btn" type="submit">Subscribe</button>
-                             </form>
+                             <p class="mb-45">Mulai belanja segala kebutuhan dapur di <span
+                                     class="text-brand">Mlijo Mart & Grocery</span></p>
                          </div>
                          <img src="{{ asset('assets/frontend/imgs/banner/banner-9.png') }}" alt="newsletter" />
                      </div>
@@ -32,8 +28,8 @@
                              <img src="{{ asset('assets/frontend/imgs/theme/icons/icon-1.svg') }}" alt="" />
                          </div>
                          <div class="banner-text">
-                             <h3 class="icon-box-title">Best prices & offers</h3>
-                             <p>Orders $50 or more</p>
+                             <h3 class="icon-box-title">Harga terbaik</h3>
+                             <p>Menawarkan harga termurah</p>
                          </div>
                      </div>
                  </div>
@@ -44,8 +40,8 @@
                              <img src="{{ asset('assets/frontend/imgs/theme/icons/icon-2.svg') }}" alt="" />
                          </div>
                          <div class="banner-text">
-                             <h3 class="icon-box-title">Free delivery</h3>
-                             <p>24/7 amazing services</p>
+                             <h3 class="icon-box-title">Free ongkir</h3>
+                             <p>Bebas ongkir seluruh daerah</p>
                          </div>
                      </div>
                  </div>
@@ -56,8 +52,8 @@
                              <img src="{{ asset('assets/frontend/imgs/theme/icons/icon-3.svg') }}" alt="" />
                          </div>
                          <div class="banner-text">
-                             <h3 class="icon-box-title">Great daily deal</h3>
-                             <p>When you sign up</p>
+                             <h3 class="icon-box-title">Banyak promo</h3>
+                             <p>Temukan banyak promo dengan mendaftar</p>
                          </div>
                      </div>
                  </div>
@@ -68,8 +64,8 @@
                              <img src="{{ asset('assets/frontend/imgs/theme/icons/icon-4.svg') }}" alt="" />
                          </div>
                          <div class="banner-text">
-                             <h3 class="icon-box-title">Wide assortment</h3>
-                             <p>Mega Discounts</p>
+                             <h3 class="icon-box-title">Banyak pilihan</h3>
+                             <p>Banyak pilihan produk menarik</p>
                          </div>
                      </div>
                  </div>
@@ -80,20 +76,8 @@
                              <img src="{{ asset('assets/frontend/imgs/theme/icons/icon-5.svg') }}" alt="" />
                          </div>
                          <div class="banner-text">
-                             <h3 class="icon-box-title">Easy returns</h3>
-                             <p>Within 30 days</p>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none">
-                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
-                         data-wow-delay=".5s">
-                         <div class="banner-icon">
-                             <img src="{{ asset('assets/frontend/imgs/theme/icons/icon-6.svg') }}" alt="" />
-                         </div>
-                         <div class="banner-text">
-                             <h3 class="icon-box-title">Safe delivery</h3>
-                             <p>Within 30 days</p>
+                             <h3 class="icon-box-title">Produk berkualitas</h3>
+                             <p>Harga termurah dan produk berkualitas</p>
                          </div>
                      </div>
                  </div>
@@ -108,76 +92,65 @@
                          data-wow-delay="0">
                          <div class="logo mb-30">
                              <a href="index.html" class="mb-15"><img
-                                     src="{{ asset('storage/images/themes/logo.png') }}" alt="logo" /></a>
-                             <p class="font-lg text-heading">Awesome grocery store website template</p>
+                                     src="{{ asset('storage/images/themes/' . getSetting('logo')) }}"
+                                     alt="logo" /></a>
+                             <p class="font-lg text-heading">{{ getSetting('web_description') }}</p>
                          </div>
                          <ul class="contact-infor">
                              <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-location.svg') }}"
                                      alt="" /><strong>Address:
-                                 </strong> <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span>
+                                 </strong> <span>{{ getSetting('address') }}</span>
                              </li>
                              <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-contact.svg') }}"
-                                     alt="" /><strong>Call
-                                     Us:</strong><span>(+91) - 540-025-124553</span></li>
+                                     alt="" /><strong>Kontak:</strong><span>{{ getSetting('phone') }}</span></li>
                              <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-email-2.svg') }}"
-                                     alt="" /><strong>Email:</strong><span>sale@Nest.com</span></li>
-                             <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-clock.svg') }}"
-                                     alt="" /><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span></li>
+                                     alt="" /><strong>Email:</strong><span>{{ getSetting('email') }}</span></li>
                          </ul>
                      </div>
                  </div>
-                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".1s>
-                        <h4 class="                     widget-title">Company</h4>
+                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+                     <h4 class="widget-title">Miljo Mart</h4>
                      <ul class="footer-list mb-sm-5 mb-md-0">
-                         <li><a href="#">About Us</a></li>
-                         <li><a href="#">Delivery Information</a></li>
-                         <li><a href="#">Privacy Policy</a></li>
-                         <li><a href="#">Terms &amp; Conditions</a></li>
-                         <li><a href="#">Contact Us</a></li>
-                         <li><a href="#">Support Center</a></li>
-                         <li><a href="#">Careers</a></li>
+                         <li><a href="#">Tentang Kami</a></li>
+                         <li><a href="#">Informasi Pengiriman</a></li>
+                         <li><a href="#">Kebijakan Privasi</a></li>
+                         <li><a href="#">Syarat &amp; Ketentuan</a></li>
+                         <li><a href="#">Kontak Kami</a></li>
+                         <li><a href="#">Pusat Bantuan</a></li>
+                         <li><a href="#">Karir</a></li>
                      </ul>
                  </div>
                  <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
-                     <h4 class="widget-title">Account</h4>
+                     <h4 class="widget-title">Akun</h4>
                      <ul class="footer-list mb-sm-5 mb-md-0">
-                         <li><a href="#">Sign In</a></li>
-                         <li><a href="#">View Cart</a></li>
-                         <li><a href="#">My Wishlist</a></li>
-                         <li><a href="#">Track My Order</a></li>
-                         <li><a href="#">Help Ticket</a></li>
-                         <li><a href="#">Shipping Details</a></li>
-                         <li><a href="#">Compare products</a></li>
+                         <li><a href="#">Order Tracking </a></li>
+                         <li><a href="#">Detail Pengiriman</a></li>
                      </ul>
                  </div>
                  <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
-                     <h4 class="widget-title">Corporate</h4>
+                     <h4 class="widget-title">Perusahaan</h4>
                      <ul class="footer-list mb-sm-5 mb-md-0">
-                         <li><a href="#">Become a Vendor</a></li>
-                         <li><a href="#">Affiliate Program</a></li>
-                         <li><a href="#">Farm Business</a></li>
-                         <li><a href="#">Farm Careers</a></li>
-                         <li><a href="#">Our Suppliers</a></li>
-                         <li><a href="#">Accessibility</a></li>
-                         <li><a href="#">Promotions</a></li>
+                         <li><a href="#">Daftar Toko</a></li>
+                         <li><a href="#">Program Afiliasi</a></li>
+                         <li><a href="#">Bisnis Pertanian</a></li>
+                         <li><a href="#">Karir Pertanian</a></li>
+                         <li><a href="#">Supplier Kami</a></li>
+                         <li><a href="#">Promosi</a></li>
                      </ul>
                  </div>
                  <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
-                     <h4 class="widget-title">Popular</h4>
+                     <h4 class="widget-title">Kategori Populer</h4>
                      <ul class="footer-list mb-sm-5 mb-md-0">
-                         <li><a href="#">Milk & Flavoured Milk</a></li>
-                         <li><a href="#">Butter and Margarine</a></li>
-                         <li><a href="#">Eggs Substitutes</a></li>
-                         <li><a href="#">Marmalades</a></li>
-                         <li><a href="#">Sour Cream and Dips</a></li>
-                         <li><a href="#">Tea & Kombucha</a></li>
-                         <li><a href="#">Cheese</a></li>
+                         @foreach (getProductCategories(7, 'id', 'asc') as $item)
+                             <li><a href="{{ url('frontend.categories', $item->slug) }}">{{ $item->name }}</a>
+                             </li>
+                         @endforeach
                      </ul>
                  </div>
                  <div class="footer-link-widget widget-install-app col wow animate__animated animate__fadeInUp"
                      data-wow-delay=".5s">
-                     <h4 class="widget-title">Install App</h4>
-                     <p class="">From App Store or Google Play</p>
+                     <h4 class="widget-title">Install Aplikasi</h4>
+                     <p class="">Dari App Store atau Google Play Store</p>
                      <div class="download-app">
                          <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active"
                                  src="{{ asset('assets/frontend/imgs/theme/app-store.jpg') }}" alt="" /></a>
@@ -196,34 +169,36 @@
                  <div class="footer-bottom"></div>
              </div>
              <div class="col-xl-4 col-lg-6 col-md-6">
-                 <p class="font-sm mb-0">&copy; 2021, <strong class="text-brand">Nest</strong> - HTML
-                     Ecommerce Template <br />All rights reserved</p>
+                 <p class="font-sm mb-0">&copy; 2021, <strong class="text-brand">PT Mlijo Mart Indonesia</strong>
+                     <br />All rights reserved
+                 </p>
              </div>
              <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
-                 <div class="hotline d-lg-inline-flex mr-30">
+                 {{-- <div class="hotline d-lg-inline-flex mr-30">
                      <img src="{{ asset('assets/frontend/imgs/theme/icons/phone-call.svg') }}" alt="hotline" />
                      <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
-                 </div>
-                 <div class="hotline d-lg-inline-flex">
+                 </div> --}}
+                 {{-- <div class="hotline d-lg-inline-flex">
                      <img src="{{ asset('assets/frontend/imgs/theme/icons/phone-call.svg') }}" alt="hotline" />
-                     <p>1900 - 8888<span>24/7 Support Center</span></p>
-                 </div>
+                     <p>{{ getSetting('cs') }}<span>24/7 Support Center</span></p>
+                 </div> --}}
              </div>
              <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
                  <div class="mobile-social-icon">
-                     <h6>Follow Us</h6>
-                     <a href="#"><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-facebook-white.svg') }}"
+                     <h6>Temukan kami di</h6>
+                     <a href="https://facebook.com/{{ getSetting('fb') }}"><img
+                             src="{{ asset('assets/frontend/imgs/theme/icons/icon-facebook-white.svg') }}"
                              alt="" /></a>
-                     <a href="#"><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-twitter-white.svg') }}"
+                     <a href="https://twitter.com/{{ getSetting('fb') }}"><img
+                             src="{{ asset('assets/frontend/imgs/theme/icons/icon-twitter-white.svg') }}"
                              alt="" /></a>
-                     <a href="#"><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-instagram-white.svg') }}"
+                     <a href="https://instagram.com/{{ getSetting('fb') }}"><img
+                             src="{{ asset('assets/frontend/imgs/theme/icons/icon-instagram-white.svg') }}"
                              alt="" /></a>
-                     <a href="#"><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-pinterest-white.svg') }}"
-                             alt="" /></a>
-                     <a href="#"><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-youtube-white.svg') }}"
+                     <a href="https://youtube.com/c/{{ getSetting('fb') }}"><img
+                             src="{{ asset('assets/frontend/imgs/theme/icons/icon-youtube-white.svg') }}"
                              alt="" /></a>
                  </div>
-                 <p class="font-sm">Up to 15% discount on your first subscribe</p>
              </div>
          </div>
      </div>

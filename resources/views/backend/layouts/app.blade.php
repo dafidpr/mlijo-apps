@@ -24,8 +24,8 @@
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">Copyright
-                &copy; 2022 - {{ date('Y') }}<a class="text-bold-800 grey darken-2" href="#" target="_blank">Mlijo Mart &
-                    Grocery,</a>All rights
+                &copy; 2022 - {{ date('Y') }}<a class="text-bold-800 grey darken-2" href="#"
+                    target="_blank">{{ getSetting('web_author') }},</a>All rights
                 Reserved</span>
         </p>
     </footer>

@@ -14,4 +14,9 @@ class Customer extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->morphOne(User::class, 'userable_type');
+    }
 }
