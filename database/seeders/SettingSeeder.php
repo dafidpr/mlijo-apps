@@ -183,7 +183,7 @@ class SettingSeeder extends Seeder
                 'group' => 'Image',
                 'option' => 'favicon',
                 'label' => 'Favicon',
-                'value' => 'favicon.png',
+                'value' => 'icon.png',
                 'is_default' => true,
                 'display_suffix' => '',
                 'created_at' => Carbon::now()

@@ -14,4 +14,9 @@ class ProductSubCategory extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

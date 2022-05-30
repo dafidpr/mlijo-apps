@@ -1,59 +1,5 @@
   @extends('frontend.layouts.app')
   @section('content')
-      <!-- Modal -->
-      <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  <div class="modal-body">
-                      <div class="deal"
-                          style="background-image: url('{{ asset('assets/frontend/imgs/banner/popup-1.png') }}')">
-                          <div class="deal-top">
-                              <h6 class="mb-10 text-brand-2">Deal of the Day</h6>
-                          </div>
-                          <div class="deal-content detail-info">
-                              <h4 class="product-title"><a href="shop-product-right.html" class="text-heading">Organic
-                                      fruit for your family's health</a></h4>
-                              <div class="clearfix product-price-cover">
-                                  <div class="product-price primary-color float-left">
-                                      <span class="current-price text-brand">$38</span>
-                                      <span>
-                                          <span class="save-price font-md color3 ml-15">26% Off</span>
-                                          <span class="old-price font-md ml-15">$52</span>
-                                      </span>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="deal-bottom">
-                              <p class="mb-20">Hurry Up! Offer End In:</p>
-                              <div class="deals-countdown pl-5" data-countdown="2025/03/25 00:00:00">
-                                  <span class="countdown-section"><span class="countdown-amount hover-up">03</span><span
-                                          class="countdown-period"> days </span></span><span class="countdown-section"><span
-                                          class="countdown-amount hover-up">02</span><span class="countdown-period"> hours
-                                      </span></span><span class="countdown-section"><span
-                                          class="countdown-amount hover-up">43</span><span class="countdown-period"> mins
-                                      </span></span><span class="countdown-section"><span
-                                          class="countdown-amount hover-up">29</span><span class="countdown-period"> sec
-                                      </span></span>
-                              </div>
-                              <div class="product-detail-rating">
-                                  <div class="product-rate-cover text-end">
-                                      <div class="product-rate d-inline-block">
-                                          <div class="product-rating" style="width: 90%"></div>
-                                      </div>
-                                      <span class="font-small ml-5 text-muted"> (32 rates)</span>
-                                  </div>
-                              </div>
-                              <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i
-                                      class="fi-rs-arrow-right"></i></a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
       <!-- Quick view -->
       <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel"
           aria-hidden="true">
@@ -171,34 +117,21 @@
           <div class="container">
               <div class="home-slide-cover mt-30">
                   <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                      <div class="single-hero-slider single-animation-wrap"
-                          style="background-image: url({{ asset('assets/frontend/imgs/slider/slider-1.png') }})">
-                          <div class="slider-content">
-                              <h1 class="display-2 mb-40">
-                                  Don’t miss amazing<br />
-                                  grocery deals
-                              </h1>
-                              <p class="mb-65">Sign up for the daily newsletter</p>
-                              <form class="form-subcriber d-flex">
-                                  <input type="email" placeholder="Your emaill address" />
-                                  <button class="btn" type="submit">Subscribe</button>
-                              </form>
+                      @foreach ($banners as $item)
+                          <div class="single-hero-slider single-animation-wrap"
+                              style="background-image: url({{ asset('storage/images/banners/' . $item->image_path) }})">
+                              <div class="slider-content">
+                                  <h1 class="display-2 mb-40">
+                                      {!! $item->title !!}
+                                  </h1>
+                                  <p class="mb-65">{{ $item->subtitle }}</p>
+                                  @if ($item->button_action == true)
+                                      <a href="{{ url($item->button_link) }}"
+                                          class="btn">{{ $item->button_text }}</a>
+                                  @endif
+                              </div>
                           </div>
-                      </div>
-                      <div class="single-hero-slider single-animation-wrap"
-                          style="background-image: url({{ asset('assets/frontend/imgs/slider/slider-2.png') }})">
-                          <div class="slider-content">
-                              <h1 class="display-2 mb-40">
-                                  Fresh Vegetables<br />
-                                  Big discount
-                              </h1>
-                              <p class="mb-65">Save up to 50% off on your first order</p>
-                              <form class="form-subcriber d-flex">
-                                  <input type="email" placeholder="Your emaill address" />
-                                  <button class="btn" type="submit">Subscribe</button>
-                              </form>
-                          </div>
-                      </div>
+                      @endforeach
                   </div>
                   <div class="slider-arrow hero-slider-1-arrow"></div>
               </div>
@@ -209,111 +142,24 @@
           <div class="container wow animate__animated animate__fadeIn">
               <div class="section-title">
                   <div class="title">
-                      <h3>Featured Categories</h3>
-                      <ul class="list-inline nav nav-tabs links">
-                          <li class="list-inline-item nav-item"><a class="nav-link" href="shop-grid-right.html">Cake
-                                  & Milk</a></li>
-                          <li class="list-inline-item nav-item"><a class="nav-link"
-                                  href="shop-grid-right.html">Coffes & Teas</a></li>
-                          <li class="list-inline-item nav-item"><a class="nav-link active" href="shop-grid-right.html">Pet
-                                  Foods</a></li>
-                          <li class="list-inline-item nav-item"><a class="nav-link"
-                                  href="shop-grid-right.html">Vegetables</a></li>
-                      </ul>
+                      <h3>Kategori Pilihan</h3>
                   </div>
                   <div class="slider-arrow slider-arrow-2 flex-right carausel-10-columns-arrow"
                       id="carausel-10-columns-arrows"></div>
               </div>
               <div class="carausel-10-columns-cover position-relative">
                   <div class="carausel-10-columns" id="carausel-10-columns">
-                      <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-13.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Cake & Milk</a></h6>
-                          <span>26 items</span>
-                      </div>
-                      <div class="card-2 bg-10 wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-12.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Oganic Kiwi</a></h6>
-                          <span>28 items</span>
-                      </div>
-                      <div class="card-2 bg-11 wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-11.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Peach</a></h6>
-                          <span>14 items</span>
-                      </div>
-                      <div class="card-2 bg-12 wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-9.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Red Apple</a></h6>
-                          <span>54 items</span>
-                      </div>
-                      <div class="card-2 bg-13 wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-3.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Snack</a></h6>
-                          <span>56 items</span>
-                      </div>
-                      <div class="card-2 bg-14 wow animate__animated animate__fadeInUp" data-wow-delay=".6s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-1.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Vegetables</a></h6>
-                          <span>72 items</span>
-                      </div>
-                      <div class="card-2 bg-15 wow animate__animated animate__fadeInUp" data-wow-delay=".7s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-2.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Strawberry</a></h6>
-                          <span>36 items</span>
-                      </div>
-                      <div class="card-2 bg-12 wow animate__animated animate__fadeInUp" data-wow-delay=".8s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-4.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Black plum</a></h6>
-                          <span>123 items</span>
-                      </div>
-                      <div class="card-2 bg-10 wow animate__animated animate__fadeInUp" data-wow-delay=".9s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-5.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Custard apple</a></h6>
-                          <span>34 items</span>
-                      </div>
-                      <div class="card-2 bg-12 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-14.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Coffe & Tea</a></h6>
-                          <span>89 items</span>
-                      </div>
-                      <div class="card-2 bg-11 wow animate__animated animate__fadeInUp" data-wow-delay="0s">
-                          <figure class="img-hover-scale overflow-hidden">
-                              <a href="shop-grid-right.html"><img
-                                      src="{{ asset('assets/frontend/imgs/shop/cat-15.png') }}" alt="" /></a>
-                          </figure>
-                          <h6><a href="shop-grid-right.html">Headphone</a></h6>
-                          <span>87 items</span>
-                      </div>
+                      @foreach ($productSubCategories as $item)
+                          <div class="card-2 bg-{{ rand(1, 15) }} wow animate__animated animate__fadeInUp"
+                              data-wow-delay=".1s">
+                              <figure class="img-hover-scale overflow-hidden">
+                                  <a href="#"><img src="{{ asset('assets/frontend/imgs/shop/cat-13.png') }}"
+                                          alt="" /></a>
+                              </figure>
+                              <h6><a href="#">{{ $item->name }}</a></h6>
+                              <span>{{ $item->product->count() }} produk</span>
+                          </div>
+                      @endforeach
                   </div>
               </div>
           </div>
@@ -327,8 +173,8 @@
                           <img src="{{ asset('assets/frontend/imgs/banner/banner-1.png') }}" alt="" />
                           <div class="banner-text">
                               <h4>
-                                  Everyday Fresh & <br />Clean with Our<br />
-                                  Products
+                                  Segar Setiap Hari & <br />Bersih dengan<br />
+                                  Produk Kami
                               </h4>
                               <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i
                                       class="fi-rs-arrow-small-right"></i></a>
@@ -340,8 +186,8 @@
                           <img src="{{ asset('assets/frontend/imgs/banner/banner-2.png') }}" alt="" />
                           <div class="banner-text">
                               <h4>
-                                  Make your Breakfast<br />
-                                  Healthy and Easy
+                                  Buat Sarapanmu<br />
+                                  Mudah dan Sehat
                               </h4>
                               <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i
                                       class="fi-rs-arrow-small-right"></i></a>
@@ -352,7 +198,7 @@
                       <div class="banner-img mb-sm-0 wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
                           <img src="{{ asset('assets/frontend/imgs/banner/banner-3.png') }}" alt="" />
                           <div class="banner-text">
-                              <h4>The best Organic <br />Products Online</h4>
+                              <h4>Produk Organik <br /> Online Terbaik</h4>
                               <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i
                                       class="fi-rs-arrow-small-right"></i></a>
                           </div>
@@ -365,7 +211,7 @@
       <section class="product-tabs section-padding position-relative">
           <div class="container">
               <div class="section-title style-2 wow animate__animated animate__fadeIn">
-                  <h3>Popular Products</h3>
+                  <h3>Produk Popular</h3>
                   <ul class="nav nav-tabs links" id="myTab" role="tablist">
                       <li class="nav-item" role="presentation">
                           <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one"
@@ -377,9 +223,9 @@
                               Dairies</button>
                       </li>
                       <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab"
-                              data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three"
-                              aria-selected="false">Coffes & Teas</button>
+                          <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three"
+                              type="button" role="tab" aria-controls="tab-three" aria-selected="false">Coffes &
+                              Teas</button>
                       </li>
                       <li class="nav-item" role="presentation">
                           <button class="nav-link" id="nav-tab-four" data-bs-toggle="tab" data-bs-target="#tab-four"
@@ -4223,22 +4069,22 @@
       <section class="section-padding pb-5">
           <div class="container">
               <div class="section-title wow animate__animated animate__fadeIn">
-                  <h3 class="">Daily Best Sells</h3>
+                  <h3 class="">Penjualan Terbaik Harian</h3>
                   <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
                       <li class="nav-item" role="presentation">
                           <button class="nav-link active" id="nav-tab-one-1" data-bs-toggle="tab"
                               data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one"
-                              aria-selected="true">Featured</button>
+                              aria-selected="true">Diskon</button>
                       </li>
                       <li class="nav-item" role="presentation">
                           <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab"
                               data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two"
-                              aria-selected="false">Popular</button>
+                              aria-selected="false">Terlaris</button>
                       </li>
                       <li class="nav-item" role="presentation">
                           <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab"
                               data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three"
-                              aria-selected="false">New added</button>
+                              aria-selected="false">Produk Baru</button>
                       </li>
                   </ul>
               </div>
@@ -4246,7 +4092,7 @@
                   <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
                       <div class="banner-img style-2">
                           <div class="banner-text">
-                              <h2 class="mb-100">Bring nature into your home</h2>
+                              <h2 class="mb-100">Bawa pulang produk favofit Anda</h2>
                               <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i
                                       class="fi-rs-arrow-small-right"></i></a>
                           </div>
@@ -5056,7 +4902,7 @@
       <section class="section-padding pb-5">
           <div class="container">
               <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
-                  <h3 class="">Deals Of The Day</h3>
+                  <h3 class="">Promo Hari Ini</h3>
                   <a class="show-all" href="shop-grid-right.html">
                       All Deals
                       <i class="fi-rs-angle-right"></i>
@@ -5231,7 +5077,7 @@
               <div class="row">
                   <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 wow animate__animated animate__fadeInUp"
                       data-wow-delay="0">
-                      <h4 class="section-title style-1 mb-30 animated animated">Top Selling</h4>
+                      <h4 class="section-title style-1 mb-30 animated animated">Produk Terlaris</h4>
                       <div class="product-list-small animated animated">
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
@@ -5300,7 +5146,7 @@
                   </div>
                   <div class="col-xl-3 col-lg-4 col-md-6 mb-md-0 wow animate__animated animate__fadeInUp"
                       data-wow-delay=".1s">
-                      <h4 class="section-title style-1 mb-30 animated animated">Trending Products</h4>
+                      <h4 class="section-title style-1 mb-30 animated animated">Super Promo</h4>
                       <div class="product-list-small animated animated">
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
@@ -5371,7 +5217,7 @@
                   </div>
                   <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-lg-block wow animate__animated animate__fadeInUp"
                       data-wow-delay=".2s">
-                      <h4 class="section-title style-1 mb-30 animated animated">Recently added</h4>
+                      <h4 class="section-title style-1 mb-30 animated animated">Produk Baru</h4>
                       <div class="product-list-small animated animated">
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
@@ -5441,7 +5287,7 @@
                   </div>
                   <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-xl-block wow animate__animated animate__fadeInUp"
                       data-wow-delay=".3s">
-                      <h4 class="section-title style-1 mb-30 animated animated">Top Rated</h4>
+                      <h4 class="section-title style-1 mb-30 animated animated">Penilaian Teratas</h4>
                       <div class="product-list-small animated animated">
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
