@@ -150,13 +150,15 @@
               <div class="carausel-10-columns-cover position-relative">
                   <div class="carausel-10-columns" id="carausel-10-columns">
                       @foreach ($productSubCategories as $item)
-                          <div class="card-2 bg-{{ rand(1, 15) }} wow animate__animated animate__fadeInUp"
+                          <div class="card-2 bg-{{ rand(1, 5) }} wow animate__animated animate__fadeInUp"
                               data-wow-delay=".1s">
                               <figure class="img-hover-scale overflow-hidden">
-                                  <a href="#"><img src="{{ asset('assets/frontend/imgs/shop/cat-13.png') }}"
+                                  <a href="#"><img
+                                          src="{{ asset('storage/images/product-sub-categories/' . $item->image) }}"
                                           alt="" /></a>
                               </figure>
-                              <h6><a href="#">{{ $item->name }}</a></h6>
+                              <h6><a href="{{ route('frontend.sub-category', $item->slug) }}">{{ $item->name }}</a>
+                              </h6>
                               <span>{{ $item->product->count() }} produk</span>
                           </div>
                       @endforeach

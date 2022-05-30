@@ -37,6 +37,7 @@
     <script src="{{ asset('assets/frontend/js/plugins/jquery.vticker-min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/plugins/jquery.theia.sticky.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/plugins/jquery.elevatezoom.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/plugins/slider-range.js') }}"></script>
     <!-- Template  JS -->
     <script src="{{ asset('assets/frontend/js/main.js?v=4.0') }}"></script>
     <script src="{{ asset('assets/frontend/js/shop.js?v=4.0') }}"></script>

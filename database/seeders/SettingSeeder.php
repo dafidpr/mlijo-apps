@@ -21,7 +21,7 @@ class SettingSeeder extends Seeder
                 'group' => 'General',
                 'option' => 'web_name',
                 'label' => 'Nama Website',
-                'value' => 'Mlijo Mart & Grocery',
+                'value' => 'Mlijo Mart and Grocery',
                 'is_default' => true,
                 'display_suffix' => '',
                 'created_at' => Carbon::now()

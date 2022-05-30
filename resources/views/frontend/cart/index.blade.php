@@ -171,7 +171,7 @@
                                        </td>
                                        <td class="cart_total_amount">
                                            <h4 class="text-brand text-end">Rp.
-                                               {{ number_format(count(getCart(true, 0, true)) > 0 ? getCart(true, 0, true) : 0) }}
+                                               {{ number_format(count(getCart(true, 0, false)) > 0 ? getCart(true, 0, true) : 0) }}
                                            </h4>
                                        </td>
                                    </tr>
@@ -206,7 +206,7 @@
                                        </td>
                                        <td class="cart_total_amount">
                                            <h4 class="text-brand text-end">Rp.
-                                               {{ number_format(count(getCart(true, 0, true)) > 0 ? getCart(true, 0, true) : 0) }}
+                                               {{ number_format(count(getCart(true, 0, false)) > 0 ? getCart(true, 0, true) : 0) }}
                                            </h4>
                                        </td>
                                    </tr>

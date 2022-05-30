@@ -3,7 +3,8 @@
          <div class="container">
              <div class="row">
                  <div class="col-lg-12">
-                     <div class="position-relative newsletter-inner">
+                     <div class="position-relative newsletter-inner"
+                         style="background: url({{ asset('storage/images/banners/banner-10.png') }}) no-repeat center;">
                          <div class="newsletter-content">
                              <h2 class="mb-20">
                                  Tetap dirumah dan nikmati harimu <br />
@@ -12,7 +13,7 @@
                              <p class="mb-45">Mulai belanja segala kebutuhan dapur di <span
                                      class="text-brand">Mlijo Mart & Grocery</span></p>
                          </div>
-                         <img src="{{ asset('assets/frontend/imgs/banner/banner-9.png') }}" alt="newsletter" />
+                         <img src="{{ asset('storage/images/banners/banner-9.png') }}" alt="newsletter" />
                      </div>
                  </div>
              </div>
@@ -98,7 +99,7 @@
                          </div>
                          <ul class="contact-infor">
                              <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-location.svg') }}"
-                                     alt="" /><strong>Address:
+                                     alt="" /><strong>Alamat:
                                  </strong> <span>{{ getSetting('address') }}</span>
                              </li>
                              <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-contact.svg') }}"

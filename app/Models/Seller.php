@@ -24,4 +24,9 @@ class Seller extends Model
     {
         return $this->morphOne(User::class, 'userable_type');
     }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

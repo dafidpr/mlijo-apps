@@ -5,6 +5,7 @@ use App\Http\Controllers\Web\Backend\Auth\AuthController;
 use App\Http\Controllers\Web\Backend\Root\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Frontend\Cart\CartController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
+use App\Http\Controllers\Web\Frontend\ProductSubCategory\ProductSubCategoryController;
 use App\Http\Controllers\Web\Frontend\Wishlist\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 // Front End Route
 Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
-Route::get('categories/{slug}', function () { })->name('frontend.categories');
+Route::get('subcategory/{slug}', [ProductSubCategoryController::class, 'index'])->name('frontend.sub-category');
+Route::get('category/{slug}', [ProductSubCategoryController::class, 'index'])->name('frontend.category');
 Route::get('wishlists', [WishlistController::class, 'index'])->name('frontend.wishlists')->middleware('customer.protected');
 Route::get('carts', [CartController::class, 'index'])->name('frontend.carts')->middleware('customer.protected');
 Route::get('/login', function () {
@@ -48,7 +50,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // Check point
     Route::get('/check-point', [CheckPointController::class, 'checkPoint'])->name('check-point');
     // Route for administrator
-    Route::prefix('administrator')->group(function () {
+    Route::prefix('administrator')->middleware('role:Developer|Administrator')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboards');
     });
 });
