@@ -75,7 +75,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="{{ route('frontend.product', $item->slug) }}">
                                                 <img class="default-img"
                                                     src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
                                                     alt="" />
@@ -96,10 +96,11 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.html">{{ $productSubCategory->name }}</a>
+                                            <a
+                                                href="{{ route('frontend.product', $item->slug) }}">{{ $productSubCategory->name }}</a>
                                         </div>
                                         <h2><a
-                                                href="shop-product-right.html">{{ strlen($item->name) > 35 ? substr($item->name, 0, 35) . '...' : $item->name }}</a>
+                                                href="{{ route('frontend.product', $item->slug) }}">{{ strlen($item->name) > 35 ? substr($item->name, 0, 35) . '...' : $item->name }}</a>
                                         </h2>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
@@ -145,7 +146,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <section class="section-padding pb-5">
+                    {{-- <section class="section-padding pb-5">
                         <div class="section-title">
                             <h3 class="">Promo Hari Ini</h3>
                             <a class="show-all" href="shop-grid-right.html">
@@ -159,7 +160,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="shop-product-right.html">
-                                                <img src="assets/imgs/banner/banner-5.png" alt="" />
+                                                <img src="{{ asset('assets/frontend/imgs/banner/banner-5.png') }}"
+                                                    alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -199,7 +201,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="shop-product-right.html">
-                                                <img src="assets/imgs/banner/banner-6.png" alt="" />
+                                                <img src="{{ asset('assets/frontend/imgs/banner/banner-6.png') }}"
+                                                    alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -240,7 +243,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="shop-product-right.html">
-                                                <img src="assets/imgs/banner/banner-7.png" alt="" />
+                                                <img src="{{ asset('assets/frontend/imgs/banner/banner-7.png') }}"
+                                                    alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -279,7 +283,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="shop-product-right.html">
-                                                <img src="assets/imgs/banner/banner-8.png" alt="" />
+                                                <img src="{{ asset('assets/frontend/imgs/banner/banner-8.png') }}"
+                                                    alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -315,78 +320,43 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> --}}
                     <!--End Deals-->
                 </div>
                 <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
                     <div class="sidebar-widget widget-category-2 mb-30">
                         <h5 class="section-title style-1 mb-30">Kategori</h5>
                         <ul>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg"
-                                        alt="" />Milks
-                                    & Dairies</a><span class="count">30</span>
-                            </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-2.svg"
-                                        alt="" />Clothing</a><span class="count">35</span>
-                            </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-3.svg"
-                                        alt="" />Pet
-                                    Foods </a><span class="count">42</span>
-                            </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-4.svg"
-                                        alt="" />Baking material</a><span class="count">68</span>
-                            </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg"
-                                        alt="" />Fresh
-                                    Fruit</a><span class="count">87</span>
-                            </li>
+                            @foreach (getProductCategories(5, 'id', 'desc', true) as $item)
+                                <li>
+                                    <a href="{{ route('frontend.category', $item->slug) }}"> <img
+                                            src="{{ asset('storage/images/product-categories/' . $item->icon) }}"
+                                            alt="" />{{ $item->name }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <!-- Product sidebar Widget -->
                     <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
                         <h5 class="section-title style-1 mb-30">Produk Terbaru</h5>
-                        <div class="single-post clearfix">
-                            <div class="image">
-                                <img src="assets/imgs/shop/thumbnail-3.jpg" alt="#" />
-                            </div>
-                            <div class="content pt-10">
-                                <h6><a href="shop-product-detail.html">Chen Cardigan</a></h6>
-                                <p class="price mb-0 mt-5">$99.50</p>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width: 90%"></div>
+                        @foreach ($productSubCategory->product()->orderBy('created_at', 'desc')->take(3)->get()
+        as $item)
+                            <div class="single-post clearfix">
+                                <div class="image">
+                                    <img src="{{ asset('storage/images/products/' . $item->thumbnail) }}" alt="#" />
+                                </div>
+                                <div class="content pt-10">
+                                    <h6><a
+                                            href="shop-product-detail.html">{{ strlen($item->name) > 13 ? substr($item->name, 0, 13) . '...' : $item->name }}</a>
+                                    </h6>
+                                    <p class="price mb-0 mt-5">Rp. {{ number_format($item->price) }}</p>
+                                    <div class="product-rate">
+                                        <div class="product-rating" style="width: 90%"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="single-post clearfix">
-                            <div class="image">
-                                <img src="assets/imgs/shop/thumbnail-4.jpg" alt="#" />
-                            </div>
-                            <div class="content pt-10">
-                                <h6><a href="shop-product-detail.html">Chen Sweater</a></h6>
-                                <p class="price mb-0 mt-5">$89.50</p>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post clearfix">
-                            <div class="image">
-                                <img src="assets/imgs/shop/thumbnail-5.jpg" alt="#" />
-                            </div>
-                            <div class="content pt-10">
-                                <h6><a href="shop-product-detail.html">Colorful Jacket</a></h6>
-                                <p class="price mb-0 mt-5">$25</p>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width: 60%"></div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

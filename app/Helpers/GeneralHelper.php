@@ -98,7 +98,7 @@ if (!function_exists('slugify')) {
 if (!function_exists('getProductCategories')) {
     function getProductCategories($limit = null, $orderBy = null, $orderType = null, $instantGet = true)
     {
-        $productCategories = ProductCategory::where('is_active', true);
+        $productCategories = ProductCategory::where('is_active', true)->with('productSubCategory.product');
         if ($limit != null) {
             $productCategories = $productCategories->take($limit);
         }

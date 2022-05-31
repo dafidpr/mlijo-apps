@@ -15,7 +15,7 @@ class ProductVariantDetail extends Model
     protected $appends = ['hashid'];
     protected $guarded = [];
 
-    public function variant()
+    public function productVariant()
     {
         return $this->belongsTo(ProductVariant::class);
     }

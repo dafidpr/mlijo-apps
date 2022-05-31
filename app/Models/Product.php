@@ -20,7 +20,7 @@ class Product extends Model
         return $this->hasMany(DiscountProduct::class);
     }
 
-    public function variant()
+    public function productVariant()
     {
         return $this->hasMany(ProductVariant::class);
     }
@@ -42,5 +42,10 @@ class Product extends Model
     public function seller()
     {
         return $this->belongsTo(Seller::class);
+    }
+
+    public function productImage()
+    {
+        return $this->hasMany(ProductImage::class);
     }
 }
