@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Backend\Root\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Frontend\Cart\CartController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use App\Http\Controllers\Web\Frontend\Wishlist\WishlistController;
+use App\Http\Controllers\Web\Frontend\ProductCategory\ProductCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 // Front End Route
 Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
-Route::get('categories/{slug}', function () { })->name('frontend.categories');
+//Route::get('categories/{slug}', function () { })->name('frontend.categories');
 Route::get('wishlists', [WishlistController::class, 'index'])->name('frontend.wishlists')->middleware('customer.protected');
 Route::get('carts', [CartController::class, 'index'])->name('frontend.carts')->middleware('customer.protected');
 Route::get('/login', function () {
@@ -30,6 +31,7 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('frontend.auth.register', ['title' => 'Registrasi']);
 })->middleware(['guest:' . config('fortify.guard')])->name('frontend.register');
+Route::get('categories/{slug}', [ProductCategoryController::class, 'index'])->name('frontend.categories');
 
 // Back End Route
 Route::get('cpanel/auth', function () {
