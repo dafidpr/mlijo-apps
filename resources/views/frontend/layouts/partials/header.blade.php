@@ -197,8 +197,13 @@
                                 <ul>
                                     @foreach (getProductCategories(5, 'id', 'desc', true) as $item)
                                         <li>
+<<<<<<< HEAD
                                             <a href="{{ route('frontend.category', $item->slug) }}"> <img
                                                     src="{{ asset('storage/images/product-categories/' . $item->icon) }}"
+=======
+                                            <a href="{{route('frontend.categories', $item->slug)}}"> <img
+                                                    src="{{ asset('assets/frontend/imgs/theme/icons/category-1.svg') }}"
+>>>>>>> 7df28416032f54900de0ef0684489b0234713a18
                                                     alt="" />{{ $item->name }}</a>
                                         </li>
                                     @endforeach
@@ -207,8 +212,13 @@
                                     @foreach (getProductCategories(5, 'id', 'desc', false)->skip(5)->get()
     as $item)
                                         <li>
+<<<<<<< HEAD
                                             <a href="{{ route('frontend.category', $item->slug) }}"> <img
                                                     src="{{ asset('storage/images/product-categories/' . $item->icon) }}"
+=======
+                                            <a href="{{route('frontend.categories', $item->slug)}}"> <img
+                                                    src="{{ asset('assets/frontend/imgs/theme/icons/category-1.svg') }}"
+>>>>>>> 7df28416032f54900de0ef0684489b0234713a18
                                                     alt="" />{{ $item->name }}</a>
                                         </li>
                                     @endforeach
@@ -220,8 +230,13 @@
                                         @foreach (getProductCategories(2, 'id', 'desc', false)->skip(10)->get()
     as $item)
                                             <li>
+<<<<<<< HEAD
                                                 <a href="{{ route('frontend.category', $item->slug) }}"> <img
                                                         src="{{ asset('storage/images/product-categories/' . $item->icon) }}"
+=======
+                                                <a href="{{route('frontend.categories', $item->slug)}}"> <img
+                                                        src="{{ asset('assets/frontend/imgs/theme/icons/category-1.svg') }}"
+>>>>>>> 7df28416032f54900de0ef0684489b0234713a18
                                                         alt="" />{{ $item->name }}</a>
                                             </li>
                                         @endforeach
@@ -230,8 +245,13 @@
                                         @foreach (getProductCategories(2, 'id', 'desc', false)->skip(12)->get()
     as $item)
                                             <li>
+<<<<<<< HEAD
                                                 <a href="{{ route('frontend.category', $item->slug) }}"> <img
                                                         src="{{ asset('storage/images/product-categories/' . $item->icon) }}"
+=======
+                                                <a href="{{route('frontend.categories', $item->slug)}}"> <img
+                                                        src="{{ asset('assets/frontend/imgs/theme/icons/category-1.svg') }}"
+>>>>>>> 7df28416032f54900de0ef0684489b0234713a18
                                                         alt="" />{{ $item->name }}</a>
                                             </li>
                                         @endforeach

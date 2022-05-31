@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use App\Http\Controllers\Web\Frontend\Product\ProductController;
 use App\Http\Controllers\Web\Frontend\ProductSubCategory\ProductSubCategoryController;
 use App\Http\Controllers\Web\Frontend\Wishlist\WishlistController;
+use App\Http\Controllers\Web\Frontend\ProductCategory\ProductCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('frontend.auth.register', ['title' => 'Registrasi']);
 })->middleware(['guest:' . config('fortify.guard')])->name('frontend.register');
+Route::get('categories/{slug}', [ProductCategoryController::class, 'index'])->name('frontend.categories');
 
 // Back End Route
 Route::get('cpanel/auth', function () {
