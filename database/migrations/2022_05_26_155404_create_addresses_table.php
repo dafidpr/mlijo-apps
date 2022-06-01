@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            // Waiting confirm
-            $table->string('addressable_type');
-            $table->unsignedBigInteger('addressable_id');
+            $table->morphs('addressable');
             $table->string('name');
             $table->string('phone_number');
             $table->string('email');

@@ -43,13 +43,13 @@
                                                {{ $loop->iteration }}
                                            </td>
                                            <td class="image product-thumbnail pt-40"><img
-                                                   src="{{ asset('assets/frontend/imgs/shop/product-1-1.jpg') }}"
+                                                   src="{{ asset('storage/images/products/' . $item->product->thumbnail) }}"
                                                    alt="#" />
                                            </td>
                                            <td class="product-des product-name">
-                                               <h6><a class="product-name mb-10" href="shop-product-right.html">Field Roast
-                                                       Chao
-                                                       Cheese Creamy Original</a></h6>
+                                               <h6><a class="product-name mb-10"
+                                                       href="{{ route('frontend.product', $item->product->slug) }}">{{ $item->product->name }}</a>
+                                               </h6>
                                                <div class="product-rate-cover">
                                                    <div class="product-rate d-inline-block">
                                                        <div class="product-rating" style="width: 90%"></div>

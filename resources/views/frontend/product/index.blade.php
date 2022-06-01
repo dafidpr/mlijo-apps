@@ -4,9 +4,11 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ route('frontend.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> <a
-                    href="{{ route('frontend.sub-category', $product->productSubCategory->slug) }}">{{ $product->productSubCategory->name }}</a>
-                <span></span> {{ $product->name }}
+                @if ($product != null)
+                    <span></span> <a
+                        href="{{ route('frontend.sub-category', $product->productSubCategory->slug) }}">{{ $product->productSubCategory->name }}</a>
+                    <span></span> {{ $product->name }}
+                @endif
             </div>
         </div>
     </div>
@@ -77,16 +79,21 @@
                                             <div class="short-desc mb-30">
                                                 <p class="font-lg">{{ $product->summary }}</p>
                                             </div>
-                                            <div class="attr-detail attr-size mb-30">
-                                                <strong class="mr-10">Size / Weight: </strong>
-                                                <ul class="list-filter size-filter font-small">
-                                                    <li><a href="#">50g</a></li>
-                                                    <li class="active"><a href="#">60g</a></li>
-                                                    <li><a href="#">80g</a></li>
-                                                    <li><a href="#">100g</a></li>
-                                                    <li><a href="#">150g</a></li>
-                                                </ul>
-                                            </div>
+                                            @if (count($product->productVariant) > 0)
+                                                <div class="attr-detail attr-size mb-30">
+                                                    <strong
+                                                        class="mr-10">{{ $product->productVariant[0]->name }}:
+                                                    </strong>
+                                                    <ul class="list-filter size-filter font-small">
+
+                                                        @foreach ($product->productVariant[0]->productVariantDetail as $item)
+                                                            <li class="{{ $loop->iteration == 1 ? 'active' : '' }}"><a
+                                                                    href="#">{{ $item->name }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                             <div class="detail-extralink mb-50">
                                                 <div class="detail-qty border radius">
                                                     <a href="#" class="qty-down"><i
@@ -97,29 +104,10 @@
                                                 </div>
                                                 <div class="product-extra-link2">
                                                     <button type="submit" class="button button-add-to-cart"><i
-                                                            class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                                            class="fi-rs-shopping-cart"></i>Keranjang</button>
                                                     <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                                         href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                                    <a aria-label="Compare" class="action-btn hover-up"
-                                                        href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                                 </div>
-                                            </div>
-                                            <div class="font-xs">
-                                                <ul class="mr-50 float-start">
-                                                    <li class="mb-5">Type: <span
-                                                            class="text-brand">Organic</span></li>
-                                                    <li class="mb-5">MFG:<span class="text-brand"> Jun
-                                                            4.2021</span></li>
-                                                    <li>LIFE: <span class="text-brand">70 days</span></li>
-                                                </ul>
-                                                <ul class="float-start">
-                                                    <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
-                                                    <li class="mb-5">Tags: <a href="#" rel="tag">Snack</a>, <a
-                                                            href="#" rel="tag">Organic</a>, <a href="#" rel="tag">Brown</a>
-                                                    </li>
-                                                    <li>Stock:<span class="in-stock text-brand ml-5">8 Items In Stock</span>
-                                                    </li>
-                                                </ul>
                                             </div>
                                         </div>
                                         <!-- Detail Info -->
@@ -130,181 +118,105 @@
                                         <ul class="nav nav-tabs text-uppercase">
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="Description-tab" data-bs-toggle="tab"
-                                                    href="#Description">Description</a>
+                                                    href="#Description">Deskripsi</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
-                                                    href="#Additional-info">Additional info</a>
+                                                    href="#Additional-info">Informasi</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="Vendor-info-tab" data-bs-toggle="tab"
-                                                    href="#Vendor-info">Vendor</a>
+                                                    href="#Vendor-info">Seller</a>
                                             </li>
-                                            <li class="nav-item">
+                                            {{-- <li class="nav-item">
                                                 <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab"
                                                     href="#Reviews">Reviews (3)</a>
-                                            </li>
+                                            </li> --}}
+                                            @if (count($product->seller->sellerNote) > 0)
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="SellerNotes-tab" data-bs-toggle="tab"
+                                                        href="#SellerNotes">Catatan Toko</a>
+                                                </li>
+                                            @endif
                                         </ul>
                                         <div class="tab-content shop_info_tab entry-main-content">
                                             <div class="tab-pane fade show active" id="Description">
                                                 <div class="">
-                                                    <p>Uninhibited carnally hired played in whimpered dear gorilla koala
-                                                        depending and much yikes off far quetzal goodness and from for
-                                                        grimaced goodness unaccountably and meadowlark near unblushingly
-                                                        crucial scallop tightly neurotic hungrily some and dear furiously
-                                                        this apart.</p>
-                                                    <p>Spluttered narrowly yikes left moth in yikes bowed this that grizzly
-                                                        much hello on spoon-fed that alas rethought much decently richly and
-                                                        wow against the frequent fluidly at formidable acceptably flapped
-                                                        besides and much circa far over the bucolically hey precarious
-                                                        goldfinch mastodon goodness gnashed a jellyfish and one however
-                                                        because.</p>
-                                                    <ul class="product-more-infor mt-30">
-                                                        <li><span>Type Of Packing</span> Bottle</li>
-                                                        <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
-                                                        <li><span>Quantity Per Case</span> 100ml</li>
-                                                        <li><span>Ethyl Alcohol</span> 70%</li>
-                                                        <li><span>Piece In One</span> Carton</li>
-                                                    </ul>
-                                                    <hr class="wp-block-separator is-style-dots" />
-                                                    <p>Laconic overheard dear woodchuck wow this outrageously taut beaver
-                                                        hey hello far meadowlark imitatively egregiously hugged that yikes
-                                                        minimally unanimous pouted flirtatiously as beaver beheld above
-                                                        forward energetic across this jeepers beneficently cockily less a
-                                                        the raucously that magic upheld far so the this where crud then
-                                                        below after jeez enchanting drunkenly more much wow callously
-                                                        irrespective limpet.</p>
-                                                    <h4 class="mt-30">Packaging & Delivery</h4>
-                                                    <hr class="wp-block-separator is-style-wide" />
-                                                    <p>Less lion goodness that euphemistically robin expeditiously bluebird
-                                                        smugly scratched far while thus cackled sheepishly rigid after due
-                                                        one assenting regarding censorious while occasional or this more
-                                                        crane went more as this less much amid overhung anathematic because
-                                                        much held one exuberantly sheep goodness so where rat wry well
-                                                        concomitantly.</p>
-                                                    <p>Scallop or far crud plain remarkably far by thus far iguana lewd
-                                                        precociously and and less rattlesnake contrary caustic wow this near
-                                                        alas and next and pled the yikes articulate about as less cackled
-                                                        dalmatian in much less well jeering for the thanks blindly
-                                                        sentimental whimpered less across objectively fanciful grimaced
-                                                        wildly some wow and rose jeepers outgrew lugubrious luridly
-                                                        irrationally attractively dachshund.</p>
-                                                    <h4 class="mt-30">Suggested Use</h4>
-                                                    <ul class="product-more-infor mt-30">
-                                                        <li>Refrigeration not necessary.</li>
-                                                        <li>Stir before serving</li>
-                                                    </ul>
-                                                    <h4 class="mt-30">Other Ingredients</h4>
-                                                    <ul class="product-more-infor mt-30">
-                                                        <li>Organic raw pecans, organic raw cashews.</li>
-                                                        <li>This butter was produced using a LTG (Low Temperature Grinding)
-                                                            process</li>
-                                                        <li>Made in machinery that processes tree nuts but does not process
-                                                            peanuts, gluten, dairy or soy</li>
-                                                    </ul>
-                                                    <h4 class="mt-30">Warnings</h4>
-                                                    <ul class="product-more-infor mt-30">
-                                                        <li>Oil separation occurs naturally. May contain pieces of shell.
-                                                        </li>
-                                                    </ul>
+                                                    {!! $product->description !!}
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="Additional-info">
                                                 <table class="font-md">
                                                     <tbody>
                                                         <tr class="stand-up">
-                                                            <th>Stand Up</th>
+                                                            <th>Kategori Produk</th>
                                                             <td>
-                                                                <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
+                                                                <p>{{ $product->productSubCategory->productCategory->name }}
+                                                                </p>
                                                             </td>
                                                         </tr>
                                                         <tr class="folded-wo-wheels">
-                                                            <th>Folded (w/o wheels)</th>
+                                                            <th>Sub Kategori Produk</th>
                                                             <td>
-                                                                <p>32.5″L x 18.5″W x 16.5″H</p>
+                                                                <p>{{ $product->productSubCategory->name }}</p>
                                                             </td>
                                                         </tr>
                                                         <tr class="folded-w-wheels">
-                                                            <th>Folded (w/ wheels)</th>
+                                                            <th>Stok</th>
                                                             <td>
-                                                                <p>32.5″L x 24″W x 18.5″H</p>
+                                                                <p>{{ $product->stock }}</p>
                                                             </td>
                                                         </tr>
                                                         <tr class="door-pass-through">
-                                                            <th>Door Pass Through</th>
+                                                            <th>SKU</th>
                                                             <td>
-                                                                <p>24</p>
+                                                                <p>{{ $product->sku != null ? $product->sku : '-' }}</p>
                                                             </td>
                                                         </tr>
                                                         <tr class="frame">
-                                                            <th>Frame</th>
+                                                            <th>Minimal Order</th>
                                                             <td>
-                                                                <p>Aluminum</p>
+                                                                <p>{{ $product->min_order }}</p>
                                                             </td>
                                                         </tr>
                                                         <tr class="weight-wo-wheels">
-                                                            <th>Weight (w/o wheels)</th>
+                                                            <th>Berat</th>
                                                             <td>
-                                                                <p>20 LBS</p>
+                                                                <p>{{ $product->weight . '' . $product->weight_unit }}
+                                                                </p>
                                                             </td>
                                                         </tr>
-                                                        <tr class="weight-capacity">
-                                                            <th>Weight Capacity</th>
-                                                            <td>
-                                                                <p>60 LBS</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="width">
-                                                            <th>Width</th>
-                                                            <td>
-                                                                <p>24″</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="handle-height-ground-to-handle">
-                                                            <th>Handle height (ground to handle)</th>
-                                                            <td>
-                                                                <p>37-45″</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="wheels">
-                                                            <th>Wheels</th>
-                                                            <td>
-                                                                <p>12″ air / wide track slick tread</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="seat-back-height">
-                                                            <th>Seat back height</th>
-                                                            <td>
-                                                                <p>21.5″</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="head-room-inside-canopy">
-                                                            <th>Head room (inside canopy)</th>
-                                                            <td>
-                                                                <p>25″</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="pa_color">
-                                                            <th>Color</th>
-                                                            <td>
-                                                                <p>Black, Blue, Red, White</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="pa_size">
-                                                            <th>Size</th>
-                                                            <td>
-                                                                <p>M, S</p>
-                                                            </td>
-                                                        </tr>
+                                                        @if ($product->long_size != null && $product->width_size != null && $product->height_size != null)
+                                                            <tr class="weight-capacity">
+                                                                <th>Ukuran</th>
+                                                                <td>
+                                                                    <p>{{ $product->long_size . 'x' . $product->width_size . 'x' . $product->height_size . ' (PxLxT)' }}
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        @endif
+                                                        @if (count($product->productVariant) > 0)
+                                                            <tr class="width">
+                                                                <th>Variasi</th>
+                                                                <td>
+                                                                    <p>
+                                                                        @foreach ($product->productVariant[0]->productVariantDetail as $item)
+                                                                            {{ $item->name . (count($product->productVariant[0]->productVariantDetail) <= $loop->iteration ? '' : ',') }}
+                                                                        @endforeach
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        @endif
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <div class="tab-pane fade" id="Vendor-info">
                                                 <div class="vendor-logo d-flex mb-30">
-                                                    <img src="assets/imgs/vendor/vendor-18.svg" alt="" />
+                                                    <img src="{{ asset('assets/frontend/imgs/vendor/vendor-18.svg') }}"
+                                                        alt="" />
                                                     <div class="vendor-name ml-15">
                                                         <h6>
-                                                            <a href="vendor-details-2.html">Noodles Co.</a>
+                                                            <a href="#">{{ $product->seller->store_name }}</a>
                                                         </h6>
                                                         <div class="product-rate-cover text-end">
                                                             <div class="product-rate d-inline-block">
@@ -315,38 +227,27 @@
                                                     </div>
                                                 </div>
                                                 <ul class="contact-infor mb-50">
-                                                    <li><img src="assets/imgs/theme/icons/icon-location.svg"
-                                                            alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave
-                                                            undefined Kent, Utah 53127 United States</span></li>
-                                                    <li><img src="assets/imgs/theme/icons/icon-contact.svg"
-                                                            alt="" /><strong>Contact Seller:</strong><span>(+91) -
-                                                            540-025-553</span></li>
+                                                    <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-location.svg') }}"
+                                                            alt="" /><strong>Alamat: </strong>
+                                                        <span>-</span>
+                                                    </li>
+                                                    <li><img src="{{ asset('assets/frontend/imgs/theme/icons/icon-contact.svg') }}"
+                                                            alt="" /><strong>Kontak Toko:
+                                                        </strong><span> {{ $product->seller->store_phone_number }}</span>
+                                                    </li>
                                                 </ul>
-                                                <div class="d-flex mb-55">
-                                                    <div class="mr-30">
-                                                        <p class="text-brand font-xs">Rating</p>
-                                                        <h4 class="mb-0">92%</h4>
-                                                    </div>
-                                                    <div class="mr-30">
-                                                        <p class="text-brand font-xs">Ship on time</p>
-                                                        <h4 class="mb-0">100%</h4>
-                                                    </div>
-                                                    <div>
-                                                        <p class="text-brand font-xs">Chat response</p>
-                                                        <h4 class="mb-0">89%</h4>
-                                                    </div>
-                                                </div>
+                                                <h4 class="mt-30">Slogan Toko</h4>
+                                                <hr class="wp-block-separator is-style-wide">
                                                 <p>
-                                                    Noodles & Company is an American fast-casual restaurant that offers
-                                                    international and American noodle dishes and pasta in addition to soups
-                                                    and salads. Noodles & Company was founded in 1995 by Aaron Kennedy and
-                                                    is headquartered in Broomfield, Colorado. The company went public in
-                                                    2013 and recorded a $457 million revenue in 2017.In late 2018, there
-                                                    were 460 Noodles & Company locations across 29 states and Washington,
-                                                    D.C.
+                                                    {{ $product->seller->store_slogan }}
+                                                </p>
+                                                <h4 class="mt-30">Deksripsi Toko</h4>
+                                                <hr class="wp-block-separator is-style-wide">
+                                                <p>
+                                                    {{ $product->seller->store_description }}
                                                 </p>
                                             </div>
-                                            <div class="tab-pane fade" id="Reviews">
+                                            {{-- <div class="tab-pane fade" id="Reviews">
                                                 <!--Comments-->
                                                 <div class="comments-area">
                                                     <div class="row">
@@ -544,176 +445,77 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+                                            @if (count($product->seller->sellerNote) > 0)
+                                                <div class="tab-pane fade" id="SellerNotes">
+                                                    <!--Comments-->
+                                                    <div class="comments-area">
+                                                        <div class="">
+                                                            @foreach ($product->seller->sellerNote as $item)
+                                                                <h4 class="mt-30">{{ $item->title }}</h4>
+                                                                <hr class="wp-block-separator is-style-wide">
+                                                                {!! $item->note !!}
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-60">
                                     <div class="col-12">
-                                        <h2 class="section-title style-1 mb-30">Related products</h2>
+                                        <h2 class="section-title style-1 mb-30">Produk Terkait</h2>
                                     </div>
                                     <div class="col-12">
                                         <div class="row related-products">
-                                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                                <div class="product-cart-wrap hover-up">
-                                                    <div class="product-img-action-wrap">
-                                                        <div class="product-img product-img-zoom">
-                                                            <a href="shop-product-right.html" tabindex="0">
-                                                                <img class="default-img"
-                                                                    src="assets/imgs/shop/product-2-1.jpg" alt="" />
-                                                                <img class="hover-img"
-                                                                    src="assets/imgs/shop/product-2-2.jpg" alt="" />
-                                                            </a>
+                                            @foreach ($productRelatedCategory as $item)
+                                                <div class="col-lg-3 col-md-4 col-12 col-sm-6" style="margin-bottom:20px">
+                                                    <div class="product-cart-wrap hover-up">
+                                                        <div class="product-img-action-wrap">
+                                                            <div class="product-img product-img-zoom">
+                                                                <a href="{{ route('frontend.product', $item->slug) }}"
+                                                                    tabindex="0">
+                                                                    <img class="default-img"
+                                                                        src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
+                                                                        alt="" />
+                                                                    <img class="hover-img"
+                                                                        src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
+                                                                        alt="" />
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-action-1">
+                                                                <a aria-label="Quick view"
+                                                                    class="action-btn small hover-up"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#quickViewModal"><i
+                                                                        class="fi-rs-search"></i></a>
+                                                                <a aria-label="Add To Wishlist"
+                                                                    class="action-btn small hover-up"
+                                                                    href="shop-wishlist.html" tabindex="0"><i
+                                                                        class="fi-rs-heart"></i></a>
+                                                            </div>
+                                                            <div
+                                                                class="product-badges product-badges-position product-badges-mrg">
+                                                                <span class="hot">Hot</span>
+                                                            </div>
                                                         </div>
-                                                        <div class="product-action-1">
-                                                            <a aria-label="Quick view" class="action-btn small hover-up"
-                                                                data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                    class="fi-rs-search"></i></a>
-                                                            <a aria-label="Add To Wishlist"
-                                                                class="action-btn small hover-up" href="shop-wishlist.html"
-                                                                tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                            <a aria-label="Compare" class="action-btn small hover-up"
-                                                                href="shop-compare.html" tabindex="0"><i
-                                                                    class="fi-rs-shuffle"></i></a>
-                                                        </div>
-                                                        <div
-                                                            class="product-badges product-badges-position product-badges-mrg">
-                                                            <span class="hot">Hot</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content-wrap">
-                                                        <h2><a href="shop-product-right.html" tabindex="0">Ulstra Bass
-                                                                Headphone</a></h2>
-                                                        <div class="rating-result" title="90%">
-                                                            <span> </span>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <span>$238.85 </span>
-                                                            <span class="old-price">$245.8</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                                <div class="product-cart-wrap hover-up">
-                                                    <div class="product-img-action-wrap">
-                                                        <div class="product-img product-img-zoom">
-                                                            <a href="shop-product-right.html" tabindex="0">
-                                                                <img class="default-img"
-                                                                    src="assets/imgs/shop/product-3-1.jpg" alt="" />
-                                                                <img class="hover-img"
-                                                                    src="assets/imgs/shop/product-4-2.jpg" alt="" />
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-action-1">
-                                                            <a aria-label="Quick view" class="action-btn small hover-up"
-                                                                data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                    class="fi-rs-search"></i></a>
-                                                            <a aria-label="Add To Wishlist"
-                                                                class="action-btn small hover-up" href="shop-wishlist.html"
-                                                                tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                            <a aria-label="Compare" class="action-btn small hover-up"
-                                                                href="shop-compare.html" tabindex="0"><i
-                                                                    class="fi-rs-shuffle"></i></a>
-                                                        </div>
-                                                        <div
-                                                            class="product-badges product-badges-position product-badges-mrg">
-                                                            <span class="sale">-12%</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content-wrap">
-                                                        <h2><a href="shop-product-right.html" tabindex="0">Smart Bluetooth
-                                                                Speaker</a></h2>
-                                                        <div class="rating-result" title="90%">
-                                                            <span> </span>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <span>$138.85 </span>
-                                                            <span class="old-price">$145.8</span>
+                                                        <div class="product-content-wrap">
+                                                            <h2><a href="{{ route('frontend.product', $item->slug) }}"
+                                                                    tabindex="0">{{ strlen($item->name) > 35 ? substr($item->name, 0, 35) . '...' : $item->name }}</a>
+                                                            </h2>
+                                                            <div class="rating-result" title="90%">
+                                                                <span> </span>
+                                                            </div>
+                                                            <div class="product-price">
+                                                                <span>Rp.{{ number_format($item->price) }} </span>
+                                                                {{-- <span class="old-price">$245.8</span> --}}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                                <div class="product-cart-wrap hover-up">
-                                                    <div class="product-img-action-wrap">
-                                                        <div class="product-img product-img-zoom">
-                                                            <a href="shop-product-right.html" tabindex="0">
-                                                                <img class="default-img"
-                                                                    src="assets/imgs/shop/product-4-1.jpg" alt="" />
-                                                                <img class="hover-img"
-                                                                    src="assets/imgs/shop/product-4-2.jpg" alt="" />
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-action-1">
-                                                            <a aria-label="Quick view" class="action-btn small hover-up"
-                                                                data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                    class="fi-rs-search"></i></a>
-                                                            <a aria-label="Add To Wishlist"
-                                                                class="action-btn small hover-up" href="shop-wishlist.html"
-                                                                tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                            <a aria-label="Compare" class="action-btn small hover-up"
-                                                                href="shop-compare.html" tabindex="0"><i
-                                                                    class="fi-rs-shuffle"></i></a>
-                                                        </div>
-                                                        <div
-                                                            class="product-badges product-badges-position product-badges-mrg">
-                                                            <span class="new">New</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content-wrap">
-                                                        <h2><a href="shop-product-right.html" tabindex="0">HomeSpeak 12UEA
-                                                                Goole</a></h2>
-                                                        <div class="rating-result" title="90%">
-                                                            <span> </span>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <span>$738.85 </span>
-                                                            <span class="old-price">$1245.8</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-12 col-sm-6 d-lg-block d-none">
-                                                <div class="product-cart-wrap hover-up mb-0">
-                                                    <div class="product-img-action-wrap">
-                                                        <div class="product-img product-img-zoom">
-                                                            <a href="shop-product-right.html" tabindex="0">
-                                                                <img class="default-img"
-                                                                    src="assets/imgs/shop/product-5-1.jpg" alt="" />
-                                                                <img class="hover-img"
-                                                                    src="assets/imgs/shop/product-3-2.jpg" alt="" />
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-action-1">
-                                                            <a aria-label="Quick view" class="action-btn small hover-up"
-                                                                data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                    class="fi-rs-search"></i></a>
-                                                            <a aria-label="Add To Wishlist"
-                                                                class="action-btn small hover-up" href="shop-wishlist.html"
-                                                                tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                            <a aria-label="Compare" class="action-btn small hover-up"
-                                                                href="shop-compare.html" tabindex="0"><i
-                                                                    class="fi-rs-shuffle"></i></a>
-                                                        </div>
-                                                        <div
-                                                            class="product-badges product-badges-position product-badges-mrg">
-                                                            <span class="hot">Hot</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content-wrap">
-                                                        <h2><a href="shop-product-right.html" tabindex="0">Dadua Camera 4K
-                                                                2021EF</a></h2>
-                                                        <div class="rating-result" title="90%">
-                                                            <span> </span>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <span>$89.8 </span>
-                                                            <span class="old-price">$98.8</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
                                     </div>
                                 </div>
@@ -721,135 +523,38 @@
                         </div>
                         <div class="col-xl-3 primary-sidebar sticky-sidebar mt-30">
                             <div class="sidebar-widget widget-category-2 mb-30">
-                                <h5 class="section-title style-1 mb-30">Category</h5>
+                                <h5 class="section-title style-1 mb-30">Kategori</h5>
                                 <ul>
-                                    <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg"
-                                                alt="" />Milks & Dairies</a><span class="count">30</span>
-                                    </li>
-                                    <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-2.svg"
-                                                alt="" />Clothing</a><span class="count">35</span>
-                                    </li>
-                                    <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-3.svg"
-                                                alt="" />Pet Foods </a><span class="count">42</span>
-                                    </li>
-                                    <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-4.svg"
-                                                alt="" />Baking material</a><span class="count">68</span>
-                                    </li>
-                                    <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg"
-                                                alt="" />Fresh Fruit</a><span class="count">87</span>
-                                    </li>
+                                    @foreach (getProductCategories(5, 'id', 'desc', true) as $item)
+                                        <li>
+                                            <a href="{{ route('frontend.category', $item->slug) }}"> <img
+                                                    src="{{ asset('storage/images/product-categories/' . $item->icon) }}"
+                                                    alt="" />{{ $item->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
-                            <!-- Fillter By Price -->
-                            <div class="sidebar-widget price_range range mb-30">
-                                <h5 class="section-title style-1 mb-30">Fill by price</h5>
-                                <div class="price-filter">
-                                    <div class="price-filter-inner">
-                                        <div id="slider-range" class="mb-20"></div>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="caption">From: <strong id="slider-range-value1"
-                                                    class="text-brand"></strong></div>
-                                            <div class="caption">To: <strong id="slider-range-value2"
-                                                    class="text-brand"></strong></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-group">
-                                    <div class="list-group-item mb-10 mt-10">
-                                        <label class="fw-900">Color</label>
-                                        <div class="custome-checkbox">
-                                            <input class="form-check-input" type="checkbox" name="checkbox"
-                                                id="exampleCheckbox1" value="" />
-                                            <label class="form-check-label" for="exampleCheckbox1"><span>Red
-                                                    (56)</span></label>
-                                            <br />
-                                            <input class="form-check-input" type="checkbox" name="checkbox"
-                                                id="exampleCheckbox2" value="" />
-                                            <label class="form-check-label" for="exampleCheckbox2"><span>Green
-                                                    (78)</span></label>
-                                            <br />
-                                            <input class="form-check-input" type="checkbox" name="checkbox"
-                                                id="exampleCheckbox3" value="" />
-                                            <label class="form-check-label" for="exampleCheckbox3"><span>Blue
-                                                    (54)</span></label>
-                                        </div>
-                                        <label class="fw-900 mt-15">Item Condition</label>
-                                        <div class="custome-checkbox">
-                                            <input class="form-check-input" type="checkbox" name="checkbox"
-                                                id="exampleCheckbox11" value="" />
-                                            <label class="form-check-label" for="exampleCheckbox11"><span>New
-                                                    (1506)</span></label>
-                                            <br />
-                                            <input class="form-check-input" type="checkbox" name="checkbox"
-                                                id="exampleCheckbox21" value="" />
-                                            <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished
-                                                    (27)</span></label>
-                                            <br />
-                                            <input class="form-check-input" type="checkbox" name="checkbox"
-                                                id="exampleCheckbox31" value="" />
-                                            <label class="form-check-label" for="exampleCheckbox31"><span>Used
-                                                    (45)</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i
-                                        class="fi-rs-filter mr-5"></i> Fillter</a>
-                            </div>
+
                             <!-- Product sidebar Widget -->
                             <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
-                                <h5 class="section-title style-1 mb-30">New products</h5>
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        <img src="assets/imgs/shop/thumbnail-3.jpg" alt="#" />
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h5><a href="shop-product-detail.html">Chen Cardigan</a></h5>
-                                        <p class="price mb-0 mt-5">$99.50</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                <h5 class="section-title style-1 mb-30">Produk Terbaru</h5>
+                                @foreach ($newProducts as $item)
+                                    <div class="single-post clearfix">
+                                        <div class="image">
+                                            <img src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
+                                                alt="#" />
+                                        </div>
+                                        <div class="content pt-10">
+                                            <h6><a
+                                                    href="{{ route('frontend.product', $item->slug) }}">{{ strlen($item->name) > 13 ? substr($item->name, 0, 13) . '...' : $item->name }}</a>
+                                            </h6>
+                                            <p class="price mb-0 mt-5">Rp. {{ number_format($item->price) }}</p>
+                                            <div class="product-rate">
+                                                <div class="product-rating" style="width: 90%"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        <img src="assets/imgs/shop/thumbnail-4.jpg" alt="#" />
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h6><a href="shop-product-detail.html">Chen Sweater</a></h6>
-                                        <p class="price mb-0 mt-5">$89.50</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width: 80%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        <img src="assets/imgs/shop/thumbnail-5.jpg" alt="#" />
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h6><a href="shop-product-detail.html">Colorful Jacket</a></h6>
-                                        <p class="price mb-0 mt-5">$25</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width: 60%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
-                                <img src="assets/imgs/banner/banner-11.png" alt="" />
-                                <div class="banner-text">
-                                    <span>Oganic</span>
-                                    <h4>
-                                        Save 17% <br />
-                                        on <span class="text-brand">Oganic</span><br />
-                                        Juice
-                                    </h4>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

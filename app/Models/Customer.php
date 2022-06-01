@@ -19,4 +19,8 @@ class Customer extends Model
     {
         return $this->morphOne(User::class, 'userable_type');
     }
+    public function address()
+    {
+        return $this->morphMany(Address::class, 'addressable');
+    }
 }

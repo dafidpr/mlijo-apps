@@ -56,11 +56,12 @@
                                                <label class="form-check-label" for="exampleCheckbox1"></label>
                                            </td>
                                            <td class="image product-thumbnail pt-40"><img
-                                                   src="{{ asset('assets/frontend/imgs/shop/product-1-1.jpg') }}" alt="#">
+                                                   src="{{ asset('storage/images/products/' . $item->product->thumbnail) }}"
+                                                   alt="#">
                                            </td>
                                            <td class="product-des product-name">
                                                <h6 class="mb-5"><a class="product-name mb-10 text-heading"
-                                                       href="shop-product-right.html">{{ $item->product->name }}
+                                                       href="{{ route('frontend.product', $item->product->slug) }}">{{ $item->product->name }}
                                                    </a>
                                                </h6>
                                                <div class="product-rate-cover">
