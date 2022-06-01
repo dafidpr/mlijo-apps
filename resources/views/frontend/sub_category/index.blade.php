@@ -348,7 +348,7 @@
                                 </div>
                                 <div class="content pt-10">
                                     <h6><a
-                                            href="shop-product-detail.html">{{ strlen($item->name) > 13 ? substr($item->name, 0, 13) . '...' : $item->name }}</a>
+                                            href="{{ route('frontend.product', $item->slug) }}">{{ strlen($item->name) > 13 ? substr($item->name, 0, 13) . '...' : $item->name }}</a>
                                     </h6>
                                     <p class="price mb-0 mt-5">Rp. {{ number_format($item->price) }}</p>
                                     <div class="product-rate">

@@ -15,7 +15,6 @@ class HomeController extends Controller
         $data = [
             'title' => 'Belanja Kebutuhan Sehari-hari Terlengkap se-Indonesia',
             'productSubCategories' => $this->getProductSubCategories(),
-            'banners' => $this->getBanners()
 
         ];
 
@@ -27,10 +26,5 @@ class HomeController extends Controller
         return ProductSubCategory::whereHas('product', function ($q) {
             $q->where('is_active', true);
         })->with('product')->where('is_active', true)->get();
-    }
-
-    private function getBanners()
-    {
-        return Banner::where('is_active', true)->get();
     }
 }

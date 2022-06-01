@@ -8,7 +8,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><a href="page-account.html">Akun Saya</a></li>
+                            <li><a href="#">Akun Saya</a></li>
                             <li><a href="#">Order Tracking</a></li>
                         </ul>
                     </div>
@@ -92,12 +92,14 @@
                                             @foreach (getCart(true, 2) as $item)
                                                 <li>
                                                     <div class="shopping-cart-img">
-                                                        <a href="shop-product-right.html"><img alt="Nest"
+                                                        <a
+                                                            href="{{ route('frontend.product', $item->product->slug) }}"><img
+                                                                alt="Nest"
                                                                 src="{{ asset('storage/images/products/' . $item->product->thumbnail) }}" /></a>
                                                     </div>
                                                     <div class="shopping-cart-title">
                                                         <h4><a
-                                                                href="shop-product-right.html">{{ strlen($item->product->name) > 15 ? substr($item->product->name, 0, 15) . '...' : $item->product->name }}</a>
+                                                                href="{{ route('frontend.product', $item->product->slug) }}">{{ strlen($item->product->name) > 15 ? substr($item->product->name, 0, 15) . '...' : $item->product->name }}</a>
                                                         </h4>
                                                         <h4><span>{{ $item->quantity }} ×
                                                             </span>Rp.{{ number_format($item->product->price) }}</h4>

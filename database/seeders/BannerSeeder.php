@@ -18,8 +18,9 @@ class BannerSeeder extends Seeder
         Banner::insert([
             [
                 'user_id' => 1,
-                'title' => 'Fresh Vegetable <br> Big Discount',
-                'subtitle' => 'Save up to 50% off on your first order',
+                'title' => 'Buah Segar <br> Mega Diskon',
+                'subtitle' => 'Hemat 50% untuk order pertamamu',
+                'route' => '/',
                 'image_path' => 'banner-1.png',
                 'button_action' => false,
                 'button_text' => null,
@@ -28,8 +29,9 @@ class BannerSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'title' => 'Don’t miss amazing <br> grocery deals',
-                'subtitle' => 'Sign up for the daily newsletter',
+                'title' => 'Diskon Gede <br> Untuk Kebutuhan Dapur',
+                'subtitle' => 'Daftar dan nikmati beragam manfaatnya',
+                'route' => '/',
                 'image_path' => 'banner-2.png',
                 'button_action' => true,
                 'button_text' => 'Belanja Sekarang',

@@ -117,7 +117,7 @@
           <div class="container">
               <div class="home-slide-cover mt-30">
                   <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                      @foreach ($banners as $item)
+                      @foreach (getBanners('/') as $item)
                           <div class="single-hero-slider single-animation-wrap"
                               style="background-image: url({{ asset('storage/images/banners/' . $item->image_path) }})">
                               <div class="slider-content">
@@ -172,7 +172,7 @@
               <div class="row">
                   <div class="col-lg-4 col-md-6">
                       <div class="banner-img wow animate__animated animate__fadeInUp" data-wow-delay="0">
-                          <img src="{{ asset('assets/frontend/imgs/banner/banner-1.png') }}" alt="" />
+                          <img src="{{ asset('storage/images/banners/banner-3.png') }}" alt="" />
                           <div class="banner-text">
                               <h4>
                                   Segar Setiap Hari & <br />Bersih dengan<br />
@@ -185,7 +185,7 @@
                   </div>
                   <div class="col-lg-4 col-md-6">
                       <div class="banner-img wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
-                          <img src="{{ asset('assets/frontend/imgs/banner/banner-2.png') }}" alt="" />
+                          <img src="{{ asset('storage/images/banners/banner-4.png') }}" alt="" />
                           <div class="banner-text">
                               <h4>
                                   Buat Sarapanmu<br />
@@ -198,7 +198,7 @@
                   </div>
                   <div class="col-lg-4 d-md-none d-lg-flex">
                       <div class="banner-img mb-sm-0 wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
-                          <img src="{{ asset('assets/frontend/imgs/banner/banner-3.png') }}" alt="" />
+                          <img src="{{ asset('storage/images/banners/banner-5.png') }}" alt="" />
                           <div class="banner-text">
                               <h4>Produk Organik <br /> Online Terbaik</h4>
                               <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i
@@ -4092,7 +4092,8 @@
               </div>
               <div class="row">
                   <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
-                      <div class="banner-img style-2">
+                      <div class="banner-img style-2"
+                          style="background: url({{ asset('storage/images/banners/banner-6.png') }}) no-repeat center bottom !important;background-size: cover !important;">
                           <div class="banner-text">
                               <h2 class="mb-100">Bawa pulang produk favofit Anda</h2>
                               <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i
