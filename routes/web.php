@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\Auth\CheckPointController;
 use App\Http\Controllers\Web\Backend\Auth\AuthController;
 use App\Http\Controllers\Web\Backend\Root\Dashboard\DashboardController;
+use App\Http\Controllers\Web\Backend\Root\ProductCategory\ProductCategoryController as AppProductCategoryController;
 use App\Http\Controllers\Web\Frontend\Cart\CartController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use App\Http\Controllers\Web\Frontend\Product\ProductController;
@@ -56,5 +57,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // Route for administrator
     Route::prefix('administrator')->middleware('role:Developer|Administrator')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboards');
+        // Product Category Route
+        Route::prefix('product-categories')->middleware('can:read-product-categories')->group(function () {
+            Route::get('', [AppProductCategoryController::class, 'index'])->name('admin.product-categories')->middleware('can:read-product-categories');
+            Route::get('get-data', [AppProductCategoryController::class, 'getData'])->name('admin.product-categories.get-data')->middleware('can:read-product-categories');
+            Route::post('store', [AppProductCategoryController::class, 'store'])->name('admin.product-categories.store')->middleware('can:create-product-categories');
+            Route::get('{productCategory}/show', [AppProductCategoryController::class, 'show'])->name('admin.product-categories.update')->middleware('can:update-product-categories');
+            Route::post('{productCategory}/update', [AppProductCategoryController::class, 'update'])->name('admin.product-categories.update')->middleware('can:update-product-categories');
+            Route::delete('{productCategory}/delete', [AppProductCategoryController::class, 'destroy'])->name('admin.product-categories.delete')->middleware('can:delete-product-categories');
+            Route::get('{productCategory}/update-status', [AppProductCategoryController::class, 'updateStatus'])->name('admin.product-categories.update-status')->middleware('can:update-product-categories');
+        });
     });
 });

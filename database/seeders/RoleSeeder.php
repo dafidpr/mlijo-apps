@@ -31,9 +31,11 @@ class RoleSeeder extends Seeder
         // Give permission to role
         $developer->givePermissionTo([
             'read-dashboard',
+            'read-product-categories', 'create-product-categories', 'update-product-categories', 'delete-product-categories'
         ]);
         $adminsitrator->givePermissionTo([
             'read-dashboard',
+            'read-product-categories', 'create-product-categories', 'update-product-categories', 'delete-product-categories'
         ]);
     }
 }

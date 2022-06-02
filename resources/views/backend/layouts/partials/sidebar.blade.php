@@ -41,27 +41,33 @@
                     <span class="menu-item" data-i18n="Validasi Pembayaran">Validasi Pembayaran</span>
                 </a>
             </li>
-
-            <li class="navigation-header">
-                <span>General</span>
-            </li>
-            <li class="nav-item"><a href="#"><i class="feather icon-server"></i><span class="menu-title"
-                        data-i18n="Data Center">Data Center</span></a>
-                <ul class="menu-content">
-                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Customer">Customer</span></a>
-                    </li>
-                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Seller">Seller</span></a>
-                    </li>
-                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Kategori Produk">Kategori Produk</span></a>
-                    </li>
-                    <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Sub Kategori Produk">Sub Kategori Produk</span></a>
-                    </li>
-                </ul>
-            </li>
+            @canany(['read-product-categories'])
+                <li class="navigation-header">
+                    <span>General</span>
+                </li>
+            @endcanany
+            @canany(['read-product-categories'])
+                <li class="nav-item"><a href="#"><i class="feather icon-server"></i><span class="menu-title"
+                            data-i18n="Data Center">Data Center</span></a>
+                    <ul class="menu-content">
+                        <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
+                                    data-i18n="Customer">Customer</span></a>
+                        </li>
+                        <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
+                                    data-i18n="Seller">Seller</span></a>
+                        </li>
+                        @can('read-product-categories')
+                            <li><a href="{{ route('admin.product-categories') }}" data-toggle="ajax"><i
+                                        class="feather icon-circle"></i><span class="menu-item"
+                                        data-i18n="Kategori Produk">Kategori Produk</span></a>
+                            </li>
+                        @endcan
+                        <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
+                                    data-i18n="Sub Kategori Produk">Sub Kategori Produk</span></a>
+                        </li>
+                    </ul>
+                </li>
+            @endcanany
             <li class="nav-item"><a href="#"><i class="feather icon-users"></i><span class="menu-title"
                         data-i18n="Manajemen User">Manajemen User</span></a>
                 <ul class="menu-content">

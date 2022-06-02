@@ -20,6 +20,11 @@ class PermissionSeeder extends Seeder
         $webPermission = collect([
             # Dashboard related permission
             ['name' => 'read-dashboard', 'label' => 'Baca Dashboard'],
+            # Product Category related permission
+            ['name' => 'read-product-categories', 'label' => 'Baca Kategori Produk'],
+            ['name' => 'create-product-categories', 'label' => 'Buat Kategori Produk'],
+            ['name' => 'update-product-categories', 'label' => 'Ubah Kategori Produk'],
+            ['name' => 'delete-product-categories', 'label' => 'Hapus Kategori Produk'],
         ]);
 
         $this->insertPermission($webPermission);
