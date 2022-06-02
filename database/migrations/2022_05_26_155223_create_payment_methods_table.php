@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->nullable();
             $table->string('name');
+            $table->string('icon')->nullable();
             $table->string('account_name');
             $table->string('account_number')->unique();
             $table->string('description')->nullable();

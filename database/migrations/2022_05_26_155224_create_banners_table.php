@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('subtitle');
+            $table->string('route');
             $table->string('image_path');
             $table->boolean('button_action')->default(false);
             $table->string('button_text')->nullable();

@@ -8,7 +8,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><a href="page-account.html">Akun Saya</a></li>
+                            <li><a href="#">Akun Saya</a></li>
                             <li><a href="#">Order Tracking</a></li>
                         </ul>
                     </div>
@@ -58,14 +58,14 @@
                     <div class="header-action-right">
                         @if (auth()->user() && (auth()->user()->roles[0]->name == 'Customer' || auth()->user()->roles[0]->name == 'Seller'))
                             <div class="header-action-2" style="margin-left:35px">
-                                <div class="header-action-icon-2">
+                                {{-- <div class="header-action-icon-2">
                                     <a href="shop-compare.html">
                                         <img class="svgInject" alt="Nest"
                                             src="{{ asset('assets/frontend/imgs/theme/icons/icon-notification.svg') }}" />
                                         <span class="pro-count blue">3</span>
                                     </a>
                                     <a href="shop-compare.html"><span class="lable ml-0">Notifikasi</span></a>
-                                </div>
+                                </div> --}}
                                 <div class="header-action-icon-2">
                                     <a href="{{ route('frontend.wishlists') }}">
                                         <img class="svgInject" alt="Nest"
@@ -92,15 +92,17 @@
                                             @foreach (getCart(true, 2) as $item)
                                                 <li>
                                                     <div class="shopping-cart-img">
-                                                        <a href="shop-product-right.html"><img alt="Nest"
-                                                                src="{{ asset('assets/frontend/imgs/shop/thumbnail-3.jpg') }}" /></a>
+                                                        <a
+                                                            href="{{ route('frontend.product', $item->product->slug) }}"><img
+                                                                alt="Nest"
+                                                                src="{{ asset('storage/images/products/' . $item->product->thumbnail) }}" /></a>
                                                     </div>
                                                     <div class="shopping-cart-title">
                                                         <h4><a
-                                                                href="shop-product-right.html">{{ strlen($item->product->name) > 15 ? substr($item->product->name, 0, 15) . '...' : $item->product->name }}</a>
+                                                                href="{{ route('frontend.product', $item->product->slug) }}">{{ strlen($item->product->name) > 15 ? substr($item->product->name, 0, 15) . '...' : $item->product->name }}</a>
                                                         </h4>
                                                         <h4><span>{{ $item->quantity }} ×
-                                                            </span>Rp.{{ number_format($item->product->price) }}</h4>
+                                                            </span>Rp{{ number_format($item->product->price) }}</h4>
                                                     </div>
                                                     <div class="shopping-cart-delete">
                                                         <a href="#"><i class="fi-rs-cross-small"></i></a>
@@ -110,7 +112,7 @@
                                         </ul>
                                         <div class="shopping-cart-footer">
                                             <div class="shopping-cart-total">
-                                                <h4>Total <span>Rp.
+                                                <h4>Total <span>Rp
                                                         {{ number_format(getCart(false, 0, true)) }}</span></h4>
                                             </div>
                                             <div class="shopping-cart-button">

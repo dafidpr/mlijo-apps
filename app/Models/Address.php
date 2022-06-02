@@ -14,4 +14,9 @@ class Address extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function addressable()
+    {
+        return $this->morphTo();
+    }
 }

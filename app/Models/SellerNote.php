@@ -14,4 +14,9 @@ class SellerNote extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
 }

@@ -56,11 +56,12 @@
                                                <label class="form-check-label" for="exampleCheckbox1"></label>
                                            </td>
                                            <td class="image product-thumbnail pt-40"><img
-                                                   src="{{ asset('assets/frontend/imgs/shop/product-1-1.jpg') }}" alt="#">
+                                                   src="{{ asset('storage/images/products/' . $item->product->thumbnail) }}"
+                                                   alt="#">
                                            </td>
                                            <td class="product-des product-name">
                                                <h6 class="mb-5"><a class="product-name mb-10 text-heading"
-                                                       href="shop-product-right.html">{{ $item->product->name }}
+                                                       href="{{ route('frontend.product', $item->product->slug) }}">{{ $item->product->name }}
                                                    </a>
                                                </h6>
                                                <div class="product-rate-cover">
@@ -72,7 +73,7 @@
                                                </div>
                                            </td>
                                            <td class="price" data-title="Price">
-                                               <h5 class="text-body">Rp. {{ number_format($item->product->price) }}
+                                               <h5 class="text-body">Rp{{ number_format($item->product->price) }}
                                                </h5>
                                            </td>
                                            <td class="text-center detail-info" data-title="Stock">
@@ -87,7 +88,7 @@
                                                </div>
                                            </td>
                                            <td class="price" data-title="Price">
-                                               <h5 class="text-brand">Rp.
+                                               <h5 class="text-brand">Rp
                                                    {{ number_format($item->product->price * $item->quantity) }} </h5>
                                            </td>
                                            <td class="action text-center" data-title="Remove"><a href="#"
@@ -170,7 +171,7 @@
                                            <h6 class="text-muted">Subtotal</h6>
                                        </td>
                                        <td class="cart_total_amount">
-                                           <h4 class="text-brand text-end">Rp.
+                                           <h4 class="text-brand text-end">Rp
                                                {{ number_format(count(getCart(true, 0, false)) > 0 ? getCart(true, 0, true) : 0) }}
                                            </h4>
                                        </td>
@@ -205,7 +206,7 @@
                                            <h6 class="text-muted">Total</h6>
                                        </td>
                                        <td class="cart_total_amount">
-                                           <h4 class="text-brand text-end">Rp.
+                                           <h4 class="text-brand text-end">Rp
                                                {{ number_format(count(getCart(true, 0, false)) > 0 ? getCart(true, 0, true) : 0) }}
                                            </h4>
                                        </td>

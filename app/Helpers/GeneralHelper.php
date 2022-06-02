@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Banner;
 use App\Models\Cart;
 use App\Models\ProductCategory;
 use App\Models\Setting;
@@ -143,5 +144,12 @@ if (!function_exists('getWishlist')) {
             return $instantGet == true ? $wishlists->get() : $wishlists;
         }
         return $wishlists;
+    }
+}
+if (!function_exists('getBanners')) {
+    function getBanners($route)
+    {
+        $banners = Banner::where(['is_active' => true, 'route' => $route])->get();
+        return $banners;
     }
 }

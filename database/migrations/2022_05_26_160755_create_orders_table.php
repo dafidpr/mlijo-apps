@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('receipt_number')->nullable();
             $table->string('proof_of_payment')->nullable();
             $table->timestamp('payment_date')->nullable();
+            $table->double('unique_code');
             $table->enum('payment_status', ['pending', 'paid', 'canceled', 'fail'])->default('pending');
             $table->double('shipping_total')->default(0);
             $table->double('discount_total')->default(0);
