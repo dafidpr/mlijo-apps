@@ -36,7 +36,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('frontend.auth.register', ['title' => 'Registrasi']);
 })->middleware(['guest:' . config('fortify.guard')])->name('frontend.register');
-Route::get('categories/{slug}', [ProductCategoryController::class, 'index'])->name('frontend.categories');
 
 // Back End Route
 Route::get('cpanel/auth', function () {

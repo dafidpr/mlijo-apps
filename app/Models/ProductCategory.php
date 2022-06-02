@@ -15,6 +15,7 @@ class ProductCategory extends Model
     protected $appends = ['hashid'];
     protected $guarded = [];
 
+
     public function productSubCategory()
     {
         return $this->hasMany(ProductSubCategory::class);
