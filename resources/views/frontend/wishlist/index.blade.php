@@ -58,7 +58,7 @@
                                                </div>
                                            </td>
                                            <td class="price" data-title="Price">
-                                               <h5 class="text-brand">Rp. {{ number_format($item->product->price) }}
+                                               <h5 class="text-brand">Rp{{ number_format($item->product->price) }}
                                                </h5>
                                            </td>
                                            <td class="text-center detail-info" data-title="Stock">

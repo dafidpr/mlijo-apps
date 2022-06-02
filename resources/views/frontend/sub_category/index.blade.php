@@ -9,7 +9,7 @@
                         <h1 class="mb-15">{{ $title }}</h1>
                         <div class="breadcrumb">
                             <a href="{{ route('frontend.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                            <span></span> Kategori <span></span> {{ $title }}
+                            <span></span> Sub Kategori <span></span> {{ $title }}
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="product-card-bottom">
                                             <div class="product-price">
-                                                <span>Rp. {{ number_format($item->price) }}</span>
+                                                <span>Rp{{ number_format($item->price) }}</span>
                                                 {{-- <span class="old-price">$32.8</span> --}}
                                             </div>
                                             <div class="add-cart">
@@ -350,7 +350,7 @@
                                     <h6><a
                                             href="{{ route('frontend.product', $item->slug) }}">{{ strlen($item->name) > 13 ? substr($item->name, 0, 13) . '...' : $item->name }}</a>
                                     </h6>
-                                    <p class="price mb-0 mt-5">Rp. {{ number_format($item->price) }}</p>
+                                    <p class="price mb-0 mt-5">Rp{{ number_format($item->price) }}</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width: 90%"></div>
                                     </div>

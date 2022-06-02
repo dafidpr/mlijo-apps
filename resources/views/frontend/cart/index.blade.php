@@ -73,7 +73,7 @@
                                                </div>
                                            </td>
                                            <td class="price" data-title="Price">
-                                               <h5 class="text-body">Rp. {{ number_format($item->product->price) }}
+                                               <h5 class="text-body">Rp{{ number_format($item->product->price) }}
                                                </h5>
                                            </td>
                                            <td class="text-center detail-info" data-title="Stock">
@@ -88,7 +88,7 @@
                                                </div>
                                            </td>
                                            <td class="price" data-title="Price">
-                                               <h5 class="text-brand">Rp.
+                                               <h5 class="text-brand">Rp
                                                    {{ number_format($item->product->price * $item->quantity) }} </h5>
                                            </td>
                                            <td class="action text-center" data-title="Remove"><a href="#"
@@ -171,7 +171,7 @@
                                            <h6 class="text-muted">Subtotal</h6>
                                        </td>
                                        <td class="cart_total_amount">
-                                           <h4 class="text-brand text-end">Rp.
+                                           <h4 class="text-brand text-end">Rp
                                                {{ number_format(count(getCart(true, 0, false)) > 0 ? getCart(true, 0, true) : 0) }}
                                            </h4>
                                        </td>
@@ -206,7 +206,7 @@
                                            <h6 class="text-muted">Total</h6>
                                        </td>
                                        <td class="cart_total_amount">
-                                           <h4 class="text-brand text-end">Rp.
+                                           <h4 class="text-brand text-end">Rp
                                                {{ number_format(count(getCart(true, 0, false)) > 0 ? getCart(true, 0, true) : 0) }}
                                            </h4>
                                        </td>

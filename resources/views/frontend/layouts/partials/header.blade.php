@@ -102,7 +102,7 @@
                                                                 href="{{ route('frontend.product', $item->product->slug) }}">{{ strlen($item->product->name) > 15 ? substr($item->product->name, 0, 15) . '...' : $item->product->name }}</a>
                                                         </h4>
                                                         <h4><span>{{ $item->quantity }} ×
-                                                            </span>Rp.{{ number_format($item->product->price) }}</h4>
+                                                            </span>Rp{{ number_format($item->product->price) }}</h4>
                                                     </div>
                                                     <div class="shopping-cart-delete">
                                                         <a href="#"><i class="fi-rs-cross-small"></i></a>
@@ -112,7 +112,7 @@
                                         </ul>
                                         <div class="shopping-cart-footer">
                                             <div class="shopping-cart-total">
-                                                <h4>Total <span>Rp.
+                                                <h4>Total <span>Rp
                                                         {{ number_format(getCart(false, 0, true)) }}</span></h4>
                                             </div>
                                             <div class="shopping-cart-button">

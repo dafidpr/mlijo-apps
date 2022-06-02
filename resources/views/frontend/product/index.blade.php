@@ -69,7 +69,7 @@
                                             <div class="clearfix product-price-cover">
                                                 <div class="product-price primary-color float-left">
                                                     <span class="current-price text-brand"
-                                                        style="font-size: 48px;">Rp.{{ number_format($product->price) }}</span>
+                                                        style="font-size: 48px;">Rp{{ number_format($product->price) }}</span>
                                                     {{-- <span>
                                                         <span class="save-price font-md color3 ml-15">26% Off</span>
                                                         <span class="old-price font-md ml-15">$52</span>
@@ -508,7 +508,7 @@
                                                                 <span> </span>
                                                             </div>
                                                             <div class="product-price">
-                                                                <span>Rp.{{ number_format($item->price) }} </span>
+                                                                <span>Rp{{ number_format($item->price) }} </span>
                                                                 {{-- <span class="old-price">$245.8</span> --}}
                                                             </div>
                                                         </div>
@@ -548,7 +548,7 @@
                                             <h6><a
                                                     href="{{ route('frontend.product', $item->slug) }}">{{ strlen($item->name) > 13 ? substr($item->name, 0, 13) . '...' : $item->name }}</a>
                                             </h6>
-                                            <p class="price mb-0 mt-5">Rp. {{ number_format($item->price) }}</p>
+                                            <p class="price mb-0 mt-5">Rp{{ number_format($item->price) }}</p>
                                             <div class="product-rate">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
