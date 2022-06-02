@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 // Front End Route
 Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
 Route::get('sub-kategori/{slug}', [ProductSubCategoryController::class, 'index'])->name('frontend.sub-category');
-Route::get('kategori/{slug}', [ProductSubCategoryController::class, 'index'])->name('frontend.category');
+Route::get('kategori/{slug}', [ProductCategoryController::class, 'index'])->name('frontend.category');
 Route::get('produk/{slug}', [ProductController::class, 'index'])->name('frontend.product');
 Route::get('wishlists', [WishlistController::class, 'index'])->name('frontend.wishlists')->middleware('customer.protected');
 Route::get('keranjang', [CartController::class, 'index'])->name('frontend.carts')->middleware('customer.protected');
@@ -35,7 +35,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('frontend.auth.register', ['title' => 'Registrasi']);
 })->middleware(['guest:' . config('fortify.guard')])->name('frontend.register');
-Route::get('categories/{slug}', [ProductCategoryController::class, 'index'])->name('frontend.categories');
 
 // Back End Route
 Route::get('cpanel/auth', function () {
