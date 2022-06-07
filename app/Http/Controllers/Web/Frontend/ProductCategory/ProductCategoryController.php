@@ -10,14 +10,15 @@ class ProductCategoryController extends Controller
 {
     public function index($slug)
     {
-        $productCategory = ProductCategory::where(['slug' => $slug, 'is_active' => true])->with('productSubCategory.product')->first();
-        //return dd($productCategory);
+
+        $productCategory = ProductCategory::where(['slug' => $slug, 'is_active' => true])->with('productSubCategory.product.seller')->first();
         $data = [
             'title' => $productCategory != null ? $productCategory->name : 'Kategori Tidak Ditemukan',
             'productCategory' => $productCategory,
-            'products' => $productCategory->productSubCategory != null ? $productCategory->productSubCategory->product : null,
+            'products' => $productCategory->productSubCategory != null ? $productCategory->productSubCategory : null,
         ];
+        // return dd($data['products']);
 
-        return view('frontend.categories.index', $data);
+        return view('frontend.category.index', $data);
     }
 }
