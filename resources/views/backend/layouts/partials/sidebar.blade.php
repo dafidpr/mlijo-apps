@@ -41,12 +41,12 @@
                     <span class="menu-item" data-i18n="Validasi Pembayaran">Validasi Pembayaran</span>
                 </a>
             </li>
-            @canany(['read-product-categories'])
+            @canany(['read-product-categories', 'read-product-sub-categories'])
                 <li class="navigation-header">
                     <span>General</span>
                 </li>
             @endcanany
-            @canany(['read-product-categories'])
+            @canany(['read-product-categories', 'read-product-sub-categories'])
                 <li class="nav-item"><a href="#"><i class="feather icon-server"></i><span class="menu-title"
                             data-i18n="Data Center">Data Center</span></a>
                     <ul class="menu-content">
@@ -62,9 +62,12 @@
                                         data-i18n="Kategori Produk">Kategori Produk</span></a>
                             </li>
                         @endcan
-                        <li><a href="#" data-toggle="ajax"><i class="feather icon-circle"></i><span class="menu-item"
-                                    data-i18n="Sub Kategori Produk">Sub Kategori Produk</span></a>
-                        </li>
+                        @can('read-product-sub-categories')
+                            <li><a href="{{ route('admin.product-sub-categories') }}" data-toggle="ajax"><i
+                                        class="feather icon-circle"></i><span class="menu-item"
+                                        data-i18n="Sub Kategori Produk">Sub Kategori Produk</span></a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endcanany

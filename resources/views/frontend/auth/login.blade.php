@@ -30,13 +30,15 @@
                                            <p class="mb-30">Belum punya akun ? <a
                                                    href="{{ route('frontend.register') }}">Buat Akun</a></p>
                                        </div>
-                                       <form method="post">
+                                       <form method="post" action="{{ route('frontend.login') }}" data-request="ajax"
+                                           data-redirect="true" data-success-callback="{{ route('check-point') }}">
+                                           @csrf
                                            <div class="form-group">
-                                               <input type="text" required="" name="email" placeholder="Username *"
-                                                   autocomplete="off" />
+                                               <input type="text" class="form-control" name="username"
+                                                   placeholder="Username *" autocomplete="off" />
                                            </div>
                                            <div class="form-group">
-                                               <input required="" type="password" name="password"
+                                               <input type="password" class="form-control" name="password"
                                                    placeholder="Password *" />
                                            </div>
                                            <div class="login_footer form-group mb-50">

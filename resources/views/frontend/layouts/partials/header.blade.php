@@ -153,7 +153,8 @@
                                                         class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
                                             </li>
                                             <li>
-                                                <a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>Sign
+                                                <a href="{{ route('logout') }}" data-toggle="logout"
+                                                    data-form="#formLogout"><i class="fi fi-rs-sign-out mr-10"></i>Sign
                                                     out</a>
                                             </li>
                                         </ul>
@@ -352,7 +353,8 @@
                                                     class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
                                         </li>
                                         <li>
-                                            <a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>Sign
+                                            <a href="{{ route('logout') }}" data-toggle="logout"
+                                                data-form="#formLogout"><i class="fi fi-rs-sign-out mr-10"></i>Sign
                                                 out</a>
                                         </li>
                                     </ul>
@@ -442,3 +444,7 @@
         </div>
     </div>
 </div>
+
+<form action="{{ route('logout') }}" method="post" id="formLogout">
+    @csrf
+</form>

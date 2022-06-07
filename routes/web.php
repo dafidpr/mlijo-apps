@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\Auth\CheckPointController;
 use App\Http\Controllers\Web\Backend\Auth\AuthController;
 use App\Http\Controllers\Web\Backend\Root\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Root\ProductCategory\ProductCategoryController as AppProductCategoryController;
+use App\Http\Controllers\Web\Backend\Root\ProductSubCategory\ProductSubCategoryController as AppProductSubCategoryController;
 use App\Http\Controllers\Web\Frontend\Cart\CartController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use App\Http\Controllers\Web\Frontend\Product\ProductController;
@@ -65,6 +66,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{productCategory}/update', [AppProductCategoryController::class, 'update'])->name('admin.product-categories.update')->middleware('can:update-product-categories');
             Route::delete('{productCategory}/delete', [AppProductCategoryController::class, 'destroy'])->name('admin.product-categories.delete')->middleware('can:delete-product-categories');
             Route::get('{productCategory}/update-status', [AppProductCategoryController::class, 'updateStatus'])->name('admin.product-categories.update-status')->middleware('can:update-product-categories');
+        });
+        // Product Sub Category Route
+        Route::prefix('product-sub-categories')->middleware('can:read-product-sub-categories')->group(function () {
+            Route::get('', [AppProductSubCategoryController::class, 'index'])->name('admin.product-sub-categories')->middleware('can:read-product-sub-categories');
+            Route::get('get-data', [AppProductSubCategoryController::class, 'getData'])->name('admin.product-sub-categories.get-data')->middleware('can:read-product-sub-categories');
+            Route::post('store', [AppProductSubCategoryController::class, 'store'])->name('admin.product-sub-categories.store')->middleware('can:create-product-sub-categories');
+            Route::get('{productSubCategory}/show', [AppProductSubCategoryController::class, 'show'])->name('admin.product-sub-categories.update')->middleware('can:update-product-sub-categories');
+            Route::post('{productSubCategory}/update', [AppProductSubCategoryController::class, 'update'])->name('admin.product-sub-categories.update')->middleware('can:update-product-sub-categories');
+            Route::delete('{productSubCategory}/delete', [AppProductSubCategoryController::class, 'destroy'])->name('admin.product-sub-categories.delete')->middleware('can:delete-product-sub-categories');
+            Route::get('{productSubCategory}/update-status', [AppProductSubCategoryController::class, 'updateStatus'])->name('admin.product-sub-categories.update-status')->middleware('can:update-product-sub-categories');
         });
     });
 });

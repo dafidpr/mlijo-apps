@@ -25,6 +25,11 @@ class PermissionSeeder extends Seeder
             ['name' => 'create-product-categories', 'label' => 'Buat Kategori Produk'],
             ['name' => 'update-product-categories', 'label' => 'Ubah Kategori Produk'],
             ['name' => 'delete-product-categories', 'label' => 'Hapus Kategori Produk'],
+            # Product Sub Category related permission
+            ['name' => 'read-product-sub-categories', 'label' => 'Baca Sub Kategori Produk'],
+            ['name' => 'create-product-sub-categories', 'label' => 'Buat Sub Kategori Produk'],
+            ['name' => 'update-product-sub-categories', 'label' => 'Ubah Sub Kategori Produk'],
+            ['name' => 'delete-product-sub-categories', 'label' => 'Hapus Sub Kategori Produk'],
         ]);
 
         $this->insertPermission($webPermission);
