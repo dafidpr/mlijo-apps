@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\Backend\Root\ProductCategory\ProductCategoryControl
 use App\Http\Controllers\Web\Backend\Root\ProductSubCategory\ProductSubCategoryController as AppProductSubCategoryController;
 use App\Http\Controllers\Web\Backend\Seller\Dashboard\DashboardController as AppDashboardController;
 use App\Http\Controllers\Web\Backend\Seller\Product\ProductController as AppProductController;
+use App\Http\Controllers\Web\Backend\Seller\Shipping\ShippingController;
 use App\Http\Controllers\Web\Frontend\Cart\CartController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use App\Http\Controllers\Web\Frontend\Product\ProductController;
@@ -99,6 +100,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{sellerCategory}/update', [StorefrontController::class, 'update'])->name('seller.storefronts.update')->middleware('can:update-seller-storefront');
             Route::delete('{sellerCategory}/delete', [StorefrontController::class, 'destroy'])->name('seller.storefronts.delete')->middleware('can:delete-seller-storefront');
             Route::get('{sellerCategory}/update-status', [StorefrontController::class, 'updateStatus'])->name('seller.storefronts.update-status')->middleware('can:update-seller-storefront');
+        });
+        // Shipping
+        Route::prefix('shippings')->middleware('can:read-seller-storefront')->group(function () {
+            Route::get('', [ShippingController::class, 'index'])->name('seller.shippings');
+            Route::post('store', [ShippingController::class, 'store'])->name('seller.shippings.store')->middleware('can:create-seller-shipping');
         });
     });
 });

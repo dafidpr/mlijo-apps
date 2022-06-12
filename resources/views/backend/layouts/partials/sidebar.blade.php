@@ -160,12 +160,14 @@
                         <span class="menu-item" data-i18n="Promo Toko">Promo Toko</span>
                     </a>
                 </li>
-                <li class=" nav-item">
-                    <a data-toggle="ajax" href="#">
-                        <i class="feather icon-truck"></i>
-                        <span class="menu-item" data-i18n="Pengiriman">Pengiriman</span>
-                    </a>
-                </li>
+                @can('read-seller-shipping')
+                    <li class=" nav-item">
+                        <a data-toggle="ajax" href="{{ route('seller.shippings') }}">
+                            <i class="feather icon-truck"></i>
+                            <span class="menu-item" data-i18n="Pengiriman">Pengiriman</span>
+                        </a>
+                    </li>
+                @endcan
                 <li class=" nav-item">
                     <a data-toggle="ajax" href="#">
                         <i class="feather icon-bar-chart"></i>
