@@ -61,7 +61,7 @@ class ShippingController extends Controller
             SellerShipping::insert($data);
             return response()->json(['status' => 'success', 'message' => 'Berhasil menyimpan data']);
         } catch (Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
         }
     }
 }

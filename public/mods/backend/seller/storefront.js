@@ -49,7 +49,7 @@ table = initTable('#dataTable', [{
     {
         name: 'id',
         data: 'hashid',
-        width: 150,
+        width: 200,
         sortable: false,
         mRender: function (data, type, row) {
             var render = ``
@@ -58,6 +58,7 @@ table = initTable('#dataTable', [{
                 if (userPermissions.includes('update-seller-storefront')) {
                     render += `<button class="btn btn-outline-primary btn-sm" onclick="editData('${data}')"><i class="feather icon-edit"></i></button> `
                 }
+                render += `<button class="btn btn-outline-info btn-sm" data-toggle="ajax" data-target="${window.location.href}/${data}/products"><i class="feather icon-shopping-bag"></i></button> `
 
                 if (userPermissions.includes('delete-seller-storefront')) {
                     render += `<button class="btn btn-outline-danger btn-sm" data-toggle="delete" data-id="${data}"><i class="feather icon-trash-2"></i></button> `

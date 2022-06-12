@@ -351,12 +351,12 @@ const initTable = (
     columnDefs = [],
     drawCallback = null,
     defaultOrder = [1, "desc"],
-    selecttable = false
+    selectable = false
 ) => {
     if (!$.fn.DataTable.isDataTable(el)) {
 
     }
-    var configuration = {
+    var config = {
         serverSide: true,
         processing: true,
         ajax: $(el).data("url"),
@@ -365,51 +365,115 @@ const initTable = (
         drawCallback,
     };
 
-    if (selecttable) {
-        configuration.columnDefs = [{
+    if (defaultOrder) {
+        config.order = defaultOrder
+    }
+
+    if (selectable) {
+        config.select = {
+            style: 'multi',
+            selector: '.dt-checkboxes-cell, .dt-checkboxes'
+        };
+
+        config.columnDefs = [{
             targets: 1,
-            className: 'select-checkbox',
             checkboxes: {
                 selectRow: true
-            }
-        }];
-        configuration.select = {
-            style: 'multi',
-            selector: 'td:nth-child(2)'
-        };
-        configuration.buttons = [{
-                text: 'Pilih Semua',
-                action: function () {
-                    table.rows().select();
-                }
             },
-            {
-                text: 'Batal',
-                action: function () {
-                    table.rows().deselect();
-                }
-            }
-        ];
-        configuration.dom = 'Bfrtip';
+        }, ];
     }
 
-    if (defaultOrder) {
-        configuration.order = defaultOrder;
-    }
-
-    const table = $(el).DataTable(configuration);
+    var table = $(el).DataTable(config)
 
     table.on("draw.dt", function () {
         handleEvent();
+        dataTablesCheckbockEvent()
     });
 
     table.on("responsive-display", function () {
         handleEvent();
+        dataTablesCheckbockEvent()
         drawCallback;
     });
 
+    const dataTablesCheckbockEvent = () => {
+        $('.dt-checkboxes-select-all').click(function () {
+            if ($(this).find('input[type="checkbox"]:checked').length) {
+                table.rows().select();
+            } else {
+                table.rows().deselect();
+            }
+        })
+    }
+
     return table;
 };
+
+
+// const initTable = (
+//     el,
+//     columnDefs = [],
+//     drawCallback = null,
+//     defaultOrder = [1, "desc"],
+//     selecttable = false
+// ) => {
+//     if (!$.fn.DataTable.isDataTable(el)) {
+
+//     }
+//     var configuration = {
+//         serverSide: true,
+//         processing: true,
+//         ajax: $(el).data("url"),
+//         columns: columnDefs,
+//         responsive: true,
+//         drawCallback,
+//     };
+
+//     if (selecttable) {
+//         configuration.columnDefs = [{
+//             targets: 1,
+//             className: 'select-checkbox',
+//             checkboxes: {
+//                 selectRow: true
+//             }
+//         }];
+//         configuration.select = {
+//             style: 'multi',
+//             selector: 'td:nth-child(2)'
+//         };
+//         configuration.buttons = [{
+//                 text: 'Pilih Semua',
+//                 action: function () {
+//                     table.rows().select();
+//                 }
+//             },
+//             {
+//                 text: 'Batal',
+//                 action: function () {
+//                     table.rows().deselect();
+//                 }
+//             }
+//         ];
+//         configuration.dom = 'Bfrtip';
+//     }
+
+//     if (defaultOrder) {
+//         configuration.order = defaultOrder;
+//     }
+
+//     const table = $(el).DataTable(configuration);
+
+//     table.on("draw.dt", function () {
+//         handleEvent();
+//     });
+
+//     table.on("responsive-display", function () {
+//         handleEvent();
+//         drawCallback;
+//     });
+
+//     return table;
+// };
 
 const sidebarIndicatorActive = () => {
     var controller = window.location.href.split("/")[4];

@@ -233,3 +233,7 @@ Select group
 .me-3 {
     margin-right: 1rem !important;
 }
+
+.dt-checkboxes {
+    pointer-events: none !important;
+}

@@ -15,6 +15,7 @@ use App\Http\Controllers\Web\Frontend\ProductSubCategory\ProductSubCategoryContr
 use App\Http\Controllers\Web\Frontend\Wishlist\WishlistController;
 use App\Http\Controllers\Web\Frontend\ProductCategory\ProductCategoryController;
 use App\Http\Controllers\Web\Backend\Seller\Storefront\StorefrontController;
+use App\Http\Controllers\Web\Backend\Seller\Storefront\StorefrontProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -100,6 +101,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{sellerCategory}/update', [StorefrontController::class, 'update'])->name('seller.storefronts.update')->middleware('can:update-seller-storefront');
             Route::delete('{sellerCategory}/delete', [StorefrontController::class, 'destroy'])->name('seller.storefronts.delete')->middleware('can:delete-seller-storefront');
             Route::get('{sellerCategory}/update-status', [StorefrontController::class, 'updateStatus'])->name('seller.storefronts.update-status')->middleware('can:update-seller-storefront');
+
+            Route::prefix('{sellerCategory}/products')->group(function () {
+                Route::get('', [StorefrontProductController::class, 'index'])->name('seller.storefronts.products');
+                Route::get('get-data', [StorefrontProductController::class, 'getData'])->name('seller.storefronts.products.get-data');
+                Route::get('get-data-product', [StorefrontProductController::class, 'getDataProduct'])->name('seller.storefronts.products.get-data-product');
+                Route::post('store', [StorefrontProductController::class, 'store'])->name('seller.storefronts.products.store');
+                Route::delete('{sellerProductCategory}/delete', [StorefrontProductController::class, 'destroy'])->name('seller.storefronts.products.destroy');
+            });
         });
         // Shipping
         Route::prefix('shippings')->middleware('can:read-seller-storefront')->group(function () {
