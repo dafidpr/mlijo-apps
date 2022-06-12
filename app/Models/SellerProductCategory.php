@@ -14,4 +14,14 @@ class SellerProductCategory extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function sellerCategory()
+    {
+        return $this->belongsTo(SellerCategory::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

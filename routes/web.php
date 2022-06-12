@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\Frontend\Product\ProductController;
 use App\Http\Controllers\Web\Frontend\ProductSubCategory\ProductSubCategoryController;
 use App\Http\Controllers\Web\Frontend\Wishlist\WishlistController;
 use App\Http\Controllers\Web\Frontend\ProductCategory\ProductCategoryController;
+use App\Http\Controllers\Web\Backend\Seller\Storefront\StorefrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,6 +89,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::prefix('products')->middleware('can:read-seller-products')->group(function () {
             Route::get('', [AppProductController::class, 'index'])->name('seller.products');
             Route::get('get-data', [AppProductController::class, 'getData'])->name('seller.products.get-data');
+        });
+        // Storefront
+        Route::prefix('storefronts')->middleware('can:read-seller-storefront')->group(function () {
+            Route::get('', [StorefrontController::class, 'index'])->name('seller.storefronts');
+            Route::get('get-data', [StorefrontController::class, 'getData'])->name('seller.storefronts.get-data');
+            Route::post('store', [StorefrontController::class, 'store'])->name('seller.storefronts.store')->middleware('can:create-seller-storefront');
+            Route::get('{sellerCategory}/show', [StorefrontController::class, 'show'])->name('seller.storefronts.update')->middleware('can:update-seller-storefront');
+            Route::post('{sellerCategory}/update', [StorefrontController::class, 'update'])->name('seller.storefronts.update')->middleware('can:update-seller-storefront');
+            Route::delete('{sellerCategory}/delete', [StorefrontController::class, 'destroy'])->name('seller.storefronts.delete')->middleware('can:delete-seller-storefront');
+            Route::get('{sellerCategory}/update-status', [StorefrontController::class, 'updateStatus'])->name('seller.storefronts.update-status')->middleware('can:update-seller-storefront');
         });
     });
 });

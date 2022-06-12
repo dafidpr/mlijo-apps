@@ -42,6 +42,7 @@ class RoleSeeder extends Seeder
         $seller->givePermissionTo([
             'read-seller-dashboards',
             'read-seller-products', 'create-seller-products', 'update-seller-products', 'delete-seller-products',
+            'read-seller-storefront', 'create-seller-storefront', 'update-seller-storefront', 'delete-seller-storefront',
         ]);
     }
 }

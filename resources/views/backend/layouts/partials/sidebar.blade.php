@@ -140,12 +140,14 @@
                 <li class="navigation-header">
                     <span>General</span>
                 </li>
-                <li class=" nav-item">
-                    <a data-toggle="ajax" href="#">
-                        <i class="feather icon-server"></i>
-                        <span class="menu-item" data-i18n="Etalase Toko">Etalase Toko</span>
-                    </a>
-                </li>
+                @can('read-seller-storefront')
+                    <li class=" nav-item">
+                        <a data-toggle="ajax" href="{{ route('seller.storefronts') }}">
+                            <i class="feather icon-server"></i>
+                            <span class="menu-item" data-i18n="Etalase Toko">Etalase Toko</span>
+                        </a>
+                    </li>
+                @endcan
                 <li class=" nav-item">
                     <a data-toggle="ajax" href="{{ route('seller.products') }}">
                         <i class="feather icon-database"></i>

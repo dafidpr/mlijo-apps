@@ -19,4 +19,9 @@ class SellerCategory extends Model
     {
         return $this->belongsTo(Seller::class);
     }
+
+    public function sellerProductCategory()
+    {
+        return $this->hasMany(SellerProductCategory::class);
+    }
 }
