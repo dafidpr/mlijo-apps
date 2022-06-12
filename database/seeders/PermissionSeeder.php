@@ -19,17 +19,23 @@ class PermissionSeeder extends Seeder
     {
         $webPermission = collect([
             # Dashboard related permission
-            ['name' => 'read-dashboard', 'label' => 'Baca Dashboard'],
+            ['name' => 'read-admin-dashboards', 'label' => 'Baca Dashboard Admin'],
+            ['name' => 'read-seller-dashboards', 'label' => 'Baca Dashboard Seller'],
             # Product Category related permission
-            ['name' => 'read-product-categories', 'label' => 'Baca Kategori Produk'],
-            ['name' => 'create-product-categories', 'label' => 'Buat Kategori Produk'],
-            ['name' => 'update-product-categories', 'label' => 'Ubah Kategori Produk'],
-            ['name' => 'delete-product-categories', 'label' => 'Hapus Kategori Produk'],
+            ['name' => 'read-admin-product-categories', 'label' => 'Baca Kategori Produk Admin'],
+            ['name' => 'create-admin-product-categories', 'label' => 'Buat Kategori Produk Admin'],
+            ['name' => 'update-admin-product-categories', 'label' => 'Ubah Kategori Produk Admin'],
+            ['name' => 'delete-admin-product-categories', 'label' => 'Hapus Kategori Produk Admin'],
             # Product Sub Category related permission
-            ['name' => 'read-product-sub-categories', 'label' => 'Baca Sub Kategori Produk'],
-            ['name' => 'create-product-sub-categories', 'label' => 'Buat Sub Kategori Produk'],
-            ['name' => 'update-product-sub-categories', 'label' => 'Ubah Sub Kategori Produk'],
-            ['name' => 'delete-product-sub-categories', 'label' => 'Hapus Sub Kategori Produk'],
+            ['name' => 'read-admin-product-sub-categories', 'label' => 'Baca Sub Kategori Produk Admin'],
+            ['name' => 'create-admin-product-sub-categories', 'label' => 'Buat Sub Kategori Produk Admin'],
+            ['name' => 'update-admin-product-sub-categories', 'label' => 'Ubah Sub Kategori Produk Admin'],
+            ['name' => 'delete-admin-product-sub-categories', 'label' => 'Hapus Sub Kategori Produk Admin'],
+            # Product related permission
+            ['name' => 'read-seller-products', 'label' => 'Baca  Produk Seller'],
+            ['name' => 'create-seller-products', 'label' => 'Buat  Produk Seller'],
+            ['name' => 'update-seller-products', 'label' => 'Ubah  Produk Seller'],
+            ['name' => 'delete-seller-products', 'label' => 'Hapus  Produk Seller'],
         ]);
 
         $this->insertPermission($webPermission);

@@ -30,14 +30,18 @@ class RoleSeeder extends Seeder
 
         // Give permission to role
         $developer->givePermissionTo([
-            'read-dashboard',
-            'read-product-categories', 'create-product-categories', 'update-product-categories', 'delete-product-categories',
-            'read-product-sub-categories', 'create-product-sub-categories', 'update-product-sub-categories', 'delete-product-sub-categories'
+            'read-admin-dashboards',
+            'read-admin-product-categories', 'create-admin-product-categories', 'update-admin-product-categories', 'delete-admin-product-categories',
+            'read-admin-product-sub-categories', 'create-admin-product-sub-categories', 'update-admin-product-sub-categories', 'delete-admin-product-sub-categories'
         ]);
         $adminsitrator->givePermissionTo([
-            'read-dashboard',
-            'read-product-categories', 'create-product-categories', 'update-product-categories', 'delete-product-categories',
-            'read-product-sub-categories', 'create-product-sub-categories', 'update-product-sub-categories', 'delete-product-sub-categories'
+            'read-admin-dashboards',
+            'read-admin-product-categories', 'create-admin-product-categories', 'update-admin-product-categories', 'delete-admin-product-categories',
+            'read-admin-product-sub-categories', 'create-admin-product-sub-categories', 'update-admin-product-sub-categories', 'delete-admin-product-sub-categories'
+        ]);
+        $seller->givePermissionTo([
+            'read-seller-dashboards',
+            'read-seller-products', 'create-seller-products', 'update-seller-products', 'delete-seller-products',
         ]);
     }
 }

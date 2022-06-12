@@ -79,7 +79,7 @@
                                         <div class="card-content">
                                             <div class="card-body pt-1 mb-3">
                                                 <form action="{{ url('/login') }}" method="post" data-request="ajax"
-                                                    data-success-callback="{{ route('admin.dashboards') }}"
+                                                    data-success-callback="{{ route('check-point') }}"
                                                     data-redirect="true">
                                                     @csrf
                                                     <fieldset

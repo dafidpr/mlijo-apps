@@ -20,7 +20,7 @@ class CheckPointController extends Controller
                 return redirect()->route('frontend.home');
                 break;
             case 'Seller':
-                abort(500);
+                return redirect()->route('seller.dashboards');
                 break;
             default:
                 return abort(403);

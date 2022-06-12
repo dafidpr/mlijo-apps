@@ -14,4 +14,9 @@ class Discount extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function discountProduct()
+    {
+        return $this->hasMany(DiscountProduct::class);
+    }
 }

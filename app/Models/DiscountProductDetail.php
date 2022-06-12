@@ -14,4 +14,14 @@ class DiscountProductDetail extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function discountProduct()
+    {
+        return $this->belongsTo(DiscountProduct::class);
+    }
+
+    public function productVariantDetail()
+    {
+        return $this->belongsTo(ProductVariantDetail::class);
+    }
 }

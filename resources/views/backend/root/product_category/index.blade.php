@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-content">
             <div class="card-body">
-                @can('create-product-categories')
+                @can('create-admin-product-categories')
                     <div class="col-12 text-right mb-2">
                         <button class="btn btn-primary btn-add waves-effect waves-light" data-toggle="modal"
                             data-target="#form-modal"><i class="feather icon-plus"></i> Tambah

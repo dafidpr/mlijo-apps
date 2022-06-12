@@ -113,7 +113,12 @@
                                         <div class="shopping-cart-footer">
                                             <div class="shopping-cart-total">
                                                 <h4>Total <span>Rp
-                                                        {{ number_format(getCart(false, 0, true)) }}</span></h4>
+                                                        @if (count(getCart(true)) > 0)
+                                                            {{ number_format(getCart(false, 0, true)) }}
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </span></h4>
                                             </div>
                                             <div class="shopping-cart-button">
                                                 <a href="{{ route('frontend.carts') }}" class="outline">View
