@@ -47,8 +47,8 @@ table = initTable('#dataTable', [{
         mRender: function (data, type, row) {
             return `
                 <div class="custom-control custom-switch switch-lg custom-switch-primary">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch9" ${(data) ? 'checked' : ''} onchange="updateStatus('${row.hashid}')">
-                    <label class="custom-control-label" for="customSwitch9">
+                    <input type="checkbox" class="custom-control-input" id="${row.hashid}" ${(data) ? 'checked' : ''} onchange="updateStatus('${row.hashid}')">
+                    <label class="custom-control-label" for="${row.hashid}">
                         <span class="switch-text-left">Aktif</span>
                         <span class="switch-text-right">Tidak Aktif</span>
                     </label>
