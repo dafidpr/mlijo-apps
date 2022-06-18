@@ -46,6 +46,7 @@ class RoleSeeder extends Seeder
             'read-seller-shipping', 'create-seller-shipping',
             'read-seller-setting', 'update-seller-setting',
             'read-seller-order', 'update-seller-order',
+            'read-seller-income',
         ]);
     }
 }

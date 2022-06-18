@@ -164,12 +164,14 @@
                         </a>
                     </li>
                 @endcan
-                <li class=" nav-item">
-                    <a data-toggle="ajax" href="#">
-                        <i class="feather icon-bar-chart"></i>
-                        <span class="menu-item" data-i18n="Laporan Saya">Laporan Saya</span>
-                    </a>
-                </li>
+                @can('read-seller-income')
+                    <li class=" nav-item">
+                        <a data-toggle="ajax" href="{{ route('seller.incomes') }}">
+                            <i class="feather icon-bar-chart"></i>
+                            <span class="menu-item" data-i18n="Penghasilan Saya">Penghasilan Saya</span>
+                        </a>
+                    </li>
+                @endcan
                 <li class="navigation-header">
                     <span>Setting</span>
                 </li>

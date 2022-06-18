@@ -26,8 +26,8 @@
                         aria-selected="true"><i class="feather icon-file-text"></i> Catatan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="scholarship-use-tab-justified" data-toggle="tab"
-                        href="#scholarship-use-just" role="tab" aria-controls="profile-just" aria-selected="true"><i
+                    <a class="nav-link" id="scholarship-use-tab-justified" data-toggle="tab" href="#scholarship-use-just"
+                        role="tab" aria-controls="profile-just" aria-selected="true"><i
                             class="feather icon-map-pin"></i> Lokasi</a>
                 </li>
             </ul>
@@ -76,7 +76,8 @@
                     </div>
                     <div class="form-selectgroup form-selectgroup-pills">
                         <label class="form-selectgroup-item">
-                            <input type="radio" name="icons" value="home" class="form-selectgroup-input" checked="">
+                            <input type="radio" name="icons" value="home" class="form-selectgroup-input"
+                                checked="">
                             <span class="form-selectgroup-label pl-1 pr-1">
                                 Buka Toko
                             </span>
@@ -170,15 +171,17 @@
                             data-target="#form-modal"><i class="feather icon-plus"></i> Tambah Catatan</button>
                     </div>
                     <div class="row">
-                        <table class="table zero-configuration" id="noteTable"
-                            data-url="{{ route('seller.settings.get-notes') }}" width="100%">
-                            <thead>
-                                <th>No.</th>
-                                <th>Judul</th>
-                                <th>Catatan</th>
-                                <th></th>
-                            </thead>
-                        </table>
+                        <div class="col-md-12">
+                            <table class="table zero-configuration" id="noteTable"
+                                data-url="{{ route('seller.settings.get-notes') }}" width="100%">
+                                <thead>
+                                    <th>No.</th>
+                                    <th>Judul</th>
+                                    <th>Catatan</th>
+                                    <th></th>
+                                </thead>
+                            </table>
+                        </div>
 
                     </div>
                 </div>

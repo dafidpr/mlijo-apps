@@ -50,6 +50,8 @@ class PermissionSeeder extends Seeder
             # Seller Order related permission
             ['name' => 'read-seller-order', 'label' => 'Baca  Order Seller'],
             ['name' => 'update-seller-order', 'label' => 'Ubah  Order Seller'],
+            # Seller Income related permission
+            ['name' => 'read-seller-income', 'label' => 'Baca  Penghasilan Seller'],
         ]);
 
         $this->insertPermission($webPermission);

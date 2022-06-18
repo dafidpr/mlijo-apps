@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Backend\Root\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Root\ProductCategory\ProductCategoryController as AppProductCategoryController;
 use App\Http\Controllers\Web\Backend\Root\ProductSubCategory\ProductSubCategoryController as AppProductSubCategoryController;
 use App\Http\Controllers\Web\Backend\Seller\Dashboard\DashboardController as AppDashboardController;
+use App\Http\Controllers\Web\Backend\Seller\Income\IncomeController;
 use App\Http\Controllers\Web\Backend\Seller\Order\OrderController;
 use App\Http\Controllers\Web\Backend\Seller\Product\ProductController as AppProductController;
 use App\Http\Controllers\Web\Backend\Seller\Setting\SellerSettingController;
@@ -128,6 +129,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{order}/show-tracking', [OrderController::class, 'showTracking'])->name('seller.orders.show-tracking');
             Route::get('{order}/get-products', [OrderController::class, 'getDataProducts'])->name('seller.orders.get-data-products');
             Route::get('{order}/invoice', [OrderController::class, 'invoice'])->name('seller.orders.invoice');
+        });
+        // Income
+        Route::prefix('incomes')->middleware('can:read-seller-income')->group(function () {
+            Route::get('', [IncomeController::class, 'index'])->name('seller.incomes');
+            Route::get('get-release-income', [IncomeController::class, 'getReleaseIncome'])->name('seller.incomes.get-release-income');
+            Route::get('get-not-release-income', [IncomeController::class, 'getNotReleaseIncome'])->name('seller.incomes.get-not-release-income');
         });
         // Setting
         Route::prefix('settings')->middleware('can:read-seller-setting')->group(function () {

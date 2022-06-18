@@ -14,54 +14,7 @@ table = initTable('#dataTable', [{
             if (row.order_detail[0].discount > 0) {
                 discount = (row.order_detail[0].discount / (row.order_detail[0].price * row.order_detail[0].quantity)) * 100;
             }
-            let status = '';
-            let icon = '';
-            let color = '';
-            switch (row.status_order) {
-                case 'pending':
-                    if (row.payment_status == 'pending') {
-                        color = 'warning';
-                        icon = 'clock';
-                        status = 'Menunggu Pembayaran';
-                        break;
-                    }
-                    color = 'warning';
-                    icon = 'truck';
-                    status = 'Siap Kirim';
-                    break;
-                case 'processing':
-                    color = 'warning';
-                    icon = 'clock';
-                    status = 'Dikemas';
-                    break;
-                case 'shipping':
-                    color = 'info';
-                    icon = 'truck';
-                    status = 'Sedang Dikirim';
-                    break;
-                case 'delivered':
-                    color = 'success';
-                    icon = 'shopping-bag';
-                    status = 'Pesanan Sampai';
-                    break;
-                case 'canceled':
-                    color = 'danger';
-                    icon = 'x-circle';
-                    status = 'Pesanan Dicancel';
-
-                    break;
-                case 'done':
-                    color = 'success';
-                    icon = 'check-circle';
-                    status = 'Pesanan Selesai';
-                    break;
-
-                default:
-                    color = 'danger';
-                    icon = 'x-circle';
-                    status = 'Pesanan Gagal';
-                    break;
-            }
+            let statusOrder = generateOrderStatus(row.status_order, row.payment_status);
             let button = '';
             button += ` <a href="${window.location.href}/${row.hashid}/invoice" data-toggle="ajax" class="btn-sm font-weight-bold btn btn-flat-dark waves-effect waves-light">
                             <i class="feather icon-printer"></i> 
@@ -100,9 +53,9 @@ table = initTable('#dataTable', [{
             let html = `<div class="">
                         <div class="row mb-2">
                             <div class="col-md-12">
-                                <span class="badge badge-light-${color} pl-1 pr-1">
-                                    <i class="feather icon-${icon}"></i>
-                                    <strong>${status}</strong>
+                                <span class="badge badge-light-${statusOrder.color} pl-1 pr-1">
+                                    <i class="feather icon-${statusOrder.icon}"></i>
+                                    <strong>${statusOrder.status}</strong>
                                 </span> /
                                 <strong class="text-success">${row.order_code}</strong>
                                 <span class="ml-1">
@@ -447,4 +400,58 @@ function showProducts(hashid) {
 
     $('#product-modal').modal('show');
 
+}
+
+function generateOrderStatus(orderStatus, paymentStatus) {
+    let data = {
+        status: '',
+        icon: '',
+        color: '',
+    };
+    switch (orderStatus) {
+        case 'pending':
+            if (paymentStatus == 'pending') {
+                data.color = 'warning';
+                data.icon = 'clock';
+                data.status = 'Menunggu Pembayaran';
+                break;
+            }
+            data.color = 'warning';
+            data.icon = 'truck';
+            data.status = 'Siap Kirim';
+            break;
+        case 'processing':
+            data.color = 'warning';
+            data.icon = 'clock';
+            data.status = 'Dikemas';
+            break;
+        case 'shipping':
+            data.color = 'info';
+            data.icon = 'truck';
+            data.status = 'Sedang Dikirim';
+            break;
+        case 'delivered':
+            data.color = 'success';
+            data.icon = 'shopping-bag';
+            data.status = 'Pesanan Sampai';
+            break;
+        case 'canceled':
+            data.color = 'danger';
+            data.icon = 'x-circle';
+            data.status = 'Pesanan Dicancel';
+
+            break;
+        case 'done':
+            data.color = 'success';
+            data.icon = 'check-circle';
+            data.status = 'Pesanan Selesai';
+            break;
+
+        default:
+            data.color = 'danger';
+            data.icon = 'x-circle';
+            data.status = 'Pesanan Gagal';
+            break;
+    }
+    return data;
 }
