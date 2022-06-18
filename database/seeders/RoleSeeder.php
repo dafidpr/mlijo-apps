@@ -44,6 +44,8 @@ class RoleSeeder extends Seeder
             'read-seller-products', 'create-seller-products', 'update-seller-products', 'delete-seller-products',
             'read-seller-storefront', 'create-seller-storefront', 'update-seller-storefront', 'delete-seller-storefront',
             'read-seller-shipping', 'create-seller-shipping',
+            'read-seller-setting', 'update-seller-setting',
+            'read-seller-order', 'update-seller-order',
         ]);
     }
 }

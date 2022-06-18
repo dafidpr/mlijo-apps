@@ -123,20 +123,16 @@
                     </a>
                 </li>
                 <li class="navigation-header">
-                    <span>Transaksi</span>
+                    <span>Pesanan</span>
                 </li>
-                <li class=" nav-item">
-                    <a data-toggle="ajax" href="#">
-                        <i class="feather icon-shopping-bag"></i>
-                        <span class="menu-item" data-i18n="Pesanan">Pesanan</span>
-                    </a>
-                </li>
-                <li class=" nav-item">
-                    <a data-toggle="ajax" href="#">
-                        <i class="feather icon-repeat"></i>
-                        <span class="menu-item" data-i18n="Daftar Transaksi">Daftar Transaksi</span>
-                    </a>
-                </li>
+                @can('read-seller-order')
+                    <li class=" nav-item">
+                        <a data-toggle="ajax" href="{{ route('seller.orders') }}">
+                            <i class="feather icon-shopping-bag"></i>
+                            <span class="menu-item" data-i18n="Pesanan">Pesanan</span>
+                        </a>
+                    </li>
+                @endcan
                 <li class="navigation-header">
                     <span>General</span>
                 </li>
@@ -177,12 +173,14 @@
                 <li class="navigation-header">
                     <span>Setting</span>
                 </li>
-                <li class=" nav-item">
-                    <a data-toggle="ajax" href="#">
-                        <i class="feather icon-settings"></i>
-                        <span class="menu-item" data-i18n="Pengaturan">Pengaturan</span>
-                    </a>
-                </li>
+                @can('read-seller-setting')
+                    <li class=" nav-item">
+                        <a data-toggle="ajax" href="{{ route('seller.settings') }}">
+                            <i class="feather icon-settings"></i>
+                            <span class="menu-item" data-i18n="Pengaturan">Pengaturan</span>
+                        </a>
+                    </li>
+                @endcan
             @endrole
 
         </ul>

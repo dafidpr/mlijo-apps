@@ -24,4 +24,9 @@ class DiscountProductDetail extends Model
     {
         return $this->belongsTo(ProductVariantDetail::class);
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

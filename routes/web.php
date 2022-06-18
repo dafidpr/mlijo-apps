@@ -6,7 +6,9 @@ use App\Http\Controllers\Web\Backend\Root\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Root\ProductCategory\ProductCategoryController as AppProductCategoryController;
 use App\Http\Controllers\Web\Backend\Root\ProductSubCategory\ProductSubCategoryController as AppProductSubCategoryController;
 use App\Http\Controllers\Web\Backend\Seller\Dashboard\DashboardController as AppDashboardController;
+use App\Http\Controllers\Web\Backend\Seller\Order\OrderController;
 use App\Http\Controllers\Web\Backend\Seller\Product\ProductController as AppProductController;
+use App\Http\Controllers\Web\Backend\Seller\Setting\SellerSettingController;
 use App\Http\Controllers\Web\Backend\Seller\Shipping\ShippingController;
 use App\Http\Controllers\Web\Frontend\Cart\CartController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
@@ -114,6 +116,23 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::prefix('shippings')->middleware('can:read-seller-storefront')->group(function () {
             Route::get('', [ShippingController::class, 'index'])->name('seller.shippings');
             Route::post('store', [ShippingController::class, 'store'])->name('seller.shippings.store')->middleware('can:create-seller-shipping');
+        });
+        // Order
+        Route::prefix('orders')->middleware('can:read-seller-order')->group(function () {
+            Route::get('', [OrderController::class, 'index'])->name('seller.orders');
+            Route::get('get-data', [OrderController::class, 'getData'])->name('seller.orders.get-data');
+            Route::get('{order}/show', [OrderController::class, 'show'])->name('seller.orders.show');
+            Route::post('{order}/store-receipt', [OrderController::class, 'storeReceipt'])->name('seller.orders.store-receipt');
+            Route::get('{order}/update-status/{status}', [OrderController::class, 'updateStatusOrder'])->name('seller.orders.update-status-order');
+            Route::post('{order}/store-status', [OrderController::class, 'storeStatus'])->name('seller.orders.store-status');
+            Route::get('{order}/show-tracking', [OrderController::class, 'showTracking'])->name('seller.orders.show-tracking');
+            Route::get('{order}/get-products', [OrderController::class, 'getDataProducts'])->name('seller.orders.get-data-products');
+            Route::get('{order}/invoice', [OrderController::class, 'invoice'])->name('seller.orders.invoice');
+        });
+        // Setting
+        Route::prefix('settings')->middleware('can:read-seller-setting')->group(function () {
+            Route::get('', [SellerSettingController::class, 'index'])->name('seller.settings');
+            Route::get('get-notes', [SellerSettingController::class, 'getNotes'])->name('seller.settings.get-notes');
         });
     });
 });

@@ -18,7 +18,7 @@
 </div>
 
 <script>
-    document.title = "{{ $title . ' - Mlijo Mart & Grocery' }}";
+    document.title = "{{ $title . ' - Mlijo Mart and Grocery' }}";
 
     if (!window.jQuery) {
         document.body.innerHTML = "";

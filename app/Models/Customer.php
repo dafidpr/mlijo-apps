@@ -23,4 +23,9 @@ class Customer extends Model
     {
         return $this->morphMany(Address::class, 'addressable');
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

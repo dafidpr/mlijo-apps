@@ -44,6 +44,12 @@ class PermissionSeeder extends Seeder
             # Shipping related permission
             ['name' => 'read-seller-shipping', 'label' => 'Baca  Pengiriman Toko'],
             ['name' => 'create-seller-shipping', 'label' => 'Buat  Pengiriman Toko'],
+            # Seller Setting related permission
+            ['name' => 'read-seller-setting', 'label' => 'Baca  Pengaturan Toko'],
+            ['name' => 'update-seller-setting', 'label' => 'Ubah  Pengaturan Toko'],
+            # Seller Order related permission
+            ['name' => 'read-seller-order', 'label' => 'Baca  Order Seller'],
+            ['name' => 'update-seller-order', 'label' => 'Ubah  Order Seller'],
         ]);
 
         $this->insertPermission($webPermission);

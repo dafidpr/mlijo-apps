@@ -37,4 +37,9 @@ class Seller extends Model
     {
         return $this->hasMany(SellerNote::class);
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

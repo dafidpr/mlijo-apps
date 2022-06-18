@@ -19,4 +19,34 @@ class Order extends Model
     {
         return $this->hasMany(OrderDetail::class);
     }
+
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+
+    public function shipping()
+    {
+        return $this->belongsTo(Shipping::class);
+    }
+
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function orderAddress()
+    {
+        return $this->hasOne(OrderAddress::class);
+    }
+
+    public function orderTracking()
+    {
+        return $this->hasMany(OrderTracking::class);
+    }
 }
