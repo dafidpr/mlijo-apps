@@ -35,15 +35,19 @@ table = initTable('#dataTable', [{
         name: 'is_active',
         data: 'is_active',
         mRender: function (data, type, row) {
-            return `
-                <div class="custom-control custom-switch switch-lg custom-switch-primary">
-                    <input type="checkbox" class="custom-control-input" id="${row.hashid}" ${(data) ? 'checked' : ''} onchange="updateStatus('${row.hashid}')">
-                    <label label class = "custom-control-label" for="${row.hashid}">
-                        <span class="switch-text-left">Aktif</span>
-                        <span class="switch-text-right">Tidak Aktif</span>
-                    </label>
-                </div>
-            `
+            let render = ``;
+            if (row.is_default == 0) {
+                render = `
+                    <div class="custom-control custom-switch switch-lg custom-switch-primary">
+                        <input type="checkbox" class="custom-control-input" id="${row.hashid}" ${(data) ? 'checked' : ''} onchange="updateStatus('${row.hashid}')">
+                        <label label class = "custom-control-label" for="${row.hashid}">
+                            <span class="switch-text-left">Aktif</span>
+                            <span class="switch-text-right">Tidak Aktif</span>
+                        </label>
+                    </div>
+                `
+            }
+            return render;
         }
     },
     {

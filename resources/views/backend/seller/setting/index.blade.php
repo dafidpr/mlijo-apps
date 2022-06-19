@@ -43,52 +43,62 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5>Nama Toko</h5>
-                                    <p>Sayurini</p>
+                                    <p>{{ $setting->store_name }}</p>
                                     <h5>Domain Toko</h5>
-                                    <p>www.tokopedia.com/<strong>sayurini</strong> </p>
+                                    <p>www.mlijo.com/<strong>{{ $setting->store_slug }}</strong> </p>
                                     <div class="form-group">
-                                        <button type="button"
-                                            class="btn btn-light waves-effect waves-float waves-light">Ubah</button>
+                                        <button type="button" class="btn btn-light waves-effect waves-float waves-light"
+                                            onclick="showInfo('{{ $setting->hashid }}')">Ubah</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Slogan</label>
-                                <input type="text" class="form-control" id="" name="slogan">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Deskripsi</label>
-                                <textarea name="description" id="description" class="form-control" cols="30" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <div class="text-right">
-                                    <button type="submit"
-                                        class="btn btn-primary waves-effect waves-float waves-light">Simpan</button>
+                            <form action="{{ route('seller.settings.update-slogan') }}" method="post"
+                                data-success-callback="{{ route('seller.settings') }}" data-request="ajax">
+                                <div class="form-group">
+                                    <label for="">Slogan</label>
+                                    <input type="text" class="form-control" id="slogan" name="slogan"
+                                        value="{{ $setting->store_slogan }}">
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="">Deskripsi</label>
+                                    <textarea name="description" id="description" class="form-control" cols="30" rows="3">{{ $setting->store_description }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-right">
+                                        <button type="submit"
+                                            class="btn btn-primary waves-effect waves-float waves-light">Simpan</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="mb-2">
                         <h4 class="font-weight-bold">Status</h4>
                         <p>Status toko.</p>
                     </div>
-                    <div class="form-selectgroup form-selectgroup-pills">
-                        <label class="form-selectgroup-item">
-                            <input type="radio" name="icons" value="home" class="form-selectgroup-input"
-                                checked="">
-                            <span class="form-selectgroup-label pl-1 pr-1">
-                                Buka Toko
-                            </span>
-                        </label>
-                        <label class="form-selectgroup-item">
-                            <input type="radio" name="icons" value="user" class="form-selectgroup-input">
-                            <span class="form-selectgroup-label pl-1 pr-1">
-                                Tutup Toko
-                            </span>
-                        </label>
-                    </div>
+                    @if ($setting->status == 'banned')
+                        <span class="badge badge-light-danger pl-1 pr-1 pt-1 pb-1 rounded-pill"><i
+                                class="feather icon-x-circle"></i> <strong>Banned</strong> </span>
+                    @else
+                        <div class="form-selectgroup form-selectgroup-pills">
+                            <label class="form-selectgroup-item">
+                                <input type="radio" name="status" value="open" class="form-selectgroup-input"
+                                    {{ $setting->status == 'open' ? 'checked' : '' }}>
+                                <span class="form-selectgroup-label pl-1 pr-1">
+                                    Buka Toko
+                                </span>
+                            </label>
+                            <label class="form-selectgroup-item">
+                                <input type="radio" name="status" value="close" class="form-selectgroup-input"
+                                    {{ $setting->status == 'close' ? 'checked' : '' }}>
+                                <span class="form-selectgroup-label pl-1 pr-1">
+                                    Tutup Toko
+                                </span>
+                            </label>
+                        </div>
+                    @endif
                     <hr class="mt-3 mb-3">
                     <div class="row">
                         <div class="col-md-6">
@@ -99,12 +109,13 @@
                                     Ekstensi file yang diperbolehkan: JPG, JPEG, PNG.</p>
                             </div>
                             <div class="col-md-4">
-                                <img src="https://blog.skillacademy.com/hs-fs/hubfs/brand-ambassador-adalah.jpg?width=820&name=brand-ambassador-adalah.jpg"
+                                <img src="{{ asset('storage/images/sellers/' . $setting->store_profile_path) }}"
                                     class="rounded float-start" alt="..."
                                     style="width: 100% !important;height: 160px !important;object-fit: cover !important;">
                                 <div class="mt-2">
                                     <button type="button"
-                                        class="btn btn-light waves-effect waves-float waves-light btn-block">Pilih
+                                        class="btn btn-light waves-effect waves-float waves-light btn-block"
+                                        data-toggle="modal" data-target="#profile-modal">Pilih
                                         Foto</button>
                                 </div>
                             </div>
@@ -117,12 +128,13 @@
                                     Ekstensi file yang diperbolehkan: JPG, JPEG, PNG.</p>
                             </div>
                             <div class="col-md-4">
-                                <img src="https://blog.skillacademy.com/hs-fs/hubfs/brand-ambassador-adalah.jpg?width=820&name=brand-ambassador-adalah.jpg"
+                                <img src="{{ asset('storage/images/sellers/' . $setting->store_cover_path) }}"
                                     class="rounded float-start" alt="..."
                                     style="width: 100% !important;height: 160px !important;object-fit: cover !important;">
                                 <div class="mt-2">
                                     <button type="button"
-                                        class="btn btn-light waves-effect waves-float waves-light btn-block">Pilih
+                                        class="btn btn-light waves-effect waves-float waves-light btn-block"
+                                        data-toggle="modal" data-target="#cover-modal">Pilih
                                         Foto</button>
                                 </div>
                             </div>
@@ -133,32 +145,40 @@
                         <h4 class="font-weight-bold">Sosial Media</h4>
                         <p>Sosial media toko.</p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Twitter</label>
-                                <input type="text" class="form-control" id="" name="twitter">
+                    <form action="{{ route('seller.settings.update-social') }}" method="post"
+                        data-success-callback="{{ route('seller.settings') }}" data-request="ajax">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="">Twitter</label>
+                                    <input type="text" class="form-control" id="twitter" name="twitter"
+                                        value="{{ $setting->twitter }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Instagram</label>
+                                    <input type="text" class="form-control" id="instagram" name="instagram"
+                                        value="{{ $setting->instagram }}">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="">Instagram</label>
-                                <input type="text" class="form-control" id="" name="instagram">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Facebook</label>
+                                    <input type="text" class="form-control" id="facebook" name="facebook"
+                                        value="{{ $setting->facebook }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">TikTok</label>
+                                    <input type="text" class="form-control" id="tiktok" name="tiktok"
+                                        value="{{ $setting->tiktok }}">
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit"
+                                        class="btn btn-primary waves-effect waves-float waves-light">Simpan</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Facebook</label>
-                                <input type="text" class="form-control" id="" name="facebook">
-                            </div>
-                            <div class="form-group">
-                                <label for="">TikTok</label>
-                                <input type="text" class="form-control" id="" name="tiktok">
-                            </div>
-                            <div class="text-right">
-                                <button type="submit"
-                                    class="btn btn-primary waves-effect waves-float waves-light">Simpan</button>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="tab-pane" id="scholarship-disbursement-just" role="tabpanel"
                     aria-labelledby="scholarship-disbursement-tab-justified">
@@ -197,4 +217,7 @@
             </div>
         </div>
     </div>
+    @include('backend.seller.setting.partials.store-info')
+    @include('backend.seller.setting.partials.cover-photo')
+    @include('backend.seller.setting.partials.profile-photo')
 @endsection

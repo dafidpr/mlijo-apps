@@ -68,7 +68,7 @@
             <div class="col-lg-12 col-md-6 col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-end">
-                        <h4 class="card-title">Bisnis Saya</h4>
+                        <h4 class="card-title">Bisnis Saya ({{ date('Y') }})</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body pb-0" style="position: relative;">

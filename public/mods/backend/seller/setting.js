@@ -34,3 +34,68 @@ dtNoteTable = initTable('#noteTable', [{
         }
     }
 ]);
+
+$('input[type=radio][name=status]').change(function () {
+    swal.fire({
+        title: `Ubah status toko ?`,
+        icon: "warning",
+        text: "Aksi ini tidak dapat dibatalkan",
+        showConfirmButton: true,
+        confirmButtonText: `Ya, Ubah`,
+        confirmButtonColor: "#3BB77E",
+        showCancelButton: true,
+        cancelButtonText: "Batal",
+    }).then(async (rs) => {
+        if (rs.isConfirmed) {
+            swal.fire({
+                title: "Please Wait",
+                html: "Processing...",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    swal.showLoading();
+                },
+            });
+
+            const res = await fetch(
+                `${window.location.href}/update-status/${this.value}`
+            );
+
+            swal.close();
+            if (res.status == 200) {
+                var data = await res.json();
+                notify("success", data.message);
+
+                if (typeof table == "undefined") handleView();
+                else table.ajax.reload();
+            } else {
+                if (res.status == 401) {
+                    window.location.reload();
+                } else {
+                    var data = await res.json();
+                    notify("warning", data.message);
+                }
+            }
+        }
+    });
+});
+
+function showInfo(hashid) {
+    fetch(`${window.location.href}/get-info`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.status == 'success') {
+                $('#name').val(data.data.store_name)
+                $('#domain').val(data.data.store_slug)
+                $('#store-modal').modal('show');
+            }
+        })
+        .catch(err => {
+            notify("warning", err);
+        });
+
+}
+
+
+$(function () {
+    $('.dropify').dropify();
+})

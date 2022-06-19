@@ -143,6 +143,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::prefix('settings')->middleware('can:read-seller-setting')->group(function () {
             Route::get('', [SellerSettingController::class, 'index'])->name('seller.settings');
             Route::get('get-notes', [SellerSettingController::class, 'getNotes'])->name('seller.settings.get-notes');
+            Route::get('get-info', [SellerSettingController::class, 'showInformation'])->name('seller.settings.get-info');
+            Route::get('update-status/{status}', [SellerSettingController::class, 'updateStatus'])->name('seller.settings.update-status');
+            Route::post('update-slogan', [SellerSettingController::class, 'updateSlogan'])->name('seller.settings.update-slogan');
+            Route::post('update-social', [SellerSettingController::class, 'updateSocial'])->name('seller.settings.update-social');
+            Route::post('update-info', [SellerSettingController::class, 'updateInfo'])->name('seller.settings.update-info');
+            Route::post('update-profile', [SellerSettingController::class, 'updateProfile'])->name('seller.settings.update-profile');
+            Route::post('update-cover', [SellerSettingController::class, 'updateCover'])->name('seller.settings.update-cover');
         });
     });
 });
