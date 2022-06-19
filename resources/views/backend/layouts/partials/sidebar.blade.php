@@ -116,12 +116,14 @@
                 </li>
             @endhasrole
             @role('Seller')
-                <li class=" nav-item">
-                    <a data-toggle="ajax" href="{{ route('seller.dashboards') }}">
-                        <i class="feather icon-home"></i>
-                        <span class="menu-title" data-i18n="Dashboard">Dashboard</span>
-                    </a>
-                </li>
+                @can('read-seller-dashboards')
+                    <li class=" nav-item">
+                        <a data-toggle="ajax" href="{{ route('seller.dashboards') }}">
+                            <i class="feather icon-home"></i>
+                            <span class="menu-title" data-i18n="Dashboard">Dashboard</span>
+                        </a>
+                    </li>
+                @endcan
                 <li class="navigation-header">
                     <span>Pesanan</span>
                 </li>

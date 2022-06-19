@@ -88,7 +88,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     });
 
     Route::prefix('seller')->middleware('role:Seller')->group(function () {
-        Route::get('dashboard', [AppDashboardController::class, 'index'])->name('seller.dashboards');
+        Route::prefix('dashboard')->middleware('can:read-seller-dashboards')->group(function () {
+            Route::get('', [AppDashboardController::class, 'index'])->name('seller.dashboards');
+            Route::get('sales-chart', [AppDashboardController::class, 'getSaleChart'])->name('seller.dashboards.get-sales-chart');
+        });
 
         // Product
         Route::prefix('products')->middleware('can:read-seller-products')->group(function () {
