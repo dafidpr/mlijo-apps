@@ -97,6 +97,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::prefix('products')->middleware('can:read-seller-products')->group(function () {
             Route::get('', [AppProductController::class, 'index'])->name('seller.products');
             Route::get('get-data', [AppProductController::class, 'getData'])->name('seller.products.get-data');
+            Route::get('create', [AppProductController::class, 'create'])->name('seller.products.create')->middleware('can:create-seller-products');
+            Route::get('{productCategory}/get-sub-categories', [AppProductController::class, 'getSubCategories'])->name('seller.products.get-sub-categories');
+            Route::post('store', [AppProductController::class, 'store'])->name('seller.products.store')->middleware('can:create-seller-products');
+            Route::get('{product}/edit', [AppProductController::class, 'edit'])->name('seller.products.edit')->middleware('can:update-seller-products');
+            Route::get('{product}/get-product-images', [AppProductController::class, 'getProductImages'])->name('seller.products.get-product-images');
+            Route::delete('{productImage}/delete-product-images', [AppProductController::class, 'deleteProductImages'])->name('seller.products.delete-product-images');
+            Route::post('{product}/update', [AppProductController::class, 'update'])->name('seller.products.update')->middleware('can:update-seller-products');
+            Route::delete('{product}/delete', [AppProductController::class, 'destroy'])->name('seller.products.destroy')->middleware('can:delete-seller-products');
         });
         // Storefront
         Route::prefix('storefronts')->middleware('can:read-seller-storefront')->group(function () {

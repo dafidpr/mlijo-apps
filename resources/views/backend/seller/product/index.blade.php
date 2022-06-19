@@ -17,8 +17,9 @@
             <div class="card-body">
                 @can('create-seller-products')
                     <div class="col-12 text-right mb-2">
-                        <button class="btn btn-primary btn-add waves-effect waves-light" data-toggle="modal"
-                            data-target="#form-modal"><i class="feather icon-plus"></i> Tambah Produk</button>
+                        <a href="{{ route('seller.products.create') }}" data-toggle="ajax"
+                            class="btn btn-primary btn-add waves-effect waves-light"><i class="feather icon-plus"></i> Tambah
+                            Produk</a>
                     </div>
                 @endcan
                 <table class="table zero-configuration" id="dataTable" data-url="{{ route('seller.products.get-data') }}"
@@ -37,4 +38,5 @@
             </div>
         </div>
     </div>
+    @include('backend.seller.product.partials.image')
 @endsection
