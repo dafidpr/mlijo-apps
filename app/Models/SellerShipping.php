@@ -14,4 +14,14 @@ class SellerShipping extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+
+    public function shipping()
+    {
+        return $this->belongsTo(Shipping::class);
+    }
 }

@@ -81,8 +81,7 @@
                                             </div>
                                             @if (count($product->productVariant) > 0)
                                                 <div class="attr-detail attr-size mb-30">
-                                                    <strong
-                                                        class="mr-10">{{ $product->productVariant[0]->name }}:
+                                                    <strong class="mr-10">{{ $product->productVariant[0]->name }}:
                                                     </strong>
                                                     <ul class="list-filter size-filter font-small">
 
@@ -94,6 +93,10 @@
                                                     </ul>
                                                 </div>
                                             @endif
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="notes"
+                                                    placeholder="Catatan" autocomplete="off" />
+                                            </div>
                                             <div class="detail-extralink mb-50">
                                                 <div class="detail-qty border radius">
                                                     <a href="#" class="qty-down"><i
@@ -103,7 +106,8 @@
                                                             class="fi-rs-angle-small-up"></i></a>
                                                 </div>
                                                 <div class="product-extra-link2">
-                                                    <button type="submit" class="button button-add-to-cart"><i
+                                                    <button type="button" data-id="{{ $product->hashid }}"
+                                                        class="button add-cart-bt button-add-to-cart"><i
                                                             class="fi-rs-shopping-cart"></i>Keranjang</button>
                                                     <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                                         href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>

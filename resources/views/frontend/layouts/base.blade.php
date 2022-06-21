@@ -13,6 +13,9 @@
     <meta property="og:type" content="" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="base-url" content="{{ url('/') }}">
+    <meta name="asset-url" content="{{ asset('/') }}">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon"
         href="{{ asset('storage/images/themes/' . getSetting('favicon')) }}" />

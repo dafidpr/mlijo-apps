@@ -224,9 +224,11 @@
                                   <div class="product-img product-img-zoom">
                                       <a href="{{ route('frontend.product', $item->slug) }}">
                                           <img class="default-img"
-                                              src="{{ asset('storage/images/products/' . $item->thumbnail) }}" alt="" />
+                                              src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
+                                              alt="" />
                                           <img class="hover-img"
-                                              src="{{ asset('storage/images/products/' . $item->thumbnail) }}" alt="" />
+                                              src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
+                                              alt="" />
                                       </a>
                                   </div>
                                   <div class="product-action-1">
@@ -262,7 +264,8 @@
                                           {{-- <span class="old-price">$32.8</span> --}}
                                       </div>
                                       <div class="add-cart">
-                                          <a class="add" href="#"><i class="fi-rs-shopping-cart mr-5"></i> </a>
+                                          <a class="add add-cart-bt" data-id="{{ hashId($item->product_id) }}"
+                                              href="#"><i class="fi-rs-shopping-cart mr-2"></i> </a>
                                       </div>
                                   </div>
                               </div>
@@ -274,7 +277,7 @@
           </div>
       </section>
       <!--Products Tabs-->
-      <section class="section-padding pb-5">
+      {{-- <section class="section-padding pb-5">
           <div class="container">
               <div class="section-title wow animate__animated animate__fadeIn">
                   <h3 class="">Penjualan Terbaik Harian</h3>
@@ -1106,9 +1109,9 @@
                   <!--End Col-lg-9-->
               </div>
           </div>
-      </section>
+      </section> --}}
       <!--End Best Sales-->
-      <section class="section-padding pb-5">
+      {{-- <section class="section-padding pb-5">
           <div class="container">
               <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
                   <h3 class="">Promo Hari Ini</h3>
@@ -1123,7 +1126,8 @@
                           <div class="product-img-action-wrap">
                               <div class="product-img">
                                   <a href="shop-product-right.html">
-                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-5.png') }}" alt="" />
+                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-5.png') }}"
+                                          alt="" />
                                   </a>
                               </div>
                           </div>
@@ -1163,7 +1167,8 @@
                           <div class="product-img-action-wrap">
                               <div class="product-img">
                                   <a href="shop-product-right.html">
-                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-6.png') }}" alt="" />
+                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-6.png') }}"
+                                          alt="" />
                                   </a>
                               </div>
                           </div>
@@ -1203,7 +1208,8 @@
                           <div class="product-img-action-wrap">
                               <div class="product-img">
                                   <a href="shop-product-right.html">
-                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-7.png') }}" alt="" />
+                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-7.png') }}"
+                                          alt="" />
                                   </a>
                               </div>
                           </div>
@@ -1243,7 +1249,8 @@
                           <div class="product-img-action-wrap">
                               <div class="product-img">
                                   <a href="shop-product-right.html">
-                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-8.png') }}" alt="" />
+                                      <img src="{{ asset('assets/frontend/imgs/banner/banner-8.png') }}"
+                                          alt="" />
                                   </a>
                               </div>
                           </div>
@@ -1279,7 +1286,7 @@
                   </div>
               </div>
           </div>
-      </section>
+      </section> --}}
       <!--End Deals-->
       <section class="section-padding mb-30">
           <div class="container">
@@ -1322,7 +1329,8 @@
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
                                   <a href="shop-product-right.html"><img
-                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-4.jpg') }}" alt="" /></a>
+                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-4.jpg') }}"
+                                          alt="" /></a>
                               </figure>
                               <div class="col-md-8 mb-0">
                                   <h6>
@@ -1343,7 +1351,8 @@
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
                                   <a href="shop-product-right.html"><img
-                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-5.jpg') }}" alt="" /></a>
+                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-5.jpg') }}"
+                                          alt="" /></a>
                               </figure>
                               <div class="col-md-8 mb-0">
                                   <h6>
@@ -1365,7 +1374,8 @@
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
                                   <a href="shop-product-right.html"><img
-                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-6.jpg') }}" alt="" /></a>
+                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-6.jpg') }}"
+                                          alt="" /></a>
                               </figure>
                               <div class="col-md-8 mb-0">
                                   <h6>
@@ -1424,7 +1434,8 @@
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
                                   <a href="shop-product-right.html"><img
-                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-10.jpg') }}" alt="" /></a>
+                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-10.jpg') }}"
+                                          alt="" /></a>
                               </figure>
                               <div class="col-md-8 mb-0">
                                   <h6>
@@ -1446,7 +1457,8 @@
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
                                   <a href="shop-product-right.html"><img
-                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-11.jpg') }}" alt="" /></a>
+                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-11.jpg') }}"
+                                          alt="" /></a>
                               </figure>
                               <div class="col-md-8 mb-0">
                                   <h6>
@@ -1468,7 +1480,8 @@
                           <article class="row align-items-center hover-up">
                               <figure class="col-md-4 mb-0">
                                   <a href="shop-product-right.html"><img
-                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-12.jpg') }}" alt="" /></a>
+                                          src="{{ asset('assets/frontend/imgs/shop/thumbnail-12.jpg') }}"
+                                          alt="" /></a>
                               </figure>
                               <div class="col-md-8 mb-0">
                                   <h6>

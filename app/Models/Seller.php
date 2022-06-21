@@ -30,7 +30,12 @@ class Seller extends Model
     }
     public function address()
     {
-        return $this->morphMany(Address::class, 'addressable');
+        return $this->hasMany(Address::class);
+    }
+
+    public function sellerShipping()
+    {
+        return $this->hasMany(SellerShipping::class);
     }
 
     public function sellerNote()

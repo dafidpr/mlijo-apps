@@ -15,8 +15,13 @@ class Address extends Model
     protected $appends = ['hashid'];
     protected $guarded = [];
 
-    public function addressable()
+    public function seller()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Seller::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

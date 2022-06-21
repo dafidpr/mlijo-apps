@@ -294,7 +294,7 @@
                                 <div class="col-8">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>Ukuran Paket</span>
+                                            <span>Ukuran Paket <span class="text-danger">*</span></span>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="input-group">

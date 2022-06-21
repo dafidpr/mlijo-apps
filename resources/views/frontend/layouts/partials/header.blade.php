@@ -81,15 +81,15 @@
                                     <a class="mini-cart-icon" href="shop-cart.html">
                                         <img alt="Nest"
                                             src="{{ asset('assets/frontend/imgs/theme/icons/icon-cart.svg') }}" />
-                                        @if (count(getCart(true)) > 0)
+                                        <div id="cart-count"></div>
+                                        {{-- @if (count(getCart(true)) > 0)
                                             <span class="pro-count blue">{{ count(getCart(true)) }}</span>
-                                        @endif
+                                        @endif --}}
                                     </a>
-                                    <a href="{{ route('frontend.carts') }}"><span
-                                            class="lable">Keranjang</span></a>
+                                    <a href="{{ route('frontend.carts') }}"><span class="lable">Keranjang</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                        <ul>
-                                            @foreach (getCart(true, 2) as $item)
+                                        <ul id="cart-body">
+                                            {{-- @foreach (getCart(true, 2) as $item)
                                                 <li>
                                                     <div class="shopping-cart-img">
                                                         <a
@@ -108,24 +108,9 @@
                                                         <a href="#"><i class="fi-rs-cross-small"></i></a>
                                                     </div>
                                                 </li>
-                                            @endforeach
+                                            @endforeach --}}
                                         </ul>
-                                        <div class="shopping-cart-footer">
-                                            <div class="shopping-cart-total">
-                                                <h4>Total <span>Rp
-                                                        @if (count(getCart(true)) > 0)
-                                                            {{ number_format(getCart(false, 0, true)) }}
-                                                        @else
-                                                            0
-                                                        @endif
-                                                    </span></h4>
-                                            </div>
-                                            <div class="shopping-cart-button">
-                                                <a href="{{ route('frontend.carts') }}" class="outline">View
-                                                    cart</a>
-                                                <a href="shop-checkout.html">Checkout</a>
-                                            </div>
-                                        </div>
+                                        <div id="cart-footer"></div>
                                     </div>
                                 </div>
                                 <div class="header-action-icon-2">
@@ -246,8 +231,8 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="more_categories"><span class="icon"></span> <span
-                                    class="heading-sm-1">Show more...</span></div>
+                            <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show
+                                    more...</span></div>
                         </div>
                     </div>
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
@@ -437,13 +422,17 @@
             <div class="mobile-social-icon mb-50">
                 <h6 class="mb-15">Temukan Kami Di</h6>
                 <a href="https://facebook.com/{{ getSetting('fb') }}"><img
-                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
+                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-facebook-white.svg') }}"
+                        alt="" /></a>
                 <a href="https://twitter.com/{{ getSetting('fb') }}"><img
-                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-twitter-white.svg') }}" alt="" /></a>
+                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-twitter-white.svg') }}"
+                        alt="" /></a>
                 <a href="https://instagram.com/{{ getSetting('fb') }}"><img
-                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
+                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-instagram-white.svg') }}"
+                        alt="" /></a>
                 <a href="https://youtube.com/c/{{ getSetting('fb') }}"><img
-                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
+                        src="{{ asset('assets/frontend/imgs/theme/icons/icon-youtube-white.svg') }}"
+                        alt="" /></a>
             </div>
             <div class="site-copyright">Copyright 2021 © PT Mlijo Mart Indonesia. All rights reserved.</div>
         </div>

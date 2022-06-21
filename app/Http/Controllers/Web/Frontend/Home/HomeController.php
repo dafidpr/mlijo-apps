@@ -7,6 +7,7 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\ProductSubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,7 @@ class HomeController extends Controller
         $data = [
             'title' => 'Belanja Kebutuhan Sehari-hari Terlengkap se-Indonesia',
             'productSubCategories' => $this->getProductSubCategories(),
-            'popularProducts' => $this->getPopularProducts(10),
+            'popularProducts' => $this->getPopularProducts(20),
             'bestSellingProducts' => $this->getPopularProducts(3),
             'newProducts' => $this->getNewProducts(3),
         ];

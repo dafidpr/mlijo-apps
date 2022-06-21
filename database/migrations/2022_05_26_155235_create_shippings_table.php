@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('code');
             $table->string('name');
             $table->string('picture');
             $table->string('description')->nullable();

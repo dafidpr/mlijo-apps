@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->morphs('addressable');
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('seller_id')->nullable();
             $table->string('name');
             $table->string('phone_number');
             $table->string('email');
@@ -29,6 +30,8 @@ return new class extends Migration
             $table->boolean('is_default')->default(false);
             $table->enum('address_type', ['personal', 'store']);
             $table->timestamps();
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
         });
     }
 

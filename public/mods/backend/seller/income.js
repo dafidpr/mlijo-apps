@@ -158,9 +158,9 @@ dtIncomeRelease = $("#income-release-table").DataTable({
     responsive: true,
 });
 
-function numberFormat(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
+// function numberFormat(number) {
+//     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+// }
 
 async function filterData(date, status) {
     if (status == true) {

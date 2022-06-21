@@ -29,9 +29,9 @@ return new class extends Migration
             $table->integer('expired');
             $table->enum('weight_unit', ['gr', 'kg']);
             $table->double('weight');
-            $table->double('long_size')->nullable();
-            $table->double('width_size')->nullable();
-            $table->double('height_size')->nullable();
+            $table->double('long_size');
+            $table->double('width_size');
+            $table->double('height_size');
             $table->string('slug')->unique();
             $table->string('keywords')->nullable();
             $table->boolean('have_variant')->default(false);

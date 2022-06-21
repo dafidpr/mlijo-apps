@@ -36,6 +36,9 @@ class ProductRequest extends FormRequest
             'stock' => 'required|numeric',
             'expired' => 'required|numeric',
             'weight' => 'required|numeric',
+            'width_size' => 'required|numeric',
+            'long_size' => 'required|numeric',
+            'height_size' => 'required|numeric',
         ];
     }
 }

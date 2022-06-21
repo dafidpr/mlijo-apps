@@ -85,8 +85,8 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn"
-                                                href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i
+                                                    class="fi-rs-heart"></i></a>
                                             <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
                                                 data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                         </div>
@@ -118,8 +118,8 @@
                                                 {{-- <span class="old-price">$32.8</span> --}}
                                             </div>
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i
-                                                        class="fi-rs-shopping-cart mr-5"></i></a>
+                                                <a class="add add-cart-bt" data-id="{{ hashId($item->id) }}"
+                                                    href="#"><i class="fi-rs-shopping-cart mr-5"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -344,7 +344,8 @@
         as $item)
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="{{ asset('storage/images/products/' . $item->thumbnail) }}" alt="#" />
+                                    <img src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
+                                        alt="#" />
                                 </div>
                                 <div class="content pt-10">
                                     <h6><a

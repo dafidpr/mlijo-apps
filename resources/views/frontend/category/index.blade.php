@@ -70,64 +70,64 @@
                     </div>
                     <div class="row product-grid">
                         @foreach ($productCategory->productSubCategory as $item)
-                        @if(count($item->product) > 0 && isset($item->product))
-                        @foreach ($item->product as $p)
-                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="{{ route('frontend.product', $p->slug) }}">
-                                                <img class="default-img"
-                                                    src="{{ asset('storage/images/products/' .$p->thumbnail) }}"
-                                                    alt="" />
-                                                <img class="hover-img"
-                                                    src="{{ asset('storage/images/products/' .$p->thumbnail) }}"
-                                                    alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn"
-                                                href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                                                data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
+                            @if (count($item->product) > 0 && isset($item->product))
+                                @foreach ($item->product as $p)
+                                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="{{ route('frontend.product', $p->slug) }}">
+                                                        <img class="default-img"
+                                                            src="{{ asset('storage/images/products/' . $p->thumbnail) }}"
+                                                            alt="" />
+                                                        <img class="hover-img"
+                                                            src="{{ asset('storage/images/products/' . $p->thumbnail) }}"
+                                                            alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Add To Wishlist" class="action-btn"
+                                                        href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
+                                                        data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    <span class="hot">Hot</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a
+                                                        href="{{ route('frontend.product', $p->slug) }}">{{ $item->name }}</a>
+                                                </div>
+                                                <h2><a
+                                                        href="{{ route('frontend.product', $p->slug) }}">{{ strlen($p->name) > 35 ? substr($p->name, 0, 35) . '...' : $p->name }}</a>
+                                                </h2>
+                                                <div class="product-rate-cover">
+                                                    <div class="product-rate d-inline-block">
+                                                        <div class="product-rating" style="width: 90%"></div>
+                                                    </div>
+                                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                </div>
+                                                <div>
+                                                    <span class="font-small text-muted">By <a
+                                                            href="vendor-details-1.html">{{ $p->seller->store_name }}</a></span>
+                                                </div>
+                                                <div class="product-card-bottom">
+                                                    <div class="product-price">
+                                                        <span>Rp {{ number_format($p->price) }}</span>
+                                                        {{-- <span class="old-price">$32.8</span> --}}
+                                                    </div>
+                                                    <div class="add-cart">
+                                                        <a class="add add-cart-bt" data-id="{{ hashId($p->id) }}"
+                                                            href="#"><i class="fi-rs-shopping-cart mr-5"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a
-                                                href="{{ route('frontend.product', $item->slug) }}">{{ $item->name }}</a>
-                                        </div>
-                                        <h2><a
-                                                href="">{{ strlen($p->name) > 35 ? substr($p->name, 0, 35) . '...' : $p->name }}</a>
-                                        </h2>
-                                        <div class="product-rate-cover">
-                                            <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width: 90%"></div>
-                                            </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                        </div>
-                                        <div>
-                                            <span class="font-small text-muted">By <a
-                                                    href="vendor-details-1.html">{{ $p->seller->store_name }}</a></span>
-                                        </div>
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                <span>Rp {{ number_format($p->price)}}</span>
-                                                {{-- <span class="old-price">$32.8</span> --}}
-                                            </div>
-                                            <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i
-                                                        class="fi-rs-shopping-cart mr-5"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        @endif
+                                @endforeach
+                            @endif
                         @endforeach
                         <!--end product card-->
                     </div>
@@ -326,30 +326,32 @@
                         <h5 class="section-title style-1 mb-30">Kategori</h5>
                         <ul>
                             @foreach (getProductCategories(5, 'id', 'desc', 'true') as $item)
-                            <li>
-                                <a href="{{ route('frontend.category', $item->slug) }}"> <img src="{{ asset('storage/images/product-categories/' .$item->icon)}}"
-                                        alt="" />{{$item->name}}</a>
-                            </li>
+                                <li>
+                                    <a href="{{ route('frontend.category', $item->slug) }}"> <img
+                                            src="{{ asset('storage/images/product-categories/' . $item->icon) }}"
+                                            alt="" />{{ $item->name }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
-                    
+
                     <!-- Product sidebar Widget -->
                     <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
                         <h5 class="section-title style-1 mb-30">New products</h5>
                         @foreach (getProductCategories(3, 'id', 'desc', false) as $item)
-                        <div class="single-post clearfix">
-                            <div class="image">
-                                <img src="{{ asset('storage/images/products/' .$item->thumbnail) }}" alt="#" />
-                            </div>
-                            <div class="content pt-10">
-                                <h5><a href="shop-product-detail.html">{{$item->name}}</a></h5>
-                                <p class="price mb-0 mt-5">$99.50</p>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width: 90%"></div>
+                            <div class="single-post clearfix">
+                                <div class="image">
+                                    <img src="{{ asset('storage/images/products/' . $item->thumbnail) }}"
+                                        alt="#" />
+                                </div>
+                                <div class="content pt-10">
+                                    <h5><a href="shop-product-detail.html">{{ $item->name }}</a></h5>
+                                    <p class="price mb-0 mt-5">$99.50</p>
+                                    <div class="product-rate">
+                                        <div class="product-rating" style="width: 90%"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>

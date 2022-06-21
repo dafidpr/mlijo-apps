@@ -164,9 +164,9 @@ table = initTable('#dataTable', [{
 
 ]);
 
-function numberFormat(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
+// function numberFormat(number) {
+//     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+// }
 
 function receipt(hashid) {
     $('#receipt-modal #receipt-form').attr('action', `${window.location.href}/${hashid}/store-receipt`);

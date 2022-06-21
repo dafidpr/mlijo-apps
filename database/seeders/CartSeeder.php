@@ -25,7 +25,7 @@ class CartSeeder extends Seeder
             ],
             [
                 'customer_id' => 1,
-                'product_id' => 25,
+                'product_id' => 2,
                 'quantity' => 1,
                 'notes' => null,
                 'is_checkout' => false,

@@ -16,8 +16,8 @@ class AddressSeederImport implements ToCollection, WithHeadingRow
     {
         foreach ($collection as $key => $value) {
             $address = Address::create([
-                'addressable_type' => $value['tipe_alamat'],
-                'addressable_id' => $value['id_alamat'],
+                'customer_id' => $value['tipe_alamat'] == 'App/Models/Customer' ? $value['id_alamat'] : null,
+                'seller_id' =>  $value['tipe_alamat'] == 'App/Models/Seller' ? $value['id_alamat'] : null,
                 'name' => $value['nama'],
                 'phone_number' => $value['no_hp'],
                 'email' => $value['email'],

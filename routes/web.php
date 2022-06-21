@@ -38,7 +38,14 @@ Route::get('sub-kategori/{slug}', [ProductSubCategoryController::class, 'index']
 Route::get('kategori/{slug}', [ProductCategoryController::class, 'index'])->name('frontend.category');
 Route::get('produk/{slug}', [ProductController::class, 'index'])->name('frontend.product');
 Route::get('wishlists', [WishlistController::class, 'index'])->name('frontend.wishlists')->middleware('customer.protected');
-Route::get('keranjang', [CartController::class, 'index'])->name('frontend.carts')->middleware('customer.protected');
+Route::prefix('keranjang')->middleware('customer.protected')->group(function () {
+    Route::get('', [CartController::class, 'index'])->name('frontend.carts');
+    Route::post('add-cart', [CartController::class, 'addCart'])->name('frontend.carts.add-cart');
+    Route::get('get-cart', [CartController::class, 'getCart'])->name('frontend.carts.get-cart');
+    Route::delete('{cart}/delete', [CartController::class, 'destroy'])->name('frontend.carts.delete');
+    Route::post('checkout', [CartController::class, 'checkout'])->name('frontend.carts.chechout');
+});
+
 Route::get('/login', function () {
     return view('frontend.auth.login', ['title' => 'Masuk']);
 })->middleware(['guest:' . config('fortify.guard')])->name('frontend.login');
