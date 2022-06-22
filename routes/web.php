@@ -19,6 +19,7 @@ use App\Http\Controllers\Web\Frontend\Wishlist\WishlistController;
 use App\Http\Controllers\Web\Frontend\ProductCategory\ProductCategoryController;
 use App\Http\Controllers\Web\Backend\Seller\Storefront\StorefrontController;
 use App\Http\Controllers\Web\Backend\Seller\Storefront\StorefrontProductController;
+use App\Http\Controllers\Web\Frontend\Dashboard\DashboardController as AppHttpDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,10 @@ Route::prefix('keranjang')->middleware('customer.protected')->group(function () 
     Route::get('get-cart', [CartController::class, 'getCart'])->name('frontend.carts.get-cart');
     Route::delete('{cart}/delete', [CartController::class, 'destroy'])->name('frontend.carts.delete');
     Route::post('checkout', [CartController::class, 'checkout'])->name('frontend.carts.chechout');
+});
+Route::prefix('akun')->middleware('customer.protected')->group(function () {
+    Route::get('', [AppHttpDashboardController::class, 'index'])->name('frontend.dashboards');
+    Route::post('track', [AppHttpDashboardController::class, 'tracking'])->name('frontend.dashboards.track');
 });
 
 Route::get('/login', function () {

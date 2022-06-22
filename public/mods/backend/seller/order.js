@@ -26,7 +26,7 @@ table = initTable('#dataTable', [{
                         Status Pesanan
                         </button>`
             if (row.status_order == 'pending') {
-                button += ` <button type="button" onclick="updateStatus('${row.hashid}', 'cancel')" class="btn-sm font-weight-bold btn btn-flat-dark waves-effect waves-light">
+                button += ` <button type="button" onclick="updateStatus('${row.hashid}', 'canceled')" class="btn-sm font-weight-bold btn btn-flat-dark waves-effect waves-light">
                                 <i class="feather icon-x-circle"></i> 
                                 Batalkan Pesanan
                             </button>`

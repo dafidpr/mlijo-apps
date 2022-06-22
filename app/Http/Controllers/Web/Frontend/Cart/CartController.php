@@ -39,37 +39,41 @@ class CartController extends Controller
     private function getCouriers()
     {
         $cart = Cart::where(['customer_id' => auth()->user()->userable->id, 'is_checkout' => false])->with(['product.seller.address', 'customer.address']);
-        $shippings = SellerShipping::where(['seller_id' => $cart->first()->product->seller->id])->with('shipping')->get();
-        $shippingCodes = '';
+        if ($cart->count() > 0) {
+            $shippings = SellerShipping::where(['seller_id' => $cart->first()->product->seller->id])->with('shipping')->get();
+            $shippingCodes = '';
 
-        foreach ($shippings as $item) {
-            $shippingCodes != "" && $shippingCodes .= ",";
-            $shippingCodes .= $item->shipping->code;
-        }
-        $products = [];
-        foreach ($cart->get() as $p) {
-            $products[] = [
-                "name" => $p->product->name,
-                "description" => $p->product->description,
-                "length" => $p->product->long_size,
-                "width" => $p->product->width_size,
-                "height" => $p->product->height_size,
-                "weight" => $p->product->weight,
-                "quantity" => $p->quantity,
-                "value" => $p->quantity * $p->product->price,
-            ];
-        }
+            foreach ($shippings as $item) {
+                $shippingCodes != "" && $shippingCodes .= ",";
+                $shippingCodes .= $item->shipping->code;
+            }
+            $products = [];
+            foreach ($cart->get() as $p) {
+                $products[] = [
+                    "name" => $p->product->name,
+                    "description" => $p->product->description,
+                    "length" => $p->product->long_size,
+                    "width" => $p->product->width_size,
+                    "height" => $p->product->height_size,
+                    "weight" => $p->product->weight,
+                    "quantity" => $p->quantity,
+                    "value" => $p->quantity * $p->product->price,
+                ];
+            }
 
-        $getCouriers = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => env('SHIPPING_API_KEY'),
-        ])->post(env('SHIPPING_API_URL') . 'rates/couriers', [
-            "origin_postal_code" => $cart->first()->product->seller->address[0]->postal_code,
-            "destination_postal_code" => $cart->first()->customer->address[0]->postal_code,
-            "couriers" => $shippingCodes,
-            "items" => $products
-        ]);
-        return $getCouriers->json();
+            $getCouriers = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => env('SHIPPING_API_KEY'),
+            ])->post(env('SHIPPING_API_URL') . 'rates/couriers', [
+                "origin_postal_code" => $cart->first()->product->seller->address[0]->postal_code,
+                "destination_postal_code" => $cart->first()->customer->address[0]->postal_code,
+                "couriers" => $shippingCodes,
+                "items" => $products
+            ]);
+            return $getCouriers->json();
+        } else {
+            return ['pricing' => []];
+        }
     }
 
     public function addCart(Request $request)
@@ -146,18 +150,18 @@ class CartController extends Controller
     {
         try {
             DB::beginTransaction();
-            $cart = Cart::where(['customer_id' => auth()->user()->userable->id])->with('product.seller')->first();
+            $cart = Cart::where(['customer_id' => auth()->user()->userable->id])->with('product.seller');
+            $cart->update(['is_checkout' => true]);
             $request->merge([
                 'shipping_code' => explode('-', $request->shipping)[0],
                 'shipping_price' => explode('-', $request->shipping)[1],
             ]);
             $shipping = Shipping::where(['code' => $request->shipping_code])->first();
-            return dd($request->all());
             $order = Order::create([
                 'customer_id' => auth()->user()->userable->id,
                 'shipping_id' => $shipping->id,
-                'seller_id' => $cart->product->seller->id,
-                'payment_method_id' => $request->bank_account,
+                'seller_id' => $cart->first()->product->seller->id,
+                'payment_method_id' => Hashids::decode($request->bank_account)[0],
                 'order_code' => $this->generateOrderCode(),
                 'receipt_number' => null,
                 'proof_of_payment' => null,
@@ -179,7 +183,7 @@ class CartController extends Controller
                     'price' => $product->price,
                     'quantity' => $request->qty[$key],
                     'discount' => 0,
-                    'total' => $product->price * $request->qty[$key],
+                    'total' => (int) $product->price * (int) $request->qty[$key],
                     'notes' => $request->notes[$key],
                     'created_at' => Carbon::now()
                 ]);
@@ -203,12 +207,17 @@ class CartController extends Controller
                 'address' => auth()->user()->userable->address[0]->address,
                 'created_at' => Carbon::now()
             ]);
-            $cart->update(['is_checkout' => false]);
+
             DB::commit();
+            return response()->json([
+                'success' => 'success',
+                'message' => 'Berhasil checkout'
+            ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
+                'trace' => $e->getTrace()
             ], 500);
         }
     }
@@ -216,7 +225,7 @@ class CartController extends Controller
     private function generateOrderCode()
     {
         $lastOrder = Order::whereDate('created_at', Carbon::today())->orderBy('created_at', 'DESC')->first();
-        $number = $lastOrder ? substr($lastOrder->transaction_code, -4) + 1 : 1;
+        $number = $lastOrder ? substr($lastOrder->order_code, -4) + 1 : 1;
 
         return 'INV' . date('Ymd') . str_pad($number, 4, '0', STR_PAD_LEFT);
     }

@@ -191,5 +191,55 @@
             }
 
         });
+
+        $('#track-bt')
+            .on("click", async function(e) {
+                e.preventDefault();
+                var oldButtonText = $(this).html();
+                let orderId = $('#order_id').val()
+
+
+                $(this).html("Loading...");
+                await fetch(`{{ route('frontend.dashboards.track') }}`, {
+                        method: 'POST',
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                            "X-Requested-With": "XMLHttpRequest",
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: orderId,
+                        })
+                    })
+                    .then(response => response.json())
+
+                    .then(data => {
+                        console.log(data)
+                        if (data.status == 'success') {
+                            let html = ``;
+                            data.data.forEach(item => {
+                                html += `<div class="xp-actions-history-list mt-4">
+                                            <div class="xp-actions-history-item ">
+                                                <h6 class="title is-6">${item.title}</h6>
+                                                <span class="mb-0">${item.description}</span><br>
+                                                <small>${item.date}</small>
+                                            </div>
+                                        </div>`
+                            });
+                            $('#tracking-body').html(html)
+                            notify('success', data.message);
+                        }
+                        if (data.status == 'error') {
+                            notify('warning', data.message);
+
+                            $('#tracking-body').html(`<h4>Data tidak ditemukan</h4>`)
+                        }
+                    })
+                $(this).html(oldButtonText);
+                $(".waves-ripple").remove();
+
+
+            });
     </script>
 @endsection

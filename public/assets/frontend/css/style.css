@@ -9,3 +9,32 @@
        height: 160px !important;
        object-fit: cover !important;
    }
+
+   .xp-actions-history-list {
+       position: relative;
+   }
+
+   .xp-actions-history-list:before {
+       content: "";
+       position: absolute;
+       top: 2px;
+       width: 15px;
+       height: 15px;
+       border: 2px solid #3BB77E;
+       border-radius: 50%;
+       background-color: rgba(59, 183, 126, 0.2);
+   }
+
+   .xp-actions-history-list:after {
+       content: "";
+       position: absolute;
+       height: 100%;
+       width: 1px;
+       top: 24px;
+       left: 7px;
+       background: rgba(59, 183, 126, 0.2);
+   }
+
+   .xp-actions-history-list .xp-actions-history-item {
+       margin-left: 30px;
+   }

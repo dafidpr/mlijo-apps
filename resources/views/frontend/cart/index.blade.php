@@ -13,7 +13,8 @@
        </div>
    @endsection
    @section('content')
-       <form method="post" action="{{ route('frontend.carts.chechout') }}" data-request="ajax">
+       <form method="post" action="{{ route('frontend.carts.chechout') }}" data-request="ajax"
+           data-success-callback="{{ route('frontend.carts') }}" data-redirect="true">
            <div class="container mb-80 mt-50">
                <div class="row">
                    <div class="col-lg-8 mb-40">
@@ -68,9 +69,10 @@
                                                        </a>
                                                    </h6>
                                                    <div class="product-rate-cover">
-                                                       <input type="hidden" name="notes" id="notes"
+                                                       <input type="hidden" name="notes[]" id="notes"
                                                            value="{{ $item->notes }}">
-                                                       <span class="font-small ml-5 text-muted"> {{ $item->notes }}</span>
+                                                       <span class="font-small ml-5 text-muted">
+                                                           {{ $item->notes }}</span>
                                                    </div>
                                                </td>
                                                <td class="price" data-title="Price" id="price-{{ $item->hashid }}"
@@ -127,7 +129,7 @@
                                <div class="calculate-shiping p-40 border-radius-15 border">
                                    <h4 class="mb-10">Estimasi Pengiriman</h4>
 
-                                   <form class="field_form shipping_calculator">
+                                   <div class="field_form shipping_calculator">
                                        <div class="form-row">
                                            <div class="card mb-3 p-2">
                                                <div class="card-body">
@@ -145,6 +147,7 @@
                                                            </li>
                                                        </ul>
                                                    </div>
+
                                                </div>
                                            </div>
                                            <div class="form-group col-lg-12">
@@ -175,14 +178,14 @@
                                                </div>
                                            </div>
                                        </div>
-                                   </form>
+                                   </div>
                                </div>
                            </div>
                            <div class="col-lg-5">
                                <div class="calculate-shiping p-40 border-radius-15 border">
                                    <h4 class="mb-10">Metode Pembayaran</h4>
 
-                                   <form class="field_form shipping_calculator">
+                                   <div class="field_form shipping_calculator">
                                        <div class="form-row">
                                            <div class="form-group col-lg-12">
                                                <div class="custom_select">
@@ -199,7 +202,7 @@
                                            </div>
                                        </div>
 
-                                   </form>
+                                   </div>
                                </div>
                            </div>
                        </div>
@@ -226,7 +229,7 @@
                                        </tr>
                                        <tr>
                                            <td class="cart_total_label">
-                                               <h6 class="text-muted">Shipping</h6>
+                                               <h6 class="text-muted">Ongkir</h6>
                                            </td>
                                            <td class="cart_total_amount">
                                                <h5 class="text-heading text-end" id="shippment-total-checkout">Rp0</h5
@@ -271,8 +274,8 @@
                                    </tbody>
                                </table>
                            </div>
-                           <button type="submit" class="btn mb-20 w-100">Checkout<i
-                                   class="fi-rs-sign-out ml-15"></i></button>
+                           <button type="submit" {{ count(getCart(true, 0, false)) > 0 ? '' : 'disabled' }}
+                               class="btn mb-20 w-100">Checkout<i class="fi-rs-sign-out ml-15"></i></button>
                        </div>
                    </div>
                </div>
